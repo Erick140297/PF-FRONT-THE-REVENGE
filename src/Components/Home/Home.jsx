@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 
 
-
 const Home = () => {
   const Dispatch = useDispatch()
   const allComponents = useSelector((state)=>state.allProducts)
