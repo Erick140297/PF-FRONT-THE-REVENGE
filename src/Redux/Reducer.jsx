@@ -4,7 +4,7 @@ const initialState = {
     allProducts:[]
 }
 
-export const rootReducer = (state=initialState,action) => {
+function rootReducer (state=initialState,action) {
     switch(action.type){
 
         case 'GET_ALL_PRODUCTS':
@@ -18,3 +18,5 @@ export const rootReducer = (state=initialState,action) => {
         return state
     }
 }
+
+export default rootReducer;
