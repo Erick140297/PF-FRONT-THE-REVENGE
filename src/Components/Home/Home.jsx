@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { GetAllProducts } from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 const Home = () => {
+  const Dispatch = useDispatch()
+  const allComponents = useSelector((state)=>state.allProducts)
+    
+  useEffect(()=>{
+    Dispatch(GetAllProducts())
+  }, []);
+
   return (
     <div>Home</div>
   )
