@@ -6,13 +6,13 @@ export function Card({image,name,price}){
 
         <div className="container-card">
             <div className="image">
-                <img src="https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_31776_Memoria_GeiL_DDR4_16GB_3000MHz_Super_Luce_RGB_Black_646b61f7-grn.jpg" alt="imagen" />
+                <img src={image} alt={image} />
             </div>
             <div className="title">
-                <p>Memoria GeiL DDR4 16GB 3000MHz Super Luce RGB Black </p>
+                <p>{name}</p>
             </div>
             <div className="price">
-                <p>$31653</p>
+                <p>{price}</p>
             </div>
             <div className="btn">
                 {/* <Link> */}
