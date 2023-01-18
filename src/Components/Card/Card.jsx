@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import './Card.css'
 
 
-
-
-
-export function Card({image,name,price}){
+const Card = ({image,name,price}) => {
     return(
 
         <div className="container-card">
@@ -28,3 +25,5 @@ export function Card({image,name,price}){
         </div>
     )
 }
+
+export default Card;
