@@ -15,18 +15,12 @@ const Home = () => {
   return (
     <div>{allComponents?.map((el, index) => {
       return (
-        <div key={el._id}>
           <Card
-            _id={el._id}
             name={el.name}
-            brand={el.brand}
-            category={el.category}
             image={el.image ? el.image.secure_url : ""}
             price={el.price}
-            stock={el.stock}
             key={index}
           />
-        </div>
       );
     })}
     </div> 
