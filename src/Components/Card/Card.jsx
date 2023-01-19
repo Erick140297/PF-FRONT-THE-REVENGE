@@ -5,23 +5,24 @@ import './Card.css'
 
 const Card = ({image,name,price}) => {
     return(
+        <div className="container">
 
         <div className="container-card">
             <div className="image">
                 <img src={image} alt={image} />
             </div>
             <div className="title">
-                <p>{name}</p>
+                <h4>{name}</h4>
             </div>
             <div className="price">
-                <p>{price}</p>
+                <p>${price}</p>
             </div>
             <div className="btn">
                 {/* <Link> */}
                 <button>Ver mas</button>
                 {/* </Link> */}
             </div>
-
+        </div>
         </div>
     )
 }
