@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
 
 const SearchBar = () => {
+
+  const [input, setInput] = useState("")
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    console.log("submit")
+  }
+
   return (
     <>
-      <FormContainer>
+      <FormContainer onSubmit={(e)=>handleSubmit(e)}>
         <InputTex type="text" />
         <InputSubmit>
           <BsSearch />
@@ -33,9 +41,6 @@ const InputTex = styled.input`
   width: 450px;
   height: 35px;
   margin-right: 5px;
-  /* &:focus{
-  border: #181a1b;
-  } */
 `;
 const InputSubmit = styled.button`
   background: #7230ff;
@@ -43,7 +48,6 @@ const InputSubmit = styled.button`
   height: 35px;
   width: 30px;
   border-radius: 5px;
-  background-image: url("./search.svg");
   &:hover{
     background:#7230ff;
   }
