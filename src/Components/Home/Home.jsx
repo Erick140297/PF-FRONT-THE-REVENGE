@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="cardsContaier">
+      {/* <div className="cardsContaier"> */}
       <Carousel>
         <Carousel.Item>
           <img
