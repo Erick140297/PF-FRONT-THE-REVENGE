@@ -7,12 +7,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  console.log(isAuthenticated)
-  console.log(user)
+  console.log(isAuthenticated);
+  console.log(user);
   return (
     <>
       <NavContainer>
-        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <Link to={"/"} style={{ textDecoration: "none", color: "black" }} >
           <ContainerLogo>
             <img
               src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674156994/Products/GT_onvscx.png"
@@ -23,13 +23,16 @@ const NavBar = () => {
         </Link>
         <SearchBar />
         <div>
-        {
-          isAuthenticated?
-        <Count>
-          <User />
-          <span>Mi cuenta</span>
-        </Count>:<button onClick={() => loginWithRedirect()}>Iniciar sesión</button>
-        }
+          {isAuthenticated ? (
+            <Link to={"/profile"} style={{ textDecoration: "none", color: "black" }}>
+              <Count>
+                <User />
+                <span>Mi cuenta</span>
+              </Count>
+            </Link>
+          ) : (
+            <button onClick={() => loginWithRedirect()}>Iniciar sesión</button>
+          )}
         </div>
         <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
           <Cart>

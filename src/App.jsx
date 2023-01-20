@@ -5,6 +5,7 @@ import NavBar from './Components/NavBar/NavBar'
 import Footer from './Components/Footer/Footer'
 import Header from './Components/SideBar/Header';
 import Result from './Components/Result/Result';
+import Profile from './Components/Profile/Profile'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/" component={Header} />
       <Route exact path="/" component={Home} />
       <Route exact path="/result" component={Result} />
+      <Route exact path="/profile" component={Profile} />
       <Footer/>
     </div>
   )
