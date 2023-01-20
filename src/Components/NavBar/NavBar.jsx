@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "./SearchBar/SearchBar";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  console.log(isAuthenticated)
+  console.log(user)
   return (
     <>
       <NavContainer>
@@ -18,10 +22,15 @@ const NavBar = () => {
           </ContainerLogo>
         </Link>
         <SearchBar />
+        <div>
+        {
+          isAuthenticated?
         <Count>
           <User />
           <span>Mi cuenta</span>
-        </Count>
+        </Count>:<button onClick={() => loginWithRedirect()}>Iniciar sesión</button>
+        }
+        </div>
         <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
           <Cart>
             <ShoppingCart />

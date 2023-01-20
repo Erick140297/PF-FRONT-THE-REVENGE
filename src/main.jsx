@@ -4,12 +4,20 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import store from "./Redux/Store";
-// import "./index.scss";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <Auth0Provider
+    domain="dev-xqizhlc78nb3q524.us.auth0.com"
+    clientId="Qb0YHQ91ru6LGhvhAN0jP2cI9q7ZidEy"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </Auth0Provider>
 );
