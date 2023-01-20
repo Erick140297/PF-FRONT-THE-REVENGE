@@ -1,0 +1,84 @@
+.landing{
+    background-image: url('https://bigthink.com/wp-content/uploads/2022/04/ezgif-2-c33f7616a2.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+
+
+
+.landingTitle {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    position:relative;
+    font-size: 105px;
+    background: rgba(146, 71, 207, 0.7);
+    border-style: none;
+    position: relative;
+    left: 25%;
+    bottom: 25%;
+}
+
+.landingTitle {
+    animation: 5s infinite;
+    animation-name: wlc;
+    
+  }
+  @keyframes wlc {
+    40% {
+      border-radius: 15px; 
+      box-shadow: 0 10px 10px 0 rgba( 31, 38, 135, 0.7 );
+    }
+  
+      50% {
+      border-radius: 500px;
+      box-shadow: 0 10px 10px 0 rgba( 135, 38, 31, 0.7 );
+      color: #ffffff99;
+    }
+  
+    80% {
+      border-radius: 50px;
+      box-shadow: 0 10px 10px 0 rgba( 31, 38, 135, 0.7 );
+    }
+  }
+
+.landingButton {
+  background-color: rgba(108, 72, 155, 0.822); 
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 1em;
+  
+  padding: 0.5em 1em;
+  font-size: 3em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+ 
+  position: relative;
+  top: 150px;
+  right: 70%;
+}
+.cajitaboton{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+.landingButton:hover {
+  background-color: rgba(226, 10, 10, 0.822); 
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
