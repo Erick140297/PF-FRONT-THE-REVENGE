@@ -1,16 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { 
-    FaTimes, 
-    FaHome, 
-    FaEnvelope, 
-    FaRegSun, 
-    FaUserAlt, 
-    FaIdCardAlt, 
-    FaRegFileAlt,
-    FaRegCalendarAlt,
-    FaChartBar
-} from 'react-icons/fa';
+import { GiAbstract029 
+} from "react-icons/gi";
 import SidebarItem from "../SideBarItem";
 
 
@@ -25,14 +16,12 @@ const Sidebar = ({active}) => {
             <Container sidebar={active}>
                 <FaTimes onClick={closeSidebar} />  
                 <Content>
-                    <SidebarItem Icon={FaHome} Text="Home" />
-                    <SidebarItem Icon={FaChartBar} Text="Statistics" />
-                    <SidebarItem Icon={FaUserAlt} Text="Users" />
-                    <SidebarItem Icon={FaEnvelope} Text="Mail" />
-                    <SidebarItem Icon={FaRegCalendarAlt} Text="Calendar" />
-                    <SidebarItem Icon={FaIdCardAlt} Text="Employees" />
-                    <SidebarItem Icon={FaRegFileAlt} Text="Reports" />
-                    <SidebarItem Icon={FaRegSun} Text="Settings" />
+                    <h4>CATEGORY</h4>
+                    <SidebarItem Icon={GiAbstract029} Text="COMPONENTES DE PC" />
+                    <SidebarItem Icon={FaChartBar} Text="MANTENIMIENTO" />
+                    <SidebarItem Icon={FaUserAlt} Text="PERIFÉRICOS" />
+                    <SidebarItem Icon={FaEnvelope} Text="LAPTOPS" />
+                    <SidebarItem Icon={FaRegCalendarAlt} Text="DESTACADOS" />
                 </Content>
             </Container>
         </>
@@ -59,6 +48,14 @@ const Container = styled.div`
         margin-top: 32px;
         margin-left: 32px;
         cursor: pointer;
+    }
+
+    h4 {
+        padding-left: 100px;
+        font-size: 18px;
+        font-weight: bolder;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
     }
     @keyframes showSidebar {
         from {
