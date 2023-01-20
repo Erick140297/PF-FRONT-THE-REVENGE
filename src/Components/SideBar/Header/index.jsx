@@ -28,7 +28,7 @@ const Container = styled.div`
     background-color: #090b0f; 
     box-shadow: 0 0 20px 3px;
     > svg {
-        position: fixed;
+        position: absolute;
         color: white;
         width: 15px;
         height: 15px;
