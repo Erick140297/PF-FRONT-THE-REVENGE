@@ -1,24 +1,41 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
+import toast, { Toaster } from "react-hot-toast";
+import { getProductsByName } from "../../../Redux/Actions";
 
 const SearchBar = () => {
+  const dispatch = useDispatch()
+  const history = useHistory();
+  const [input, setInput] = useState("");
 
-  const [input, setInput] = useState("")
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.length !== 0) {
+      dispatch(getProductsByName(input))
+      setInput("")
+      history.push("/result");
+    } else {
+      toast.error("Agrega una categoria válida");
+      // toast.success('Successfully toasted!')
+    }
+  };
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    console.log("submit")
-  }
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
 
   return (
     <>
-      <FormContainer onSubmit={(e)=>handleSubmit(e)}>
-        <InputTex type="text" />
+      <FormContainer onSubmit={(e) => handleSubmit(e)}>
+        <InputTex type="text" onChange={(e) => handleChange(e)} value={input} />
         <InputSubmit>
           <BsSearch />
         </InputSubmit>
       </FormContainer>
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };
@@ -48,7 +65,7 @@ const InputSubmit = styled.button`
   height: 35px;
   width: 30px;
   border-radius: 5px;
-  &:hover{
-    background:#7230ff;
+  &:hover {
+    background: #7230ff;
   }
 `;
