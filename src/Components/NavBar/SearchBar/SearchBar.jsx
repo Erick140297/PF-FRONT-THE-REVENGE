@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
+import toast, { Toaster } from "react-hot-toast";
+import { getProductsByName } from "../../../Redux/Actions";
 
 const SearchBar = () => {
+  const dispatch = useDispatch()
+  const history = useHistory();
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.length !== 0) {
+      dispatch(getProductsByName(input))
+      setInput("")
+      history.push("/result");
+    } else {
+      toast.error("Agrega una categoria válida");
+      // toast.success('Successfully toasted!')
+    }
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
     <>
-      <FormContainer>
-        <InputTex type="text" />
+      <FormContainer onSubmit={(e) => handleSubmit(e)}>
+        <InputTex type="text" onChange={(e) => handleChange(e)} value={input} />
         <InputSubmit>
           <BsSearch />
         </InputSubmit>
       </FormContainer>
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };
@@ -33,9 +58,6 @@ const InputTex = styled.input`
   width: 450px;
   height: 35px;
   margin-right: 5px;
-  /* &:focus{
-  border: #181a1b;
-  } */
 `;
 const InputSubmit = styled.button`
   background: #7230ff;
@@ -43,8 +65,7 @@ const InputSubmit = styled.button`
   height: 35px;
   width: 30px;
   border-radius: 5px;
-  background-image: url("./search.svg");
-  &:hover{
-    background:#7230ff;
+  &:hover {
+    background: #7230ff;
   }
 `;
