@@ -10,10 +10,13 @@ function App() {
 
   return (
     <div className="App">
+
       <NavBar/>
+      <div className="otracosa">
       <Header />
       <Home/>
       <Footer/>
+      </div>
     </div>
   )
 }

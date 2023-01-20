@@ -12,10 +12,10 @@ const Card = ({image,name,price}) => {
                 <img src={image} alt={image} />
             </div>
             <div className="title">
-                <h4>{name}</h4>
+                <>{name}</>
             </div>
             <div className="price">
-                <p>${price}</p>
+                <>${price}</>
             </div>
             <div className="btn">
                 {/* <Link> */}
