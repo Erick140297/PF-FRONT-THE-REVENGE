@@ -31,3 +31,19 @@ export function getProductsByName(name) {
     console.log("este es el error -->", error);
   }
 }
+
+export function getProductsBySubCategory(subCategory) {
+  try {
+    return async function (dispatch) {
+      const response = await axios.get(
+        `http://localhost:3001/products?subcategory=${subCategory}`
+      );
+      dispatch({
+        type: "GET_PRODUCTS_BY_SUBCATEGORY",
+        payload: response.data,
+      });
+    };
+  } catch (error) {
+    console.log("este es el error -->", error);
+  }
+}

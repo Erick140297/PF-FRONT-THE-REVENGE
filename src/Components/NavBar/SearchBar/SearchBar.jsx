@@ -16,7 +16,6 @@ const SearchBar = () => {
     if (input.length !== 0) {
       dispatch(getProductsByName(input))
       setInput("")
-      
       history.push("/result");
     } else {
       toast.error("Agrega una categoria válida");
@@ -49,6 +48,7 @@ const FormContainer = styled.form`
   border: 2px solid white;
   border-radius: 5px;
   padding: 5px;
+  margin-right:80px;
 `;
 
 const InputTex = styled.input`
@@ -59,6 +59,12 @@ const InputTex = styled.input`
   width: 450px;
   height: 35px;
   margin-right: 5px;
+  @media (max-width: 1600px) {
+  width: 300px;
+  }
+  @media (max-width: 1050px) {
+  width: 200px;
+  }
 `;
 const InputSubmit = styled.button`
   background: #7230ff;
