@@ -16,6 +16,7 @@ const SearchBar = () => {
     if (input.length !== 0) {
       dispatch(getProductsByName(input))
       setInput("")
+      
       history.push("/result");
     } else {
       toast.error("Agrega una categoria válida");
