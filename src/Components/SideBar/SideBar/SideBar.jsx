@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { 
+    FaTimes, 
+} from 'react-icons/fa';
 import { GiAbstract029 
 } from "react-icons/gi";
 import SidebarItem from "../SideBarItem";
@@ -18,10 +21,10 @@ const Sidebar = ({active}) => {
                 <Content>
                     <h4>CATEGORY</h4>
                     <SidebarItem Icon={GiAbstract029} Text="COMPONENTES DE PC" />
-                    <SidebarItem Icon={FaChartBar} Text="MANTENIMIENTO" />
-                    <SidebarItem Icon={FaUserAlt} Text="PERIFÉRICOS" />
-                    <SidebarItem Icon={FaEnvelope} Text="LAPTOPS" />
-                    <SidebarItem Icon={FaRegCalendarAlt} Text="DESTACADOS" />
+                    <SidebarItem Icon={GiAbstract029} Text="MANTENIMIENTO" />
+                    <SidebarItem Icon={GiAbstract029} Text="PERIFÉRICOS" />
+                    <SidebarItem Icon={GiAbstract029} Text="LAPTOPS" />
+                    <SidebarItem Icon={GiAbstract029} Text="DESTACADOS" />
                 </Content>
             </Container>
         </>
