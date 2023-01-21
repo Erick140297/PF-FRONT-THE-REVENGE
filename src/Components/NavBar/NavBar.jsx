@@ -11,15 +11,14 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
-
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
 
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   return (
     <>
       <NavContainer>
         <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
-          <ContainerLogo>
+          <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
             <img
               src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674242741/Products/Logo_dpcrit.jpg"
               alt="Logo"
@@ -27,7 +26,7 @@ const NavBar = () => {
             <h2>Galaxia Tech</h2>
           </ContainerLogo>
         </Link>
-        <MobileIcon onClick={()=>setShowMenu(!showMenu)}>
+        <MobileIcon onClick={() => setShowMenu(!showMenu)}>
           <Menu />
         </MobileIcon>
         <ItemsContainer open={showMenu}>
@@ -38,20 +37,24 @@ const NavBar = () => {
                 to={"/profile"}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <Count>
+                <Count onClick={() => setShowMenu(!showMenu)}>
                   <User />
                   <span>Mi cuenta</span>
                 </Count>
               </Link>
             ) : (
-              <LoginButton onClick={() => loginWithRedirect()}>
+              <LoginButton
+                onClick={() => {
+                  loginWithRedirect();
+                }}
+              >
                 <Login />
                 <span>Iniciar sesión</span>
               </LoginButton>
             )}
           </div>
           <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
-            <Cart>
+            <Cart onClick={() => setShowMenu(!showMenu)}>
               <ShoppingCart />
               <span>Mi carrito </span>
               <Number>{1}</Number>
@@ -192,7 +195,7 @@ const ItemsContainer = styled.div`
   @media screen and (max-width: 950px) {
     position: absolute;
     top: 120px;
-    right: ${({open}) => open? "0%":"-100%"};
+    right: ${({ open }) => (open ? "0%" : "-100%")};
     width: 100%;
     height: 150px;
     justify-content: space-around;
