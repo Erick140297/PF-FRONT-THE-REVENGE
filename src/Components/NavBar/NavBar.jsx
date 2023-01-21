@@ -85,7 +85,7 @@ const NavContainer = styled.nav`
   align-items: center;
   justify-content: space-around;
   background-color: black;
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     h2 {
       color: #7230ff;
       font-weight: 400;
@@ -195,7 +195,7 @@ const ItemsContainer = styled.div`
   @media screen and (max-width: 950px) {
     position: absolute;
     top: 120px;
-    right: ${({ open }) => (open ? "0%" : "-100%")};
+    right: ${({ open }) => (open ? "0%" : "-105%")};
     width: 100%;
     height: 150px;
     justify-content: space-around;

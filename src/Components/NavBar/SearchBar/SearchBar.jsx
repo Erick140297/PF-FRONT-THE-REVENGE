@@ -62,7 +62,7 @@ const InputTex = styled.input`
   @media (max-width: 1600px) {
   width: 300px;
   }
-  @media (max-width: 1050px) {
+  @media (max-width: 1200px) {
   width: 200px;
   }
 `;
