@@ -9,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import React, { useState, useEffect } from "react";
 import RingLoader from "react-spinners/RingLoader";
 
+
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="App">
+      
       {loading ? (
         <div className="loading">
           <RingLoader
