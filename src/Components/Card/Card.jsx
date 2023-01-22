@@ -8,8 +8,8 @@ const Card = ({image,name,price}) => {
         <div className="container">
 
         <div className="container-card">
-            <div className="image">
-                <img src={image} alt={image} />
+            <div className="image" style={{backgroundImage:`url(${image})`}}>
+                {/* <img src={image} alt={image} /> */}
             </div>
             <div className="title">
                 <>{name}</>
@@ -19,7 +19,7 @@ const Card = ({image,name,price}) => {
             </div>
             <div className="btn">
                 {/* <Link> */}
-                <button>Ver mas</button>
+                <button>Ver más</button>
                 {/* </Link> */}
             </div>
         </div>

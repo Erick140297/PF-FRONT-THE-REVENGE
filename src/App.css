@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 body {
+  font-family: 'Poppins', sans-serif;
   margin: 0 auto;
   background-color: #181A1B;
+
+
 }
+
 
 .otracosa{
   margin: 0 40px;
