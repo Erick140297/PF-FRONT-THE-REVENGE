@@ -16,35 +16,35 @@ const Home = () => {
   return (
     <div>
       <Carousel>
-        <Carousel.Item>
+        <Carousel.Item interval={2500} >
           <img
             className="d-block w-100"
             src="https://www.grupoxfone.com.br/wp-content/uploads/2020/12/apple-products.jpg"
             alt="First slide"
           />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item interval={2500}>
           <img
             className="d-block w-100"
             src="https://www.computerlounge.co.nz/Data/Media/Images/Brand/HyperX/hyperx-brand-banner.jpg"
             alt="First slide"
           />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item interval={2500}>
           <img
             className="d-block w-100"
             src="https://cdn.shopify.com/s/files/1/0566/0989/8694/files/JBL-Headphone-Series-Category-Banner.jpg?v=1635476150"
             alt="First slide"
           />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item interval={2500}>
           <img
             className="d-block w-100"
             src="https://gameone.ph/media/wysiwyg/GameOne-Inner-Banner-Redragon.jpg"
             alt="Second slide"
           />
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item interval={2500}>
           <img
             className="d-block w-100"
             src="https://dlcdnwebimgs.asus.com/gain/77614B08-0FD4-41FB-9517-ADB95C1F4546/fwebp"

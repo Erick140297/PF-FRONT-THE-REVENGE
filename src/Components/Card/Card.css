@@ -1,24 +1,26 @@
 .container{
+    padding: 0%;
     margin: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
-    height: 450px;
+    border-radius: 10px;
+    height: 400px;
     width: 250px;
     
 }
 
 .container-card{
     padding: 5px;
-    border-radius: 4px;
-    height: 450px;
-    width: 250px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #181A1B;
-    border: 1px solid #DDDDDD;
+    background-color: #000000;
+
     }
 
 .container:hover{
@@ -27,26 +29,26 @@
 
 }
 .image{
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     border-radius: 4px 4px 0px 0px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	height: 50% ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
-.image img{
-    border-radius: 4px 4px 0px 0px;
-    width: 100%;
-	height: 100%;
-}
+/* .image img{
+
+} */
 
 
 
 .title{
-    background-color: aqua;
     height: 30px;
     padding: 0%;
-    margin: 0%;
+    margin-bottom: 20px;
     text-align: center;
     padding: 5px;
     font-size: 14px;
@@ -57,7 +59,6 @@
 }
 
 .price{
-    background-color: #7230FF;
     color: whitesmoke;
     text-align: center;
     position: relative;
@@ -65,6 +66,7 @@
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 28px ;
+    
 }
 
 .btn{
@@ -78,8 +80,8 @@
     padding: 0.6em 4em;
     font-size: 1em;
     font-weight: 600;
-    font-family: inherit;
     background-color: #7230FF;
+    color: #26076a;
     cursor: pointer;
     transition: border-color 0.25s;
 }
