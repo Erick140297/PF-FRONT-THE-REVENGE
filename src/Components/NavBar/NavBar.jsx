@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "./SearchBar/SearchBar";
@@ -9,11 +9,20 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import { postUser } from "../../Redux/Actions";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
-
+  const dispach = useDispatch()
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  
+  useEffect(() => {
+    if(isAuthenticated){
+      dispach(postUser({email:user.email, name: user.name}))
+    }
+  }, [])
+  
   return (
     <>
       <NavContainer>
