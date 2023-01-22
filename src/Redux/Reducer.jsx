@@ -3,6 +3,7 @@
 const initialState = {
   allProducts: [],
   productsByName: [],
+  user: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -23,6 +24,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         productsByName: action.payload,
+      };
+
+    case "POST_USER":
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:

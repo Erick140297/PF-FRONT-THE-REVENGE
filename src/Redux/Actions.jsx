@@ -47,3 +47,19 @@ export function getProductsBySubCategory(subCategory) {
     console.log(error);
   }
 }
+
+export function postUser(user) {
+  try {
+    return async function (dispatch) {
+      const response = await axios.post(
+        `${URL}/user`, user
+      );
+      dispatch({
+        type: "POST_USER",
+        payload: response.data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
