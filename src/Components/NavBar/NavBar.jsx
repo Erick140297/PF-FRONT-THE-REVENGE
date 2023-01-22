@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <>
       <NavContainer>
-        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <Link to={"/home"} style={{ textDecoration: "none", color: "black" }}>
           <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
             <img
               src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674242741/Products/Logo_dpcrit.jpg"
