@@ -9,6 +9,7 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
+import imgenLogo from '../../assets/logo-removebg.png'
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -20,10 +21,10 @@ const NavBar = () => {
         <Link to={"/home"} style={{ textDecoration: "none", color: "black" }}>
           <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
             <img
-              src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674242741/Products/Logo_dpcrit.jpg"
+              src={imgenLogo}
               alt="Logo"
             />
-            <h2>Galaxia Tech</h2>
+            {/* <h2>Galaxia Tech</h2> */}
           </ContainerLogo>
         </Link>
         <MobileIcon onClick={() => setShowMenu(!showMenu)}>
@@ -102,8 +103,8 @@ const ContainerLogo = styled.div`
     margin-left: 10px;
   }
   img {
-    width: 200px;
-    height: 120px;
+    width: 280px;
+    height: 180px;
   }
 `;
 

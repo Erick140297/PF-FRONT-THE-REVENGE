@@ -13,11 +13,12 @@ const SidebarLink = styled(Link)`
     color: #e1e9fc;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
     padding: 20px;
     list-style: none;
     height: 60px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
 
     &:hover {
         transition: 300ms;
@@ -68,6 +69,7 @@ const SidebarLink = styled(Link)`
         dispatch(getProductsBySubCategory(input.innerText))
         setInput("")
         history.push("/result");
+        
         } else {
         toast.error("Error");
         // toast.success('Successfully toasted!')
