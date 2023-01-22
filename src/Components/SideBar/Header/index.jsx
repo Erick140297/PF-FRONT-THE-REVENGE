@@ -1,39 +1,83 @@
-import React, { useState } from 'react'
-import { FaBars } from 'react-icons/fa'
-import Sidebar from '../SideBar/SideBar';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SidebarData } from '../SideBar/SidebarData';
+import SubMenu from '../SideBarItem/SubMenu';
+import { IconContext } from 'react-icons/lib';
 
-
-const Header = () => {
-    const [sidebar, setSidebar] = useState(false)
-
-    const showSiderbar = () => setSidebar(!sidebar)
-
-    return (
-        <>
-            <Container>
-            <FaBars onClick={showSiderbar} />
-            {sidebar && <Sidebar active={setSidebar} />}
-            </Container>
-        </>
-    )
-}
-
-export default Header
-
-
-const Container = styled.div`
+const Nav = styled.div`
+    background: #0b0b0e;
     height: 50px;
     display: flex;
-    background-color: #090b0f; 
-    box-shadow: 0 0 20px 3px;
-    > svg {
-        position: absolute;
-        color: white;
-        width: 15px;
-        height: 15px;
-        margin-top: 18px;
-        margin-left: 32px;
-        cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+`;
+
+const NavIcon = styled(Link)`
+    margin-left: 2rem;
+    margin-button: 2rem;
+    font-size: 1.5rem;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`;
+
+const SidebarNav = styled.nav`
+    background: #0b0b0e;
+    width: 268px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+    transition: 350ms;
+    z-index: 10;
+`;
+
+const SidebarWrap = styled.div`
+    width: 100%;
+    h4 {
+        padding-left: 90px;
+        color: #888383;
+        font-size: 18px;
+        font-weight: bolder;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 25px;
+        margin-top: 20px;
     }
 `;
+
+const Header = () => {
+    const [sidebar, setSidebar] = useState(false);
+
+    const showSidebar = () => setSidebar(!sidebar);
+
+    return (
+    <>
+        <IconContext.Provider value={{ color: '#fff' }}>
+            <Nav>
+            <NavIcon to='#'>
+                <FaIcons.FaBars onClick={showSidebar} />
+            </NavIcon>
+            </Nav>
+            <SidebarNav sidebar={sidebar}>
+            <SidebarWrap>
+                <NavIcon to='#'>
+                <AiIcons.AiOutlineClose onClick={showSidebar} />
+                </NavIcon>
+                <h4>Category</h4>
+                {SidebarData.map((item, index) => {
+                return <SubMenu item={item} key={index} />;
+                })}
+            </SidebarWrap>
+            </SidebarNav>
+        </IconContext.Provider>
+        </>
+    );
+};
+
+export default Header;

@@ -18,6 +18,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsByName: action.payload,
       };
+
+    case "GET_PRODUCTS_BY_SUBCATEGORY":
+      return {
+        ...state,
+        productsByName: action.payload,
+      };
+
     default:
       return state;
   }
