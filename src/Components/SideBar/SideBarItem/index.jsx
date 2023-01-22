@@ -31,6 +31,7 @@ const Container = styled.div`
     }
     &:hover {
         background-color: black;
-        box-shadow: rgba(72, 15, 95, 0.575) 0px 5px 15px;
+        transition: 500ms;
+        box-shadow: #7230ff 0px 5px 15px;
     }
 `;
