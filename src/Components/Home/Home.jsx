@@ -6,11 +6,11 @@ import Carousel from "react-bootstrap/Carousel";
 import "./home.css";
 
 const Home = () => {
-  const Dispatch = useDispatch();
+  const dispatch = useDispatch();
   const allComponents = useSelector((state) => state.allProducts);
 
   useEffect(() => {
-    Dispatch(GetAllProducts());
+    dispatch(GetAllProducts());
   }, []);
 
   return (
@@ -71,22 +71,3 @@ const Home = () => {
 
 export default Home;
 
-// import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { GetAllProducts } from "../../Redux/Actions";
-
-// export default function Home(){
-//     const Dispatch = useDispatch()
-//     const allComponents = useSelector((state)=>state.allProducts)
-
-//     useEffect(()=>{
-//         Dispatch(GetAllProducts())
-//     })
-//     return(
-
-//         <h1>Home</h1>
-//     //     {allProducts?.map(el=>)}
-//     // <Card
-//     // />
-//     )
-// }
