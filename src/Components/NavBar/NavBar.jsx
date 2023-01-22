@@ -1,46 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "./SearchBar/SearchBar";
-import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+  AiOutlineLogin,
+  AiOutlineMenu,
+} from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  console.log(isAuthenticated);
-  console.log(user);
   return (
     <>
       <NavContainer>
-        <Link to={"/"} style={{ textDecoration: "none", color: "black" }} >
-          <ContainerLogo>
+        <Link to={"/home"} style={{ textDecoration: "none", color: "black" }}>
+          <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
             <img
-              src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674156994/Products/GT_onvscx.png"
+              src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1674242741/Products/Logo_dpcrit.jpg"
               alt="Logo"
             />
             <h2>Galaxia Tech</h2>
           </ContainerLogo>
         </Link>
-        <SearchBar />
-        <div>
-          {isAuthenticated ? (
-            <Link to={"/profile"} style={{ textDecoration: "none", color: "black" }}>
-              <Count>
-                <User />
-                <span>Mi cuenta</span>
-              </Count>
-            </Link>
-          ) : (
-            <button onClick={() => loginWithRedirect()}>Iniciar sesión</button>
-          )}
-        </div>
-        <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
-          <Cart>
-            <ShoppingCart />
-            <span>Mi carrito </span>
-            <Number>{1}</Number>
-          </Cart>
-        </Link>
+        <MobileIcon onClick={() => setShowMenu(!showMenu)}>
+          <Menu />
+        </MobileIcon>
+        <ItemsContainer open={showMenu}>
+          <SearchBar />
+          <div>
+            {isAuthenticated ? (
+              <Link
+                to={"/profile"}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <Count onClick={() => setShowMenu(!showMenu)}>
+                  <User />
+                  <span>Mi cuenta</span>
+                </Count>
+              </Link>
+            ) : (
+              <LoginButton
+                onClick={() => {
+                  loginWithRedirect();
+                }}
+              >
+                <Login />
+                <span>Iniciar sesión</span>
+              </LoginButton>
+            )}
+          </div>
+          <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
+            <Cart onClick={() => setShowMenu(!showMenu)}>
+              <ShoppingCart />
+              <span>Mi carrito </span>
+              <Number>{1}</Number>
+            </Cart>
+          </Link>
+        </ItemsContainer>
       </NavContainer>
     </>
   );
@@ -58,12 +78,20 @@ const NavContainer = styled.nav`
     margin-left: 10px;
   }
   width: 100%;
+  height: 120px;
   font-family: sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   background-color: black;
+  @media (max-width: 1100px) {
+    h2 {
+      color: #7230ff;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
 `;
 
 const ContainerLogo = styled.div`
@@ -72,6 +100,10 @@ const ContainerLogo = styled.div`
   align-items: center;
   h2 {
     margin-left: 10px;
+  }
+  img {
+    width: 200px;
+    height: 120px;
   }
 `;
 
@@ -94,6 +126,7 @@ const Cart = styled.div`
   flex-direction: row;
   align-items: center;
   padding-left: 5px;
+  margin-left: 15px;
   &:hover {
     background: #ff7c02fe;
     border-radius: 5px;
@@ -116,4 +149,60 @@ const Number = styled.div`
   background-color: #7230ff;
   border-radius: 100%;
   width: 25px;
+`;
+
+const LoginButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  &:hover {
+    background: #ff7c02fe;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+`;
+
+const Login = styled(AiOutlineLogin)`
+  color: white;
+`;
+
+const MobileIcon = styled.div`
+  display: none;
+  @media screen and (max-width: 950px) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+`;
+
+const Menu = styled(AiOutlineMenu)`
+  color: white;
+  margin-right: 0.5rem;
+  font-size: 30px;
+`;
+
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 950px) {
+    position: absolute;
+    top: 120px;
+    right: ${({ open }) => (open ? "0%" : "-105%")};
+    width: 100%;
+    height: 150px;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s all ease;
+    background-color: black;
+    z-index: 1;
+  }
 `;
