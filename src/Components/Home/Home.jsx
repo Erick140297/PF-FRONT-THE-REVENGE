@@ -9,11 +9,21 @@ import Container from "../ContainerCards/Container";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  // hooks
   const allComponents = useSelector((state) => state.allProducts);
   const loading = useSelector((state) => state.loader);
-
   const dispatch = useDispatch();
+  const [amount, setAmount] = useState(9);
 
+  //cantidad de cards renderizadas
+  const amountInPage = allComponents.slice(0, amount);
+
+  //Handler buttons
+  const loadMore = () => {
+    setAmount(amount + 3);
+  };
+
+  //más hooks
   useEffect(() => {
     dispatch(GetAllProducts());
     dispatch(cleanResult())
@@ -65,10 +75,10 @@ const Home = () => {
               />
             </Carousel.Item>
           </Carousel>
-          <Container></Container>
+          <Container />
 
           <div className="cardsContaier">
-            {allComponents?.map((el, index) => {
+            {amountInPage?.map((el, index) => {
               return (
                 <Card
                   name={el.name}
@@ -79,6 +89,24 @@ const Home = () => {
                 />
               );
             })}
+            {/* {allComponents?.map((el, index) => {
+              return (
+                <Card
+                  name={el.name}
+                  image={el.image ? el.image.secure_url : ""}
+                  price={el.price}
+                  id={el._id}
+                  key={index}
+                />
+              );
+            })} */}
+          </div>
+          <div className="btn boton">
+            <button onClick={() => loadMore()}>
+              {amount <= allComponents.length
+                ? "cargar más..."
+                : "No hay más (⩾﹏⩽)"}
+            </button>
           </div>
         </div>
       )}
