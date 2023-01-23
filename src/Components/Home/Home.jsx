@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { GetAllProducts } from "../../Redux/Actions";
+import { GetAllProducts, setLoader } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import Carousel from "react-bootstrap/Carousel";
 import "./home.css";
+import Loader from "../Loader/Loader";
+
 
 const Home = () => {
-  const dispatch = useDispatch();
   const allComponents = useSelector((state) => state.allProducts);
+  const loading = useSelector((state)=>state.loader)
+
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(GetAllProducts());
+    return()=>{
+      dispatch(setLoader())
+    }
   }, []);
 
   return (
+    <>
+    {
+    loading?(
+      <Loader/>
+    ):
     <div>
       <Carousel>
         <Carousel.Item interval={2500} >
@@ -63,12 +76,19 @@ const Home = () => {
               id = {el._id}
               key={index}
             />
-          );
-        })}
+            );
+          })}
       </div>
     </div>
+
+    }
+  </>
   );
 };
 
 export default Home;
 
+
+
+// loading ? (
+  

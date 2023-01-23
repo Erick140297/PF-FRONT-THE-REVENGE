@@ -48,6 +48,11 @@ export function getProductsBySubCategory(subCategory) {
   }
 }
 
+export function setLoader() {
+  return {
+    type: "SET_LOADER_TRUE",
+  };
+  
 export function postUser(user) {
   try {
     return async function (dispatch) {
