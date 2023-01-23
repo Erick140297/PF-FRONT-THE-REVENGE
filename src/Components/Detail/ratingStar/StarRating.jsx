@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
-import styles from "./StarRating.css"
-function StarRating() {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(null);
+import './styles.css'
 
-  return (
-    <div>
-      {[...Array(5)].map((star, i) => {
-        const ratingValue = i + 1;
+export default function StarRating( {stars} ) {
+// Código
+// Máxima cantidad de estrellas
+const maxStars = 5;
 
-        return (
-          <label>
-            <input
-              type="radio"
-              name="rating"
-              value={ratingValue}
-              onClick={() => setRating(ratingValue)}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(null)}
-            />
-            <i className={`fa fa-star ${ratingValue <= (hover || rating) ? 'checked' : ''}`} />
-          </label>
-        );
-      })}
+// Obtenemos el valor completo
+const starPercentage = (stars / maxStars) * 100;
+
+// Redondeamos el resultado si es decimal
+const starPercentageRounded = Math.round(starPercentage);
+
+// Creamos el estilo para que las estrellas amarillas
+// se vean según el número que recibimos.
+const StarStyles = () => {
+    return {
+        width: starPercentageRounded + "%"
+    };
+};
+
+
+return (
+    <div className="stars-gray">
+        <div className="stars-yellow" style={StarStyles()}></div>
     </div>
-  );
+);
 }
-
-export default StarRating;
