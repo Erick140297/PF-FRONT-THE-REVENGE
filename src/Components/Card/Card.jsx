@@ -10,12 +10,14 @@ const Card = ({ image, name, price, id }) => {
   const dispatch = useDispatch();
 
   const handleClick = async () => {
-    const obj = {
-      productsId: [id],
-      userId: user._id,
-    };
+    console.log(user)
+    console.log(id)
+    // const obj = {
+    //   productsId: [id],
+    //   userId: user._id,
+    // };
 
-    dispatch(addToCart(obj));
+    // dispatch(addToCart(obj));
   };
 
   return (

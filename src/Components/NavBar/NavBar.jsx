@@ -15,12 +15,12 @@ import { postUser } from "../../Redux/Actions";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   
   useEffect(() => {
     if(isAuthenticated){
-      dispach(postUser({email:user.email, name: user.name}))
+      dispatch(postUser({email:user.email, name: user.name}))
     }
   }, [])
   

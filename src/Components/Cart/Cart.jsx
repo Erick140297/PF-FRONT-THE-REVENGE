@@ -1,23 +1,25 @@
-import React, { useEffect} from 'react'
-import {useDispatch, useSelector} from "react-redux"
-import { getCart } from '../../Redux/Actions'
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../../Redux/Actions";
 
 const Cart = () => {
-const idCart = useSelector((state)=>state.idCart)
+  const idCart = useSelector((state) => state.idCart);
 
-const cart = useSelector((state)=>state.cart)
+  const { cart }  = useSelector((state) => state.cart);
 
-console.log(cart)
+  console.log(cart);
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-useEffect(()=>{
-  dispatch(getCart(idCart))
-},[])
+  useEffect(() => {
+    dispatch(getCart(idCart));
+  }, []);
+
   return (
-    <div>Cart</div>
-  )
-}
+    <div>
+     Cart
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;

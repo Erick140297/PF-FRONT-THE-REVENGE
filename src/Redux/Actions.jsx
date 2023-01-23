@@ -58,6 +58,7 @@ export function postUser(user) {
   try {
     return async function (dispatch) {
       const response = await axios.post(`${URL}/user`, user);
+      console.log(response)
       dispatch({
         type: "POST_USER",
         payload: response.data,
@@ -85,7 +86,7 @@ export function addToCart(obj) {
 export function getCart(id) {
   try {
     return async function (dispatch) {
-      const response = await axios.get(`${URL}/shoppingCart/${id}`, );
+      const response = await axios.get(`${URL}/shoppingCart/${id}` );
       dispatch({
         type: "GET_CART",
         payload: response.data,
