@@ -47,3 +47,9 @@ export function getProductsBySubCategory(subCategory) {
     console.log(error);
   }
 }
+
+export function setLoader() {
+  return {
+    type: "SET_LOADER_TRUE",
+  };
+}

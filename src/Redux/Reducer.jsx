@@ -3,6 +3,7 @@
 const initialState = {
   allProducts: [],
   productsByName: [],
+  loader:true
 };
 
 function rootReducer(state = initialState, action) {
@@ -10,6 +11,7 @@ function rootReducer(state = initialState, action) {
     case "GET_ALL_PRODUCTS":
       return {
         ...state,
+        loader:false,
         allProducts: action.payload,
       };
 
@@ -24,6 +26,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsByName: action.payload,
       };
+      
+    case "SET_LOADER_TRUE":
+      return{
+        ...state,
+        loader:true
+      }
 
     default:
       return state;
