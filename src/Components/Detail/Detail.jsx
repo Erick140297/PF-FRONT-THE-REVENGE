@@ -3,35 +3,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, setLoader } from "../../Redux/Actions";
 import Loader from "../Loader/Loader";
-// import { Link } from "react-router-dom";
 import "./Detail.css";
-import StarRating from "./ratingStar/StarRating";
+import { Rating } from "@material-ui/lab";
 
 const Detail = (props) => {
-
-
   const id = props.match.params.id;
-  console.log('este es el id -->',id);
-
 
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loader);
-  
-  
-  console.log('este es el detail--->',details);
-  
-  
- 
-  useEffect(() => {
-    dispatch(getDetail(id));  
-    return () => {
-      
-      dispatch(setLoader())
-      
-    }
-  }, [dispatch]);
 
+  const promedio = (arr) => {
+    let suma = 0;
+    for (let x = 0; x < arr.length; x++) {
+      suma += parseInt(arr[x]);
+    }
+    const resultado = suma / details.rating.length;
+    return resultado;
+  };
+
+  useEffect(() => {
+    dispatch(getDetail(id));
+    return () => {
+      dispatch(setLoader());
+    };
+  }, [dispatch]);
 
   return (
     <>
@@ -58,9 +54,13 @@ const Detail = (props) => {
                 <button type="button" className="btn btn-danger">
                   Añadir al carrito
                 </button>
-                <StarRating rating={3.5} />
                 <div className="rating">
-                  <h2>{details.rating}</h2>
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={details.rating ? promedio(details.rating) : 0}
+                    precision={0.5}
+                    readOnly
+                  />
                 </div>
                 <h4 className="text-detai mt-5 mb-5">Descripción: </h4>
                 <span className="p-detail">{details.description}</span>
@@ -73,9 +73,6 @@ const Detail = (props) => {
       )}
     </>
   );
-  
 };
 
 export default Detail;
-
- 
