@@ -3,7 +3,7 @@
 const initialState = {
   allProducts: [],
   productsByName: [],
-  loader:true
+  loader:true,
   user: {},
   cart:{},
   idCart:""
