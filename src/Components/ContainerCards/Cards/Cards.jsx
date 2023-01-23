@@ -5,7 +5,6 @@ import { getProductsByCategory } from "../../../Redux/Actions";
 import { useHistory } from "react-router-dom"
 
 export default function Cards({ category, image }) {
-  // const cat = category
   const dispatch = useDispatch();
 
   const history = useHistory()
