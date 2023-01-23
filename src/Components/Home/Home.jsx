@@ -60,6 +60,7 @@ const Home = () => {
               name={el.name}
               image={el.image ? el.image.secure_url : ""}
               price={el.price}
+              id = {el._id}
               key={index}
             />
           );

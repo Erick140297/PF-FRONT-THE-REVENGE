@@ -9,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import React, { useState, useEffect } from "react";
 import RingLoader from "react-spinners/RingLoader";
+import Cart from "./Components/Cart/Cart";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route exact path="/home" component={Home} />
             <Route exact path="/result" component={Result} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/cart" component={Cart} />
             <Footer />
           </div>
         </div>
