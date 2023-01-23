@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetAllProducts, setLoader } from "../../Redux/Actions";
+import { cleanResult, GetAllProducts, setLoader } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import Carousel from "react-bootstrap/Carousel";
@@ -16,6 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(GetAllProducts());
+    dispatch(cleanResult())
     return () => {
       dispatch(setLoader());
     };
