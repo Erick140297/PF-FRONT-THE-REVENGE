@@ -17,12 +17,12 @@ const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch()
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  
+
   useEffect(() => {
     if(isAuthenticated){
       dispatch(postUser({email:user.email, name: user.name}))
     }
-  }, [])
+  }, [isAuthenticated])
   
   return (
     <>

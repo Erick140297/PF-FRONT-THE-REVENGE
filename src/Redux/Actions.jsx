@@ -58,7 +58,6 @@ export function postUser(user) {
   try {
     return async function (dispatch) {
       const response = await axios.post(`${URL}/user`, user);
-      console.log(response)
       dispatch({
         type: "POST_USER",
         payload: response.data,
