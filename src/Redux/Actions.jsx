@@ -52,4 +52,27 @@ export function setLoader() {
   return {
     type: "SET_LOADER_TRUE",
   };
+  
+export function postUser(user) {
+  try {
+    return async function (dispatch) {
+      const response = await axios.post(`${URL}/user`, user);
+      dispatch({
+        type: "POST_USER",
+        payload: response.data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function addToCart(obj) {
+  try {
+    return async function () {
+      await axios.post(`${URL}/shoppingCart`, obj);
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }

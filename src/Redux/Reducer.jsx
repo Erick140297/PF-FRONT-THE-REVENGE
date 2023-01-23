@@ -4,6 +4,8 @@ const initialState = {
   allProducts: [],
   productsByName: [],
   loader:true
+  user: {},
+  cart:{}
 };
 
 function rootReducer(state = initialState, action) {
@@ -32,6 +34,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         loader:true
       }
+
+    case "POST_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+      case "ADD_TO_CART":
+      return {
+        ...state,
+        cart: action.payload,
+      };
 
     default:
       return state;
