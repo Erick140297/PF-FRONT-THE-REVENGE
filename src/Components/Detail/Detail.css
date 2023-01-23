@@ -1,0 +1,38 @@
+.small-img-group{
+  display:flex;
+  justify-content: space-between;
+}
+
+.small-img-col{
+  flex-basis:24%;
+  cursor:pointer;
+}
+
+.sproduct select{
+  display:block;
+  padding: 5px 10px;
+}
+
+.sproduct input{
+  width: 50px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.img-fluid{
+  height: 400px;
+}
+
+.text-detai{
+  color: aliceblue;
+}
+h6, h2, h3{
+  color: aliceblue;
+}
+
+.p-detail{
+  color: aliceblue;
+  
+}
+

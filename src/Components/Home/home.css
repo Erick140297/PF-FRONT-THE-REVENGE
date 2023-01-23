@@ -15,7 +15,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-
 }
 
 .d-block {
@@ -39,8 +38,7 @@
 
 .cardsContaier {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-color: #181A1B;
-
-  /* background: linear-gradient(184deg, #0e0f0f 0%, rgb(48, 48, 48) 76%); */
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 250px;
+  background: linear-gradient(184deg, #0e0f0f 0%, rgb(48, 48, 48) 76%);
 }

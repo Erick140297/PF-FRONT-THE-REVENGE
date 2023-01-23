@@ -3,10 +3,10 @@
 const initialState = {
   allProducts: [],
   productsByName: [],
-  loader:true,
+  loader: true,
   user: {},
-  cart:{},
-  idCart:""
+  cart: {},
+  idCart: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -14,7 +14,7 @@ function rootReducer(state = initialState, action) {
     case "GET_ALL_PRODUCTS":
       return {
         ...state,
-        loader:false,
+        loader: false,
         allProducts: action.payload,
       };
 
@@ -29,12 +29,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsByName: action.payload,
       };
-      
+
     case "SET_LOADER_TRUE":
-      return{
+      return {
         ...state,
-        loader:true
-      }
+        loader: true,
+      };
 
     case "POST_USER":
       return {
@@ -42,17 +42,22 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
       };
 
-      case "ID_CART":
+    case "ID_CART":
       return {
         ...state,
         idCart: action.payload,
       };
-      
-      case "GET_CART":
-        return {
-          ...state,
-          cart: action.payload,
-        };
+
+    case "GET_CART":
+      return {
+        ...state,
+        cart: action.payload,
+      };
+    case "GET_DETAILS":
+      return {
+        ...state,
+        detail: action.payload,
+      };
     default:
       return state;
   }

@@ -1,3 +1,7 @@
+
+.footer1{
+    width: 100%;
+}
 .container-fluid {
     background-color: #0e0f0f;
     color: white;
@@ -7,4 +11,11 @@
     background-color: rgb(0, 0, 0);
     color: white;
 
+}
+.text-uppercase{
+    color:#7230ff;
+}
+
+a{
+    color: aliceblue;
 }

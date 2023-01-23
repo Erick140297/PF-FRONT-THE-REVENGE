@@ -21,7 +21,7 @@ const Card = ({ image, name, price, id }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-2">
       <div className="container-card">
         <div className="image" style={{ backgroundImage: `url(${image})` }}>
           {/* <img src={image} alt={image} /> */}

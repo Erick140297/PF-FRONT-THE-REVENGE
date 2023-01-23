@@ -4,7 +4,7 @@ import styles from "./Cards.css"
 export default function Cards({category, image}) {
   return (
     <div className='Cards'>
-      <div className='container'>
+      <div className='container-3'>
       
         <div className="imageCards">
                 <img src={image} />

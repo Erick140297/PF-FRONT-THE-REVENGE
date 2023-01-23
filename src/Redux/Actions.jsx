@@ -96,3 +96,18 @@ export function getCart(id) {
     console.log(error);
   }
 }
+
+export function getDetail(_id) {
+  return async function (dispatch) {
+    try{
+        var json = await axios.get(`${URL}/product/${_id}`);
+    return dispatch({
+      type: "GET_DETAILS",
+      payload: json.data
+    })
+   
+} catch(error) {
+  console.log(error)
+}
+  }
+}
