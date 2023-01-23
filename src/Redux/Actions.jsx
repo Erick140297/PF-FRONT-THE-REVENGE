@@ -64,8 +64,26 @@ export function postUser(user) {
 
 export function addToCart(obj) {
   try {
-    return async function () {
-      await axios.post(`${URL}/shoppingCart`, obj);
+    return async function (dispatch) {
+      const response = await axios.post(`${URL}/shoppingCart`, obj);
+      dispatch({
+        type: "ID_CART",
+        payload: response.data._id,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function getCart(id) {
+  try {
+    return async function (dispatch) {
+      const response = await axios.get(`${URL}/shoppingCart/${id}`, );
+      dispatch({
+        type: "GET_CART",
+        payload: response.data,
+      });
     };
   } catch (error) {
     console.log(error);
