@@ -12,7 +12,8 @@ const Result = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(cleanResult())  
+      // dispatch(cleanResult())  
+      
     }
   }, [dispatch])
   
