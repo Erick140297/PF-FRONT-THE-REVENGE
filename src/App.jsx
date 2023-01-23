@@ -40,8 +40,8 @@ function App() {
           <div className="otracosa">
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/home" component={Header} />
-            <Route exact path="/home" component={Home} />
             <Route exact path="/result" component={Result} />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/cart" component={Cart} />
             <Footer />
