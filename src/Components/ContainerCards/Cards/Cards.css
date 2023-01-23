@@ -4,32 +4,32 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    height: 350px;
+    height: 200px;
     width: 440px;
 
 }
-.container{
+.container-3{
     padding: 5px;
     border-radius: 4px;
-    height: 300px;
-    width: 500px;
+    height: 150px;
+    width: 300px;
     background-color: #181A1B;
     border: 1px solid #DDDDDD;
     }
 
-.container:hover{
+.container-3:hover{
     box-shadow: 0px 0px 20px 10px #7230FF;
     cursor: pointer;
     transform: translateY(-20px);
     transition: all 0.5s;
 
 }
-.container:hover .imageCards{
+.container-3:hover .imageCards{
     box-shadow: 0px 0px 20px 10px #7230FF;
     display: none;
 
 }
-.container:hover .category {
+.container-3:hover .category {
     padding-top: 110px;
     font-size: 30px;
     text-align: center;

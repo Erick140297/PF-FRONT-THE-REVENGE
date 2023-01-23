@@ -5,6 +5,9 @@ import Card from "../Card/Card";
 import Carousel from "react-bootstrap/Carousel";
 import "./home.css";
 import Loader from "../Loader/Loader";
+import Container from "../ContainerCards/Container"
+import { Link } from "react-router-dom";
+
 
 
 const Home = () => {
@@ -65,10 +68,13 @@ const Home = () => {
           />
         </Carousel.Item>
       </Carousel>
+      <Container></Container>
 
       <div className="cardsContaier">
         {allComponents?.map((el, index) => {
           return (
+            <Link to={"/detail/" + el._id}>
+
             <Card
               name={el.name}
               image={el.image ? el.image.secure_url : ""}
@@ -76,6 +82,7 @@ const Home = () => {
               id = {el._id}
               key={index}
             />
+             </Link>
             );
           })}
       </div>

@@ -9,12 +9,14 @@ const Result = () => {
     <CardsContaier>
       {productsByName?.map((el, index) => {
         return (
-          <Card
-            name={el.name}
-            image={el.image ? el.image.secure_url : ""}
-            price={el.price}
-            key={index}
-          />
+          <Link to={"/detail/" + el._id}>
+            <Card
+              name={el.name}
+              image={el.image ? el.image.secure_url : ""}
+              price={el.price}
+              key={index}
+            />
+          </Link>
         );
       })}
     </CardsContaier>
