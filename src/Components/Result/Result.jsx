@@ -1,10 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { cleanResult } from "../../Redux/Actions";
 import Card from "../Card/Card";
 
 const Result = () => {
+
+  const dispatch = useDispatch()
   const productsByName = useSelector((state) => state.productsByName);
+
+  useEffect(() => {
+    return () => {
+      dispatch(cleanResult())  
+    }
+  }, [dispatch])
+  
 
   return (
     <CardsContaier>

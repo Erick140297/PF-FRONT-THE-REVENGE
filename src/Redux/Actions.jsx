@@ -126,3 +126,11 @@ export function getProductsByCategory(category) {
 }
   }
 }
+
+export function cleanResult() {
+  return async function (dispatch) {
+    return dispatch({
+      type: "CLEAN_RESULT",
+    })
+  }
+}
