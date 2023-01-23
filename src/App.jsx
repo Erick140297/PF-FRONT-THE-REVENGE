@@ -17,14 +17,15 @@ function App() {
     <div className="App">
       <div>
         <NavBar />
+        <Header/>
         <div className="otracosa">
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/home" component={Header} />
+          {/* <Route exact path="/home" component={Header} /> */}
           <Route exact path="/result" component={Result} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/cart" component={Cart} />
-          <Route exact path="/detail/:_id" component={Detail} />
+          <Route exact path="/detail/:id" component={Detail} />
         </div>
         <Footer />
       </div>
