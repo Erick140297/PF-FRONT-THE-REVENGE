@@ -4,35 +4,40 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { cleanResult } from "../../Redux/Actions";
 import Card from "../Card/Card";
+import Loader from "../Loader/Loader";
 
 const Result = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const productsByName = useSelector((state) => state.productsByName);
-
+  console.log(productsByName);
   useEffect(() => {
     return () => {
-      // dispatch(cleanResult())  
-      
-    }
-  }, [dispatch])
-  
+      // dispatch(cleanResult())
+    };
+  }, [dispatch]);
 
   return (
-    <CardsContaier>
-      {productsByName?.map((el, index) => {
-        return (
-          <Card
-            id = {el._id}
-            name={el.name}
-            image={el.image ? el.image.secure_url : ""}
-            price={el.price}
-            key={index}
-          />
-        );
-      })}
-    </CardsContaier>
+    <>
+      {productsByName.length === 0 ? (
+       <Loader/>
+      ) : (
+        <CardsContaier>
+          {productsByName?.map((el, index) => {
+            return (
+              <Card
+                id={el._id}
+                name={el.name}
+                image={el.image ? el.image.secure_url : ""}
+                price={el.price}
+                key={index}
+              />
+            );
+          })}
+        </CardsContaier>
+      )}
+    </>
   );
+
 };
 
 export default Result;
