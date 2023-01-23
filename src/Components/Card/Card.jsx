@@ -10,8 +10,8 @@ const Card = ({ image, name, price, id }) => {
   const dispatch = useDispatch();
 
   const handleClick = async () => {
-    console.log(user)
-    console.log(id)
+    console.log(user);
+    console.log(id);
     // const obj = {
     //   productsId: [id],
     //   userId: user._id,
@@ -21,29 +21,31 @@ const Card = ({ image, name, price, id }) => {
   };
 
   return (
-    <div className="container-2">
-      <div className="container-card">
-        <div className="image" style={{ backgroundImage: `url(${image})` }}>
-          {/* <img src={image} alt={image} /> */}
-        </div>
-        <div className="title">
-          <>{name}</>
-        </div>
-        <div className="price">
-          <>${price}</>
-        </div>
-        <div className="btn">
-          {/* <Link> */}
-          <button>Ver más</button>
-          {/* </Link> */}
-        </div>
-        <div className="btn">
-          {/* <Link> */}
-          <button onClick={() => handleClick()}>Agregar al carrito</button>
-          {/* </Link> */}
+    <Link
+      to={"/detail/"+ id }
+      style={{ textDecoration: "none", color: "black" }}
+    >
+      <div className="container-2">
+        <div className="container-card">
+          <div className="image" style={{ backgroundImage: `url(${image})` }}>
+            {/* <img src={image} alt={image} /> */}
+          </div>
+          <div className="title">
+            <>{name}</>
+          </div>
+          <div className="price">
+            <>${price}</>
+          </div>
+          <div className="btn">
+            {/* <Link> */}
+            <button>Ver más</button>
+            {/* </Link> */}
+          </div>
+          <div className="btn">
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

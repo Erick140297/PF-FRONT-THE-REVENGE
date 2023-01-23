@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Card from "../Card/Card";
@@ -9,14 +10,12 @@ const Result = () => {
     <CardsContaier>
       {productsByName?.map((el, index) => {
         return (
-          <Link to={"/detail/" + el._id}>
-            <Card
-              name={el.name}
-              image={el.image ? el.image.secure_url : ""}
-              price={el.price}
-              key={index}
-            />
-          </Link>
+          <Card
+            name={el.name}
+            image={el.image ? el.image.secure_url : ""}
+            price={el.price}
+            key={index}
+          />
         );
       })}
     </CardsContaier>

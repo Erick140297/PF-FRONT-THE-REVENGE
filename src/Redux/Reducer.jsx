@@ -58,6 +58,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
+
+
+    case "GET_PRODUCTS_BY_CATEGORY":
+      return {
+        ...state,
+        productsByName: action.payload,
+      };
     default:
       return state;
   }

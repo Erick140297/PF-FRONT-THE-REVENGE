@@ -111,3 +111,18 @@ export function getDetail(_id) {
 }
   }
 }
+
+export function getProductsByCategory(category) {
+  return async function (dispatch) {
+    try{
+        const { data } = await axios.get(`${URL}/products?category=${category}`);
+    return dispatch({
+      type: "GET_PRODUCTS_BY_CATEGORY",
+      payload: data
+    })
+   
+} catch(error) {
+  console.log(error)
+}
+  }
+}
