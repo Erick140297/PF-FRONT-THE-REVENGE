@@ -28,7 +28,7 @@ export default function LandingPage(){
                 <div className="header-overlay"></div>
                 <div className="header-content">
                     <h1 className="h4 pb-2 mb-4 border-bottom border-light">BieNvEnId@ A GaLaXIA Tech!</h1>
-                    <p><i></i> Un luNgAr dOndE enConTrArás lOs MejORes INSUMOS pARa aRMar o aCtUaLizar Tu PC.</p>
+                    <p><i></i> Un luNgAr dOndE enConTrArás lOs MejORes COMPONENTES pARa aRMar o aCtUaLizar Tu PC.</p>
                     <Link to ="/home" style={{textDecoration: 'none'}}>
                         <button className="btn btn-dark"><i><FaRocket /></i> INGRESAR</button>
                     </Link>
