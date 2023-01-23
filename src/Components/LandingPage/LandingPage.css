@@ -1,16 +1,130 @@
-.landing{
-    background-image: url('https://bigthink.com/wp-content/uploads/2022/04/ezgif-2-c33f7616a2.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .landing{
+      height: 100vh;
+      background-color: black;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+  }
+
+  .header{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: fff;
+    
+  }
+  
+  .content {
+    max-width: 40rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: auto;
+    text-align: center;
+  }
+
+.imgWrapper4 {
+    font-size: 0;
+    text-align: center;
+}
+.imgWrapper4 .imgResponsiva {
+    display: inline-block;
+    font-size: inherit;
+    object-fit: cover;
+}
+.imgWrapper4 .imgResponsiva {width: 25%; max-width: 345px; overflow: hidden;  object-fit: cover;}
+
+.imgResponsiva video {
+  min-width: 50vh;
+  min-height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.header-overlay {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #3f3052;
+  z-index: 1;
+  opacity: .45;
+}
+
+.header-content {
+  z-index: 3;
+}
+
+.header-content h1 {
+  position: absolute;
+  top: 200px;
+  left: 250px;
+  font-size: 43px;
+  margin-bottom: 0;
+  font-family: 'Major Mono Display', monospace;
+  color: rgb(255, 244, 230);
+  padding-bottom: 2rem;
+}
+
+
+.header-content p {
+  position: absolute;
+  top: 300px;
+  left: 80px;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: 'Major Mono Display', monospace;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: coral;
+  text-shadow: 0.1em 0.1em rgb(0, 0, 0);
+}
+
+.header-content a {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  font-size: 45px;
+  font-family: 'Amatic SC', cursive;
+  color: rgb(255, 149, 232);
+  text-shadow: 0.05em 0.05em rgb(255, 199, 199);
+  text-decoration: double;
+  padding-left: 6rem;
+}
+
+.header-content i {
+  margin-right: 8px;
+}
+
+.header-content button {
+  position: absolute;
+  top: 250px;
+  left: 485px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 35px;
+  font-weight: bold;
+  font-family: 'Amatic SC';
+  color: coral;
+  text-shadow: 0.05em 0.05em rgb(34, 30, 30);
+}
+
+
+@media (max-width: 960px) {
+  .content{
+    padding: 0 0 0 0;
+  }
 }
 
 
@@ -18,7 +132,8 @@
 
 
 
-.landingTitle {
+
+/* .landingTitle {
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
     position:relative;
@@ -81,4 +196,4 @@
   background-color: rgba(226, 10, 10, 0.822); 
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+} */
