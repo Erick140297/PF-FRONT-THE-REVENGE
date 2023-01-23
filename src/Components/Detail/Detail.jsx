@@ -27,7 +27,7 @@ const Detail = (props) => {
     return () => {
       dispatch(setLoader())
     }
-  }, [dispatch]);
+  }, []);
 
 
   return (

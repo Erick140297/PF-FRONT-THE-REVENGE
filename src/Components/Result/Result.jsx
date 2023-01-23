@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Card from "../Card/Card";
 
 const Result = () => {
   const productsByName = useSelector((state) => state.productsByName);
+
   return (
     <CardsContaier>
       {productsByName?.map((el, index) => {
         return (
           <Card
+            id = {el._id}
             name={el.name}
             image={el.image ? el.image.secure_url : ""}
             price={el.price}
