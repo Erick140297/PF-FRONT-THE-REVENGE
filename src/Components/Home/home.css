@@ -42,3 +42,12 @@
   margin-left: 250px;
   background: linear-gradient(184deg, #0e0f0f 0%, rgb(48, 48, 48) 76%);
 }
+
+.boton{
+  margin: 15px;
+  margin-left: 150px;
+
+  display: flex;
+  justify-content:space-around;
+  /* background-color: aqua; */
+}
