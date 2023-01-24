@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { cleanResult } from "../../Redux/Actions";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import filter from "./filter";
@@ -16,7 +15,6 @@ const Result = () => {
     price: "",
   });
   const filtrandoProductos = filter(products, filters);
-  console.log(filters);
   const handleChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
