@@ -1,17 +1,36 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, setLoader } from "../../Redux/Actions";
+import { getDetail, setLoader, addToCart} from "../../Redux/Actions";
 import Loader from "../Loader/Loader";
 import "./Detail.css";
 import { Rating } from "@material-ui/lab";
+import { useAuth0 } from "@auth0/auth0-react";
+import toast, { Toaster } from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const Detail = (props) => {
+  const { isAuthenticated } = useAuth0();
+
   const id = props.match.params.id;
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loader);
   const user = useSelector((state) => state.user);
+
+  const handleClick = () => {
+    const obj = {
+      productId: id,
+      userId: user._id,
+    };
+
+    if (isAuthenticated) {
+      dispatch(addToCart(obj));
+      toast.success("Producto agregado al carrito")
+    } else {
+      toast.error("Por favor inicia sesión");
+    }
+  };
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -19,9 +38,6 @@ const Detail = (props) => {
       dispatch(setLoader());
     };
   }, [dispatch]);
-
-
-
 
   const promedio = (arr) => {
     let suma = 0;
@@ -58,11 +74,15 @@ const Detail = (props) => {
               </div>
               <div className="col-lg-6 col-md-12 col-12">
                 <div className="name-brand-price">
-                <h2>{details.name}</h2>
-                <h3>Marca: {details.brand.charAt(0).toUpperCase() + details.brand.slice(1) }</h3>
-                <h2>$ {details.price}</h2>
+                  <h2>{details.name}</h2>
+                  <h3>
+                    Marca:{" "}
+                    {details.brand.charAt(0).toUpperCase() +
+                      details.brand.slice(1)}
+                  </h3>
+                  <h2>$ {details.price}</h2>
                 </div>
-                <br/>
+                <br />
                 <div className="stock">
                   {details.stock > 10 ? (
                     <h3 className="stock-disponible">
@@ -73,33 +93,47 @@ const Detail = (props) => {
                   )}
                 </div>
                 <br />
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    handleClick();
+                  }}
+                >
                   Añadir al carrito
                 </button>
-                <br/>
+                <br />
                 <div className="rating">
-                  {details.rating.length >1?
-                  <div>
-                    <h4 className="h-rating">Rating del producto</h4>
-                  <Rating
-                  
-                    name="half-rating-read"
-                    defaultValue={details.rating ? promedio(details.rating) : <h3>Sin rating</h3>}
-                    precision={0.1}
-                    readOnly
-                  /></div>: <h3>Sin rating aún</h3>
-}
+                  {details.rating.length > 1 ? (
+                    <div>
+                      <h4 className="h-rating">Rating del producto</h4>
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={
+                          details.rating ? (
+                            promedio(details.rating)
+                          ) : (
+                            <h3>Sin rating</h3>
+                          )
+                        }
+                        precision={0.1}
+                        readOnly
+                      />
+                    </div>
+                  ) : (
+                    <h3>Sin rating aún</h3>
+                  )}
                 </div>
-                  <div className="product-description-container">
-                    <h3 className="text-detai mt-5 mb-5">
-                      Descripción:
-                      <p className="p-detail">{details.description}</p>{" "}
-                    </h3>
-                  </div>
-                
+                <div className="product-description-container">
+                  <h3 className="text-detai mt-5 mb-5">
+                    Descripción:
+                    <p className="p-detail">{details.description}</p>{" "}
+                  </h3>
+                </div>
               </div>
             </div>
           </section>
+          <Toaster position="bottom-right" reverseOrder={false} />
         </div>
       ) : (
         <p>No se pudo cargar el detalle</p>
