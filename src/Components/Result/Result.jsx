@@ -1,28 +1,74 @@
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { cleanResult } from "../../Redux/Actions";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
+import filter from "./filter";
 
 const Result = () => {
   const dispatch = useDispatch();
-  const productsByName = useSelector((state) => state.productsByName);
-  console.log(productsByName);
+  const products = useSelector((state) => state.productsFiltrados);
+  const [filters, setFilters] = useState({
+    brand: "",
+    price: "",
+  });
+  const filtrandoProductos = filter(products, filters);
+  console.log(filters);
+  const handleChange = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+    
+  };
+
   useEffect(() => {
     return () => {
       // dispatch(cleanResult())
     };
-  }, [dispatch]);
+  }, [dispatch, filtrandoProductos]);
 
   return (
     <>
-      {productsByName.length === 0 ? (
-       <Loader/>
+      {products.length === 0 ? (
+        <Loader/>
       ) : (
+        <>
+          <div className="row g-3 pb-0 mt-2 mb-2">
+          <div className="col-sm">
+            <div className="form-floating text-center">
+              <select
+                className="form-select-md border p-3 mb-2 bg-dark text-light rounded"
+                id="floatingSelectGrid"
+                onChange={(e) => handleChange(e)}
+                name="brand"
+              >
+                <option value="">Brand</option>
+                {products.map((e, i) => (
+                  <option key={i} value={e.brand}>
+                    {e.brand}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="col-sm pb-0">
+            <div className="form-floating pb-0 text-center">
+              <select
+                className="form-select-md border border-1 shadow-sm p-3 mb-6 bg-dark text-light rounded"
+                id="floatingSelectGrid"
+                onChange={(e) => handleChange(e)}
+                name="price"
+              >
+                <option value="">Price</option>
+                <option value="highest">Highest</option>
+                <option value="lowest">Lowest</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <CardsContaier>
-          {productsByName?.map((el, index) => {
+          {filtrandoProductos?.map((el, index) => {
             return (
               <Card
                 id={el._id}
@@ -34,6 +80,7 @@ const Result = () => {
             );
           })}
         </CardsContaier>
+        </>
       )}
     </>
   );
