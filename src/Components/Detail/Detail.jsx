@@ -20,6 +20,9 @@ const Detail = (props) => {
     };
   }, [dispatch]);
 
+
+
+
   const promedio = (arr) => {
     let suma = 0;
     for (let x = 0; x < arr.length; x++) {
@@ -41,7 +44,7 @@ const Detail = (props) => {
       {loading ? (
         <Loader />
       ) : details ? (
-        <div>
+        <div className="detail-box">
           <section className="container sproduct my-5 pt-5">
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">
@@ -54,9 +57,12 @@ const Detail = (props) => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-12 col-12">
+                <div className="name-brand-price">
                 <h2>{details.name}</h2>
-                <h3>Marca: {details.brand}</h3>
+                <h3>Marca: {details.brand.charAt(0).toUpperCase() + details.brand.slice(1) }</h3>
                 <h2>$ {details.price}</h2>
+                </div>
+                <br/>
                 <div className="stock">
                   {details.stock > 10 ? (
                     <h3 className="stock-disponible">
@@ -70,21 +76,27 @@ const Detail = (props) => {
                 <button type="button" className="btn btn-danger">
                   Añadir al carrito
                 </button>
+                <br/>
                 <div className="rating">
+                  {details.rating.length >1?
+                  <div>
+                    <h4 className="h-rating">Rating del producto</h4>
                   <Rating
+                  
                     name="half-rating-read"
-                    defaultValue={details.rating ? promedio(details.rating) : 0}
-                    precision={0.5}
+                    defaultValue={details.rating ? promedio(details.rating) : <h3>Sin rating</h3>}
+                    precision={0.1}
                     readOnly
-                  />
-
+                  /></div>: <h3>Sin rating aún</h3>
+}
+                </div>
                   <div className="product-description-container">
                     <h3 className="text-detai mt-5 mb-5">
                       Descripción:
                       <p className="p-detail">{details.description}</p>{" "}
                     </h3>
                   </div>
-                </div>
+                
               </div>
             </div>
           </section>
