@@ -21,7 +21,7 @@
 }
 
 .image-detail{
-  height: 400px;
+    height: 400px;
   
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -85,4 +85,27 @@ h6, h2, h3{
 }
 .h-rating{
   color:aliceblue ;
+}
+
+.col-lg-6 {
+  
+  padding-left: 160px;
+}
+.image-detail-teclados{
+  height: 400px;
+  width: 600px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+}
+.image-detail-teclados {
+transition: transform 0.5s; /*tiempo de transición de 0.5 segundos*/
+}
+
+.image-detail-teclados:hover {
+transform: scale(1.2); /*aumenta el tamaño en un 20%*/
 }

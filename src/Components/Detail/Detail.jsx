@@ -54,6 +54,7 @@ const Detail = (props) => {
       dispatch(setLoader());
     };
   }, [dispatch]);
+  console.log("AAAAAAAA", details);
 
   return (
     <>
@@ -65,11 +66,17 @@ const Detail = (props) => {
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">
                 <div className="image-container">
+        { details.subCategory==="teclados"?<img
+                    className="image-detail-teclados"
+                    src={details.image.secure_url}
+                    alt=""
+                  />:
                   <img
                     className="image-detail"
                     src={details.image.secure_url}
                     alt=""
                   />
+      }
                 </div>
               </div>
               <div className="col-lg-6 col-md-12 col-12">
