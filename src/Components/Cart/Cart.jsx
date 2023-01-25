@@ -45,6 +45,28 @@ const Cart = () => {
     return sum;
   };
 
+  const handlePayment = async (total) => {
+    const { data } = await axios({
+      method: "post",
+      url: "http://localhost:3001/order",
+      data: {
+        email: user.email,
+        cart: cart
+      },
+    });
+
+    const response = await axios({
+      method: "post",
+      url: "http://localhost:3001/create-order",
+      data: {
+        value: total,
+        description: JSON.stringify(data),
+      },
+    });
+    window.location.href = response.data.links[1].href;
+    emptyCart(cart._id)
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getCart(user.email));
@@ -75,7 +97,12 @@ const Cart = () => {
                 <div>
                   <h1 className="text-center mt-4 text-light">
                     <MdShoppingCart /> Tu carrito
-                    <button className="btn btn-primary float-end ms-2">
+                    <button
+                      className="btn btn-primary float-end ms-2"
+                      onClick={() => {
+                        handlePayment(total(cart));
+                      }}
+                    >
                       Total: $ {total(cart)}
                       <br />
                       Pagar
