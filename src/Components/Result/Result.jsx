@@ -35,8 +35,8 @@ const Result = () => {
         <Loader />
       ) : (
         <>
-          <div className="row g-3 pb-0 mt-2 mb-2">
-            <div className="col-sm">
+          <div className="row g-3 pb-0 mt-2 mb-2 ">
+            <div className="col-auto">
               <div className="form-floating text-center">
                 <select
                   className="form-select-md border p-3 mb-2 bg-dark text-light rounded"
@@ -53,7 +53,7 @@ const Result = () => {
                 </select>
               </div>
             </div>
-            <div className="col-sm pb-0">
+            <div className="col-auto">
               <div className="form-floating pb-0 text-center">
                 <select
                   className="form-select-md border border-1 shadow-sm p-3 mb-6 bg-dark text-light rounded"
@@ -93,4 +93,5 @@ const CardsContaier = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background: linear-gradient(184deg, #0e0f0f 0%, rgb(48, 48, 48) 76%);
+  margin-bottom: 2em;
 `;

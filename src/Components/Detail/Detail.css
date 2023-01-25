@@ -22,7 +22,6 @@
 
 .image-detail{
     height: 400px;
-  
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-top-left-radius: 10px;
@@ -54,7 +53,7 @@ h6, h2, h3{
   background-color: #181A1B;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  margin-top: 2em;
+  margin-top: 2em; 
   font-family: Arial, sans-serif;
 }
 
