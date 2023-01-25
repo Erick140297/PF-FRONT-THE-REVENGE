@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../Redux/Actions";
 import { MdAttachMoney, MdShoppingCart, MdDeleteOutline } from "react-icons/md";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 
 const Cart = () => {
@@ -13,7 +13,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const update = async (cartId, productId, quantity) => {
-    const { data } = await axios.put("http://localhost:3001/shoppingCart", {
+    await axios.put("http://localhost:3001/shoppingCart", {
       cartId,
       productId,
       quantity,
@@ -21,15 +21,32 @@ const Cart = () => {
     dispatch(getCart(user._id));
   };
   const deleteProduct = async (cartId, productId) => {
-    const { data } = await axios.delete("http://localhost:3001/shoppingCart", {
+    await axios.delete("http://localhost:3001/shoppingCart", {
       data: { cartId, productId },
     });
     toast.success("Producto eliminado del carrito");
     dispatch(getCart(user._id));
   };
 
+  const emptyCart = async (cartId) => {
+    await axios.delete("http://localhost:3001/shoppingCart", {
+      data: { cartId },
+    });
+    toast.success("Tu carrito esta vacío");
+    dispatch(getCart(user._id));
+  };
+
+  const total = (cart) => {
+    let sum = 0;
+    cart.items.map((el) => {
+      sum += el.quantity * el.product.price;
+    });
+    return sum;
+  };
+
   useEffect(() => {
     dispatch(getCart(user._id));
+    
   }, [dispatch]);
 
   return (
@@ -40,20 +57,27 @@ const Cart = () => {
         <div>
           {cart.message ? (
             <div>
-              <p>{cart.message}</p>
+              <h1 className="text-center mt-4 text-light ">
+                <MdShoppingCart /> {cart.message}
+              </h1>
             </div>
           ) : (
             <div>
               <h1 className="text-center mt-4 text-light">
                 <MdShoppingCart /> Tu carrito
                 <button className="btn btn-primary float-end ms-2">
-                  Total: $ {500}
+                  Total: $ {total(cart)}
                   <br />
                   Pagar
                 </button>
-                <button className="btn btn-warning float-end">Vaciar 
-                <br />
-                carrito</button>
+                <button
+                  className="btn btn-warning float-end"
+                  onClick={() => emptyCart(cart._id)}
+                >
+                  Vaciar
+                  <br />
+                  carrito
+                </button>
               </h1>
               {cart.items?.map((el, i) => {
                 return (
@@ -98,7 +122,7 @@ const Cart = () => {
                           type="button"
                           className="btn btn-outline-primary"
                           onClick={() =>
-                            toast.error("Solo pudes comprar desde 1!")
+                            toast.error("Solo puedes comprar desde 1!")
                           }
                         >
                           -
@@ -107,7 +131,7 @@ const Cart = () => {
                       <h4 className="text-light fs-5 me-4 ms-4 mt-2">
                         {el.quantity}
                       </h4>
-                      {(el.product.stock - el.quantity) <= 0 ? (
+                      {el.product.stock - el.quantity <= 0 ? (
                         <button
                           type="button"
                           className="btn btn-outline-primary"

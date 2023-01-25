@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postUser } from "../../Redux/Actions";
 
 const NavBar = () => {
+  const cart = useSelector((state) => state.cart);
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch()
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
@@ -23,6 +24,14 @@ const NavBar = () => {
       dispatch(postUser({email:user.email, name: user.name}))
     }
   }, [isAuthenticated])
+
+  const num = (cart) => {
+    let sum = 0;
+    cart.items.map((el) => {
+      sum += el.quantity;
+    });
+    return sum;
+  };
   
   return (
     <>
@@ -67,7 +76,7 @@ const NavBar = () => {
             <Cart onClick={() => setShowMenu(!showMenu)}>
               <ShoppingCart />
               <span>Mi carrito </span>
-              <Number>{1}</Number>
+              <Number>{cart.items?num(cart):0}</Number>
             </Cart>
           </Link>
         </ItemsContainer>

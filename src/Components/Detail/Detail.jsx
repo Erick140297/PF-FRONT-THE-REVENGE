@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, setLoader, addToCart} from "../../Redux/Actions";
+import { getDetail, setLoader, addToCart, getCart} from "../../Redux/Actions";
 import Loader from "../Loader/Loader";
 import "./Detail.css";
 import { Rating } from "@material-ui/lab";
@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 
 const Detail = (props) => {
   const { isAuthenticated } = useAuth0();
-
+  const history =  useHistory()
   const id = props.match.params.id;
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
@@ -23,10 +23,11 @@ const Detail = (props) => {
       productId: id,
       userId: user._id,
     };
-
     if (isAuthenticated) {
       dispatch(addToCart(obj));
+      dispatch(getCart(user._id));
       toast.success("Producto agregado al carrito")
+      history.push("/cart")
     } else {
       toast.error("Por favor inicia sesión");
     }
