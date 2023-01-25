@@ -11,6 +11,10 @@ import React, { useState, useEffect } from "react";
 import RingLoader from "react-spinners/RingLoader";
 import Cart from "./Components/Cart/Cart";
 import Detail from "./Components/Detail/Detail";
+import DashBoard from "./Components/DashBoard/DashBoard"
+import User from "./Components/DashBoard/User/User"
+import Product from "./Components/DashBoard/Products/Products"
+
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
+          <Route exact path="/dashboard" component={DashBoard} />
+          <Route exact path="/admin/user" component={User} />
+          <Route exact path="/admin/products" component={Product} />
+          
         </div>
         <Footer />
       </div>
