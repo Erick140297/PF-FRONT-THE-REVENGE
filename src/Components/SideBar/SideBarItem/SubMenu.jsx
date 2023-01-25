@@ -65,7 +65,6 @@ const SidebarLink = styled(Link)`
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input.length !== 0) {
-        /* dispatch(getProductsByName(input.innerText)) */
         dispatch(getProductsBySubCategory(input.innerText))
         setInput("")
         history.push("/result");

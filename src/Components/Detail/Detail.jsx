@@ -61,7 +61,7 @@ const Detail = (props) => {
       {loading ? (
         <Loader />
       ) : details ? (
-        <div className="detail-box">
+        <div className="detail-box mb-4">
           <section className="container sproduct my-5 pt-5">
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">
