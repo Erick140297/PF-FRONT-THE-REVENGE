@@ -10,22 +10,22 @@ import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 
 const Detail = (props) => {
-  const { isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const history =  useHistory()
   const id = props.match.params.id;
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loader);
-  const user = useSelector((state) => state.user);
+  const userId = useSelector((state) => state.user);
 
   const handleClick = () => {
     const obj = {
       productId: id,
-      userId: user._id,
+      userId: userId._id,
     };
     if (isAuthenticated) {
       dispatch(addToCart(obj));
-      dispatch(getCart(user._id));
+      dispatch(getCart(user.email));
       toast.success("Producto agregado al carrito")
       history.push("/cart")
     } else {

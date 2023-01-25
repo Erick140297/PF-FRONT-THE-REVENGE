@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../Redux/Actions";
+import { useAuth0 } from "@auth0/auth0-react";
 import { MdAttachMoney, MdShoppingCart, MdDeleteOutline } from "react-icons/md";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 
 const Cart = () => {
-  const user = useSelector((state) => state.user);
+  const { user } = useAuth0();
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
@@ -18,14 +19,14 @@ const Cart = () => {
       productId,
       quantity,
     });
-    dispatch(getCart(user._id));
+    dispatch(getCart(user.email));
   };
   const deleteProduct = async (cartId, productId) => {
     await axios.delete("http://localhost:3001/shoppingCart", {
       data: { cartId, productId },
     });
     toast.success("Producto eliminado del carrito");
-    dispatch(getCart(user._id));
+    dispatch(getCart(user.email));
   };
 
   const emptyCart = async (cartId) => {
@@ -33,7 +34,7 @@ const Cart = () => {
       data: { cartId },
     });
     toast.success("Tu carrito esta vacío");
-    dispatch(getCart(user._id));
+    dispatch(getCart(user.email));
   };
 
   const total = (cart) => {
@@ -45,7 +46,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    dispatch(getCart(user._id));
+    dispatch(getCart(user.email));
     
   }, [dispatch]);
 

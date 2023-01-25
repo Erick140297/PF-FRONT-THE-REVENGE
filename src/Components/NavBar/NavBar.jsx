@@ -9,21 +9,22 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
-import imgenLogo from '../../assets/logo-removebg.png'
+import imgenLogo from "../../assets/logo-removebg.png";
 import { useDispatch, useSelector } from "react-redux";
-import { postUser } from "../../Redux/Actions";
+import { postUser, getCart} from "../../Redux/Actions";
 
 const NavBar = () => {
   const cart = useSelector((state) => state.cart);
   const [showMenu, setShowMenu] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
-    if(isAuthenticated){
-      dispatch(postUser({email:user.email, name: user.name}))
+    if (isAuthenticated) {
+      dispatch(postUser({ email: user.email, name: user.name }));
+      dispatch(getCart(user.email));
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
   const num = (cart) => {
     let sum = 0;
@@ -32,16 +33,13 @@ const NavBar = () => {
     });
     return sum;
   };
-  
+
   return (
     <>
       <NavContainer>
         <Link to={"/home"} style={{ textDecoration: "none", color: "black" }}>
           <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
-            <img
-              src={imgenLogo}
-              alt="Logo"
-            />
+            <img src={imgenLogo} alt="Logo" />
             {/* <h2>Galaxia Tech</h2> */}
           </ContainerLogo>
         </Link>
@@ -76,7 +74,7 @@ const NavBar = () => {
             <Cart onClick={() => setShowMenu(!showMenu)}>
               <ShoppingCart />
               <span>Mi carrito </span>
-              <Number>{cart.items?num(cart):0}</Number>
+              <Number>{cart.items ? num(cart) : 0}</Number>
             </Cart>
           </Link>
         </ItemsContainer>

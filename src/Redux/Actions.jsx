@@ -82,10 +82,10 @@ export function addToCart(obj) {
   }
 }
 
-export function getCart(id) {
+export function getCart(email) {
   try {
     return async function (dispatch) {
-      const response = await axios.get(`${URL}/shoppingCart/${id}` );
+      const response = await axios.get(`${URL}/shoppingCart/${email}` );
       dispatch({
         type: "GET_CART",
         payload: response.data,
