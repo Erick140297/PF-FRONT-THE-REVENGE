@@ -11,6 +11,10 @@ const Cart = () => {
   const { user, isAuthenticated } = useAuth0();
   const cart = useSelector((state) => state.cart);
 
+  if(Object.entries(cart).length != 0){
+    window.localStorage.setItem("cartId", JSON.stringify(cart._id))
+  }
+  
   const dispatch = useDispatch();
 
   const update = async (cartId, productId, quantity) => {
@@ -51,7 +55,8 @@ const Cart = () => {
       url: "http://localhost:3001/order",
       data: {
         email: user.email,
-        cart: cart
+        cart: cart,
+        total:total
       },
     });
 
@@ -63,8 +68,8 @@ const Cart = () => {
         description: JSON.stringify(data),
       },
     });
+    window.localStorage.setItem("orderId", JSON.stringify(data))
     window.location.href = response.data.links[1].href;
-    emptyCart(cart._id)
   };
 
   useEffect(() => {
