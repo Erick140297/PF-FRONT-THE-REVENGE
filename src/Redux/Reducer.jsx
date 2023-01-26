@@ -7,6 +7,7 @@ const initialState = {
   user: {},
   cart: {},
   idCart: "",
+  usersAdmin:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -72,8 +73,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsFiltrados: [],
       };
+      case "GET_ALL_USER":
+      return {
+        ...state,
+        usersAdmin: action.payload,
+      };
     default:
       return state;
+      
   }
 }
 

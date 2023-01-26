@@ -133,3 +133,17 @@ export function cleanResult() {
     })
   }
 }
+
+export function getUser() {
+  try {
+    return async function (dispatch) {
+      const response = await axios.get(`${URL}/user`);
+      dispatch({
+        type: "GET_ALL_USER",
+        payload: response.data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
