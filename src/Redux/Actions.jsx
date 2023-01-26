@@ -133,26 +133,3 @@ export function cleanResult() {
     })
   }
 }
-
-export function getUser() {
-  try {
-    return async function (dispatch) {
-      const response = await axios.get(`${URL}/user`);
-      dispatch({
-        type: "GET_ALL_USER",
-        payload: response.data,
-      });
-    };
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-// export function userDisabled(email,data) {
-//   return async function (dispatch) {
-//        await axios.put(`/admin//${email}`,data)
-//       .catch(error => console.log(error.response.data))
-//       return dispatch({ type: 'USER_DISABLED' })
-//   }
-// }
