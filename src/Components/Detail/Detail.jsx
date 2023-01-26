@@ -55,7 +55,6 @@ const Detail = (props) => {
       dispatch(setLoader());
     };
   }, [dispatch]);
-  console.log("AAAAAAAA", details);
 
   return (
     <>
