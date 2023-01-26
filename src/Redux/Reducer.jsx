@@ -2,11 +2,13 @@
 
 const initialState = {
   allProducts: [],
-  productsFiltrados: [],
+  productsByName: [],
   loader: true,
   user: {},
   cart: {},
   idCart: "",
+  usersAdmin:[]
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -21,13 +23,13 @@ function rootReducer(state = initialState, action) {
     case "GET_PRODUCTS_BY_NAME":
       return {
         ...state,
-        productsFiltrados: action.payload,
+        productsByName: action.payload,
       };
 
     case "GET_PRODUCTS_BY_SUBCATEGORY":
       return {
         ...state,
-        productsFiltrados: action.payload,
+        productsByName: action.payload,
       };
 
     case "SET_LOADER_TRUE":
@@ -53,7 +55,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: action.payload,
       };
-      
     case "GET_DETAILS":
       return {
         ...state,
@@ -64,13 +65,17 @@ function rootReducer(state = initialState, action) {
     case "GET_PRODUCTS_BY_CATEGORY":
       return {
         ...state,
-        productsFiltrados: action.payload,
+        productsByName: action.payload,
       };
-
     case "CLEAN_RESULT":
       return {
         ...state,
         productsFiltrados: [],
+      };
+    case "GET_ALL_USER":
+      return {
+        ...state,
+        usersAdmin: action.payload,
       };
     default:
       return state;
