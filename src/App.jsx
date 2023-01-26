@@ -41,6 +41,7 @@ function App() {
           <Route exact path="/admin/products/form" component={NewProductForm} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/decline" component={Decline} />
+         
         </div>
         <Footer />
       </div>
