@@ -1,0 +1,54 @@
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #2e2e2e;
+}
+
+.product-table th {
+    padding: 15px;
+    border-bottom: 2px solid #7230FF;
+}
+
+.product-table td {
+    padding: 15px;
+    border-bottom: 1px solid #5b5b5b;
+    
+}
+
+.product-table tr:hover {
+    background-color: #3d3d3d;
+}
+
+.product-table .edit-button,
+.product-table .delete-button {
+    background-color: #7230FF;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-left: auto;
+    
+}
+
+.product-table .edit-button:hover,
+.product-table .delete-button:hover {
+    background-color: #7230FF;
+    box-shadow: 0px 0px 20px 10px #7230FF;
+}
+.product-table td .product-image {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+}
