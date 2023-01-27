@@ -1,6 +1,240 @@
+.img-orders{
+    width: 50px;
+}
+.productContainer{
+    width: 100%;
+    border-radius: 5px;
+    height: 90%;
+}
+
+.p-order{
+    width: 250px;
+}
+.containCardInfo{
+    height: 70px;
+    width: 30%;    
+    
+    border-bottom: 1px solid rgb(58, 58, 58);
+
+}
 
 
-.containerCreate{
+/* 
+.containerAll{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.containerAdminSideBar{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.infoConteiner{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+.infoProduct{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 300px;
+    height: 150px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 2px solid black;
+}
+
+.info{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.containerCheckv{
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #91C612;
+}
+
+.containerCheckv i {
+    color: white;
+}
+
+.containerCheckx{
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.containerCheckx i{
+    color: #fff;
+}
+
+.containerCheckarrow{
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3483FA;
+}
+
+.containerCheckarrow i{
+    color: #fff;
+}
+
+.containerNabvar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.containerNabvar select:focus{
+    outline: none;
+}
+.containerNabvar input:focus{
+    outline: none;
+}
+
+
+.containerInfoTable{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.headerContainer{
+    width: 100%;
+    background-color: #78BEEC;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.ul{
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+}
+
+
+
+.containHeadr{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.containHeadr p {
+    margin: 0;
+}
+
+
+.header{
+    padding: 0;
+}
+
+
+
+.containerc{
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containCardInfo{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid black;
+
+}
+
+.containerActions{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    border-bottom: 2px solid black;
+}
+
+
+
+
+.containerPaginate{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerButtonCreate{
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.containerIcon{
+    margin-right: 100px;
+    border: 2px solid #78BEEC;
+    background-color: #78BEEC;
+    border-radius: 2px;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerIcon i {
+    color: black;
+    text-decoration: none;
+}
+
+.link{
+    text-decoration: none;
+} */
+
+
+/* .containerCreate{
     width: 65px;
     height: 50px;
     
@@ -8,15 +242,12 @@
     justify-content: center;
     align-items: center;
     
-    background-color: #7230FF;
+    background-color:#91C612;
     border-radius: 5px;
     margin-top: 15px;
     color: black;
 }
-.p-user{
-    text-align: center;
-    width: auto;
-}
+
 
 .containerCreated{
     display: flex;
@@ -26,17 +257,24 @@
 
 .containerAll{
     width: 100%;
-    height: 100%;
+    height: 75vh;
     display: flex;
-    background-color:#181A1B;
+    background-color: rgb(250, 250, 250);
+    padding-left: 375px;
 }
 
+.containerAdminSideBar{
+    width: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .productContainer{
-    background-color:#181A1B;
-    width: 100%;
+    background-color: rgb(250, 250, 250);
+    width: 80%;
     border-radius: 5px;
-    height: 100%;
+    height: 90%;
 }
 
 .infoConteiner{
@@ -57,7 +295,7 @@
     border-radius: 5px;
     border: none;
     border-bottom: 1px solid gray;
-    background-color: #7230FF;
+    background-color: rgb(255, 255, 255);
     color: rgb(29, 29, 29);
     transition: 0.5s;
     box-shadow: 0px 2px 2px 0px rgba(48, 48, 48, 0.527);
@@ -70,7 +308,7 @@
 }
 
 .info{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,7 +334,7 @@
 }
 
 .containerCheckAll i {
-    color: #181A1B;
+    color: white;
 }
 
 .containerCheckv{
@@ -107,11 +345,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  #1b8f21;
+    background-color: #91C612;
 }
 
 .containerCheckv i {
-    color: #181A1B;
+    color: white;
 }
 
 .containerCheckD{
@@ -126,7 +364,7 @@
 }
 
 .containerCheckD i {
-    color: #181A1B;
+    color: white;
 }
 
 
@@ -141,7 +379,7 @@
     background-color: rgb(231, 12, 12);
 }
 .containerCheckx i{
-    color:  #181A1B;
+    color: #fff;
 }
 
 .containerCheckEx{
@@ -171,7 +409,7 @@
 }
 
 .containerCheckarrow i{
-    color:  #181A1B;
+    color: #fff;
 }
 
 .containerNabvar{
@@ -210,7 +448,7 @@
 
 .containerPencil:hover{
     
-    color: #00d9ff;
+    color: #0099ff;
 }
 
 
@@ -237,7 +475,7 @@
     font-size: 18px;
     font-weight: 500;
     color: #000000;
-    background-color: #7230FF;
+    background-color: rgb(209, 209, 209);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     margin-top: 5px;
@@ -250,7 +488,6 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    margin-left: 60px;
 }
 
 .containHeadr p {
@@ -299,15 +536,7 @@
     justify-content: space-between;
 }
 
-.containCardInfo{
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    border-bottom: 1px solid rgb(58, 58, 58);
 
-}
 
 .containerActions{
     width: 20%;
@@ -343,8 +572,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     border: none;
-    background-color:  #7230FF;
-    color: #181A1B;
+    background-color: #91C612;
+    color: white;
     width: 75px;
     height: 50px;
     display: flex;
@@ -374,7 +603,7 @@
 }
 
 .searchBarButton{
-    color:  #181A1B;
+    color: #ffffff;
     background-color: rgb(68, 68, 68);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
@@ -387,20 +616,33 @@
     color: transparent;
 }
 
-@media screen and (max-width:1400px) and (min-width:500px) {
 
+.containerPaginate{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width:1400px) {
+
+    
     .containerAll{
-        width: 100%;
-        padding: 0;
-        display: flex;
         justify-content: center;
-    }
-  
-    .productContainer{
-        width: 100%;
-    }
-  
-   
-   
-  }
+        padding: 0;
 
+        
+    }
+    .productContainer{
+        width: 80%;
+        height: auto;
+    }
+    .containerInfoTable{
+        height: auto;
+    }
+  
+
+
+   
+  } */

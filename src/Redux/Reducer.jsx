@@ -7,7 +7,14 @@ const initialState = {
   user: {},
   cart: {},
   idCart: "",
-  usersAdmin:[]
+
+  usersAdmin: [],
+  personalData: {},
+  AllOrders: [],
+
+  usersAdmin:[],
+  sideBar: false,
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -54,7 +61,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: action.payload,
       };
-      
+
     case "GET_DETAILS":
       return {
         ...state,
@@ -73,14 +80,34 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsFiltrados: [],
       };
-      case "GET_ALL_USER":
+    case "GET_ALL_USER":
       return {
         ...state,
         usersAdmin: action.payload,
       };
+
+    case "USER_DATA":
+      return {
+        ...state,
+        personalData: action.payload,
+      };
+    case "NEW_ADMIN":
+      return {
+        ...state,
+      };
+    case "GET_ALL_ORDERS":
+      return {
+        ...state,
+        AllOrders: action.payload,
+
+      case "TOGGLE_SIDEBAR":
+      return {
+        ...state,
+        sideBar: state.sideBar === false ? true : false,
+
+      };
     default:
       return state;
-      
   }
 }
 
