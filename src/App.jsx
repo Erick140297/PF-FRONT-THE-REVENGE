@@ -14,7 +14,11 @@ import Detail from "./Components/Detail/Detail";
 import DashBoard from "./Components/DashBoard/DashBoard"
 import User from "./Components/DashBoard/User/User"
 import Product from "./Components/DashBoard/Products/Products"
+
+import EditProductForm from "./Components/DashBoard/Products/EditProductForm/EditProductForm";
+
 import About from "./Components/About/About";
+
 import NewProductForm from "./Components/DashBoard/Products/NewProduct/NewProductForm";
 import Payment from "./Components/Payment/Payment";
 import Decline from "./Components/Decline/Decline";
@@ -46,10 +50,14 @@ function App() {
           <Route exact path="/admin/products/form" component={NewProductForm} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/decline" component={Decline} />
+
+          <Route exact path="/admin/products/edit/:id" component={EditProductForm} />
+
           <Route exact path="/about" component={About} />
           <Route exact path="/admin/createAdmin" component={CreateAdmin} />
 
          
+
         </div>
         <Footer />
       </div>

@@ -1,0 +1,47 @@
+.edit-product-form {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.edit-image {
+  width: 40%;
+  margin-right: 20px;
+}
+
+.edit-image img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.edit-product-form label {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.edit-product-form input[type="number"] {
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.edit-product-form button {
+  padding: 10px 20px;
+  background-color: #7a00ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-product-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.3);
+}

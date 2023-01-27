@@ -17,7 +17,7 @@ const Detail = (props) => {
   const details = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loader);
   const userId = useSelector((state) => state.user);
-
+console.log("DETALLEEES", );
   const handleClick = () => {
     const obj = {
       productId: id,
