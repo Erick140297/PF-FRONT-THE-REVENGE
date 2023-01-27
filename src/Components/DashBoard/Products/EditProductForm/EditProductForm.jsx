@@ -5,19 +5,24 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { getDetail} from "../../../../Redux/Actions";
 import axios from "axios"
+
+
 const EditProductForm = ( props ) => {
   const dispatch = useDispatch();
   const history = useHistory()
   const product = useSelector((state) => state.detail);
   const [productBien, setProductBien] =useState({price:"", stock:""});
   const id = props.match.params.id;
-  const [productLoaded, setProductLoaded] = useState(false);
+  
   const details = useSelector((state) => state.detail);
+  
+
+
   useEffect(() => {
     dispatch(getDetail(id));
-    setProductLoaded(true);
+  
     
-  }, []);
+  }, [dispatch, id]);
 
 
   
@@ -25,7 +30,7 @@ const EditProductForm = ( props ) => {
 
 
 
-  console.log("AOSDOASNOD", product);
+  console.log("PRODDODASODOO", product);
 
   const handleInputChange = (event) => {
     setProductBien({
@@ -53,10 +58,10 @@ const handleSave = async (event) => {
     
     <>
     {
-      productLoaded?(<div> 
+      product?(<div> 
         
         <div className='edit-image'>
-          <img src={details.image.secure_url} alt=""/>
+          <img src={product.image.secure_url} alt=""/>
         </div>
         
         <form className="edit-product-form">
