@@ -7,7 +7,8 @@ const initialState = {
   user: {},
   cart: {},
   idCart: "",
-  usersAdmin:[]
+  usersAdmin:[],
+  sideBar: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -77,6 +78,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         usersAdmin: action.payload,
+      };
+      case "TOGGLE_SIDEBAR":
+      return {
+        ...state,
+        sideBar: state.sideBar === false ? true : false,
       };
     default:
       return state;
