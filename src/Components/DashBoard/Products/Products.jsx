@@ -63,14 +63,16 @@ const Products = () => {
       </thead>
       <tbody>
           {allProducts.map(product => (
-              <tr key={product.id}>
+              <tr key={product._id}>
                   <td>{product.name}</td>
                   <td><img src={product.image.secure_url} alt={product.name} className="product-image"/></td>                  
                   <td>${product.price}</td>
                   <td>{product.stock}</td>
                   <td>{product.category}</td>
                   <td>
-                      <button className="edit-button">Editar</button>
+                    <Link to={`/admin/products/edit/${product._id}`}  >
+                      <button className="edit-button" >Editar</button>
+                      </Link>
                       <button className="delete-button" onClick={()=> handleDelete(product.id)}>Eliminar</button>
                   </td>
               </tr>

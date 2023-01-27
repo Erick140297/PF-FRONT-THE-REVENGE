@@ -14,7 +14,7 @@ import Detail from "./Components/Detail/Detail";
 import DashBoard from "./Components/DashBoard/DashBoard"
 import User from "./Components/DashBoard/User/User"
 import Product from "./Components/DashBoard/Products/Products"
-
+import EditProductForm from "./Components/DashBoard/Products/EditProductForm/EditProductForm";
 import NewProductForm from "./Components/DashBoard/Products/NewProduct/NewProductForm";
 
 import Payment from "./Components/Payment/Payment";
@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/admin/products/form" component={NewProductForm} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/decline" component={Decline} />
-         
+          <Route exact path="/admin/products/edit/:id" component={EditProductForm} />
         </div>
         <Footer />
       </div>
