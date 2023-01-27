@@ -17,7 +17,7 @@ const Card = ({ image, name, price, id }) => {
         <div className="container-card">
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
           </div>
-          <div className="title">
+          <div className="title1">
             <>{name}</>
           </div>
           <div className="price">

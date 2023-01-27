@@ -3,37 +3,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../Redux/Actions";
 import "./User.css";
 import {NavLink} from "react-router-dom";
-import PaginadoUsers from "./Paginado";
+import PaginadoUsers from "../User/Paginado/Paginado";
 
 
 const User = () => {
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(getUser());
   }, []);
-
+  
   const users = useSelector((state) => state.usersAdmin);
-
+  console.log(users)
+  
   const usersBanned = users.filter(
     (user) => user.status !== "Autorizado"
-  ).length;
-
-  // const handleDisabled = async (id, status) => {
+    ).length;
     
-  //   let disabledUser;
-  //   if (status === "Autorizado") {
-  //     disabledUser = {
-  //       status: false,
-  //     };
-  //   } else {
-  //     disabledUser = {
-  //       status: "Autorizado",
-  //     };
-  //   }
-  //    await dispatch(userDisabled(id, disabledUser));
-  //    await dispatch(getUsersAdmin());
-  // };
+    const handleDisabled = async (id, status) => {
+      
+        let disabledUser;
+        if (status === "Autorizado") {
+      disabledUser = {
+        status: false,
+      };
+    } else {
+      disabledUser = {
+        status: "Autorizado",
+      };
+    }
+     await dispatch(userDisabled(id, disabledUser));
+     await dispatch(getUsersAdmin());
+  };
 
 
 
@@ -44,9 +45,9 @@ const User = () => {
   let currentUsers = users.slice(
     indexOfFirstUser,
     indexOfLastUser
-  );
-  return (
-    <div className="containerAll">
+    );
+    return (
+      <div className="containerAll">
       <NavLink to="/dashboard"><botton>atras</botton></NavLink>
       <div className="productContainer">
         <div className="infoConteiner">
@@ -120,11 +121,11 @@ const User = () => {
                 </div>
 
                 <div className="containCardInfo">
-                  <p> {item.email}</p>
+                  <p className="p-user"> {item.email}</p>
                 </div>
 
                 <div className="containCardInfo">
-                  <p>{item.admin}</p>
+                <p > {item.admin ? "Es administrador" : "No es administrador"}</p>
                 </div>
 
                 <div className="containCardInfo">
@@ -132,9 +133,9 @@ const User = () => {
                 </div>
 
                 <div className="containCardInfo">
-                  <p> {item.createdAt}</p>
+                  
                 </div>
-                {/* <div className="containCardInfo">
+                <div className="containCardInfo">
                   {item.status === "Autorizado" ? (
                     <i
                       onClick={() => handleDisabled(item.email, item.status)}
@@ -146,7 +147,7 @@ const User = () => {
                       className="fa-solid fa-user"
                     ></i>
                   )}
-                </div> */}
+                </div>
               </div>
             ))}
         </div>

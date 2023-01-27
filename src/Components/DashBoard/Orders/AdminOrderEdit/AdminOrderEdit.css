@@ -1,0 +1,165 @@
+.productCont {
+    /* display: flex;
+    flex-direction: column;
+    width: 350px;
+
+    margin-top: 50px; */
+    width: 700px;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 7px;
+    transition: 0.5s;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.637);
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 22px;
+    margin-right: 155px;
+    background-color:#7230FF ;
+    color:  rgb(247, 247, 247);
+    text-align: center;
+}
+.span-order{
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.containerTitle{
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.containerPandO {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.ckeckbox {
+    display: flex;
+    flex-direction: column;
+width: 55%;
+height: 80%;
+background-color: rgb(247, 247, 247);
+border-radius: 15px;
+border:3px solid #7230FF;
+margin-bottom: 55px;
+
+}
+
+.estadoAct{
+    font-size: 26px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    text-align: start;
+    padding-left: 25px;
+    text-transform: uppercase;
+}
+.greymatter{
+    padding: 10px;
+    text-align: start;
+    font-size: 18px;
+    padding-left: 25px;
+    color: #797979;
+    text-transform: uppercase;
+}
+.text {
+    padding: 10px;
+    text-align: start;
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+.text-error {
+    color: red;
+}
+
+.hR{
+    width: 71%;
+    margin-left: 25px;
+}
+
+.circulo{
+    display: flex;
+    justify-content: end;
+    margin-top: -30px;
+    margin-right: 10%;
+}
+
+.season {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+
+
+
+}
+
+
+
+.season:checked {
+    background-color: #7230FF;
+}
+.season {
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    border: none;
+}
+
+.season:hover {
+    opacity: 0.7;
+    transition: 0.3s ease;
+}
+
+.buttonCont{
+    padding-top: 25px;
+    text-align: start;
+    padding-left: 25px;
+
+}
+
+.loginButton {
+    border-radius: 3px;
+    background-color:#7230FF;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 22px;
+    margin-left: 150px;
+}
+
+.loginButton:hover {
+    color: #7230FF;
+    border: #7230FF solid 1px;
+}
+
+@media screen and (max-width:1400px) {
+
+    .containerAll1{
+        width: 100%;
+        height: auto;
+    }
+    .containerAll{
+        height: auto;
+
+    }
+
+    .containerPandO{
+        height: auto;
+    }
+
+    .ckeckbox{
+        height: auto;
+        padding-bottom: 25px;
+    }
+
+  }
