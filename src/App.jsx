@@ -22,12 +22,13 @@ import Decline from "./Components/Decline/Decline";
 
 
 
+
 function App() {
   return (
     <div className="App">
       <div>
         <NavBar />
-        <Header/>
+        <Header/>       
         <div className="otracosa">
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/result" component={Result} />
