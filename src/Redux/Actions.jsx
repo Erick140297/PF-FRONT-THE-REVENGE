@@ -147,3 +147,11 @@ export function getUser() {
     console.log(error);
   }
 }
+
+export function toggleSideBar() {
+  return async function (dispatch) {
+    return dispatch({
+      type: "TOGGLE_SIDEBAR",
+    })
+  }
+}

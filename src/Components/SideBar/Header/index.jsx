@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
@@ -6,6 +7,7 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from '../SideBar/SidebarData';
 import SubMenu from '../SideBarItem/SubMenu';
 import { IconContext } from 'react-icons/lib';
+import { toggleSideBar } from '../../../Redux/Actions';
 
 const Nav = styled.div`
     background: #0b0b0e;
@@ -52,9 +54,11 @@ const SidebarWrap = styled.div`
 `;
 
 const Header = () => {
-    const [sidebar, setSidebar] = useState(false);
+    const sidebar = useSelector((state) => state.sideBar);
+    const dispatch = useDispatch();
 
-    const showSidebar = () => setSidebar(!sidebar);
+
+    const showSidebar = () => dispatch(toggleSideBar())
 
     return (
     <>

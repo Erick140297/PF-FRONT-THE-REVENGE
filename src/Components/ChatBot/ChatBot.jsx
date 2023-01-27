@@ -43,10 +43,10 @@ const ChatBot1 = () => {
                 id: "2",
                 user: true,
                 validator: (value) => {
-                    if (/^[A-Z][a-z]{2,15}$/.test(value)) {
+                    if (/^[a-z,A-Z]{2,15}$/.test(value)) {
                     return true;
                     } else {
-                    return "Por favor ingrese un nombre válido!.";
+                    return "Por favor ingrese un nombre válido!";
                     }
                 },
                 trigger: "3",
