@@ -98,7 +98,7 @@ function rootReducer(state = initialState, action) {
     case "GET_ALL_ORDERS":
       return {
         ...state,
-        AllOrders: action.payload,
+        AllOrders: action.payload};
 
       case "TOGGLE_SIDEBAR":
       return {
