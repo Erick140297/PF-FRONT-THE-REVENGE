@@ -10,7 +10,6 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
     {
         title: 'Componentes de PC',
-        path: '/home',
         icon: <GiAbstract029 />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -45,7 +44,6 @@ export const SidebarData = [
     },
     {
         title: 'Mantenimiento',
-        path: '/home',
         icon: <Gi3DHammer />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -79,7 +77,6 @@ export const SidebarData = [
     },
     {
         title: 'Periféricos',
-        path: '/home',
         icon: <MdHeadsetMic />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -101,7 +98,6 @@ export const SidebarData = [
     },
     {
         title: 'Laptops',
-        path: '/home',
         icon: <MdLaptop />,
 
         iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -122,7 +118,6 @@ export const SidebarData = [
     },
     {
         title: 'Destacados',
-        path: '/home',
         icon: <GiAbstract048 />,
 
         iconClosed: <RiIcons.RiArrowDownSFill />,

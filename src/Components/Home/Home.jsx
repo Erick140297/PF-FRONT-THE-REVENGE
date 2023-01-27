@@ -7,6 +7,8 @@ import "./home.css";
 import Loader from "../Loader/Loader";
 import Container from "../ContainerCards/Container";
 import { Link } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
+
 
 const Home = () => {
   // hooks
@@ -38,6 +40,7 @@ const Home = () => {
         <Loader />
       ) : (
         <div>
+        <ChatBot /> 
           <Carousel>
             <Carousel.Item interval={2500}>
               <img

@@ -146,6 +146,7 @@ export function getUser() {
   }
 }
 
+
 export function postUserData(email, data) {
   return async function (dispatch) {
     const newUser = await axios
@@ -181,3 +182,12 @@ export function getAllOrders() {
     return dispatch({ type: "GET_ALL_ORDERS", payload: allOrders.data });
   };
 }
+
+export function toggleSideBar() {
+  return async function (dispatch) {
+    return dispatch({
+      type: "TOGGLE_SIDEBAR",
+    })
+  }
+}
+

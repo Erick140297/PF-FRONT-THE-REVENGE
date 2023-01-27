@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getProductsByName, getProductsBySubCategory } from "../../../Redux/Actions";
 import toast, { Toaster } from "react-hot-toast";
+import { toggleSideBar } from '../../../Redux/Actions';
+
 
 
 
@@ -56,6 +58,8 @@ const SidebarLink = styled(Link)`
     const SubMenu = ({ item }) => {
     const [subnav, setSubnav] = useState(false);
     const [input, setInput] = useState("");
+    const sidebar = useSelector((state) => state.sideBar);
+
 
     const showSubnav = () => setSubnav(!subnav);
 
@@ -66,6 +70,7 @@ const SidebarLink = styled(Link)`
         e.preventDefault();
         if (input.length !== 0) {
         dispatch(getProductsBySubCategory(input.innerText))
+        dispatch(toggleSideBar())
         setInput("")
         history.push("/result");
         
