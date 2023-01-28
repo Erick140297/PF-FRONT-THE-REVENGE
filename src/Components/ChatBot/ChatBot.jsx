@@ -28,10 +28,8 @@ const ChatBot1 = () => {
     const dispatch = useDispatch();
 
     const history = useHistory()
-    const category = 'Componentes de pc '
-    const handleClick = (category) => {
-        console.log(category);
-        dispatch(getProductsByCategory(category));
+    const handleClick = () => {
+        dispatch(getProductsByCategory('Componentes de pc'));
         history.push("/result")
     };
 
@@ -103,19 +101,19 @@ const ChatBot1 = () => {
                 id: "7A",
                 component: (
                     <div className="text-dark">
-                        Haz <a className="text-dark" href="" onClick={() => handleClick(category)}>click aquí</a> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?</div>
+                        Haz <button className="btn text-dark" onClick={() => handleClick()}>click aquí</button> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?</div>
                 ),
                 triggernextstep: "respuestaVuelta",
                 },
                 {
                 id: "preguntaVuelta",
-                message: "Do you need to know anything else?",
+                message: "Hay algo más en que te pueda ayudar?",
                 trigger: "respuestaVuelta",
                 },
                 {
                 id: "respuestaVuelta",
                 options: [
-                    { value: "y", label: "Yes", trigger: "6A" },
+                    { value: "y", label: "Si", trigger: "6A" },
                     { value: "n", label: "No", trigger: "6B" },
                 ],
                 },
