@@ -11,7 +11,7 @@ const initialState = {
   personalData: {},
   AllOrders: [],
 
-  usersAdmin:[],
+
   sideBar: false,
 
 };
@@ -97,9 +97,9 @@ function rootReducer(state = initialState, action) {
     case "GET_ALL_ORDERS":
       return {
         ...state,
-        AllOrders: action.payload,
-      };
-    case "TOGGLE_SIDEBAR":
+        AllOrders: action.payload};
+
+      case "TOGGLE_SIDEBAR":
       return {
         ...state,
         sideBar: state.sideBar === false ? true : false,
