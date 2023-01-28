@@ -135,7 +135,7 @@ export function cleanResult() {
 export function getUser() {
   try {
     return async function (dispatch) {
-      const response = await axios.get(`${URL}/user`);
+      const response = await axios.get(`${URL}/users`);
       dispatch({
         type: "GET_ALL_USER",
         payload: response.data,
