@@ -1,11 +1,13 @@
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import React, {useState} from "react";
-import Detail from "../Detail/Detail";
+import { useHistory } from "react-router-dom"
 import "./chatBot.css";
 import { MdChatBubble } from "react-icons/md";
-import Loader from "../Loader/Loader";
+import { useDispatch } from "react-redux";
 import ComponentesPc from "./ComponentesPc";
+import { getProductsByCategory } from "../../Redux/Actions";
+
 
 
 
@@ -23,6 +25,14 @@ const theme = {
 const ChatBot1 = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const history = useHistory()
+    const handleClick = () => {
+        dispatch(getProductsByCategory('Componentes de pc'));
+        history.push("/result")
+    };
+
   return (
     <>
         <button className="btn-flotante fs-3" onClick={() => setIsOpen(true)}><MdChatBubble /></button>
@@ -36,7 +46,7 @@ const ChatBot1 = () => {
             steps={[
                 {
                 id: "1",
-                message: "Hola soy chatbot from Galaxia Tech. Cómo es tú nombre?",
+                message: "Hola soy chatbot de Galaxia Tech. Cómo es tú nombre?",
                 trigger: "2",
                 },
                 {
@@ -90,19 +100,20 @@ const ChatBot1 = () => {
                 {
                 id: "7A",
                 component: (
-                    <div> <a href="/result">Hola</a> </div>
-                  ),
-                  end: true,
+                    <div className="text-dark">
+                        Haz <button className="btn text-dark" onClick={() => handleClick()}>click aquí</button> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?</div>
+                ),
+                triggernextstep: "respuestaVuelta",
                 },
                 {
                 id: "preguntaVuelta",
-                message: "Do you need to know anything else?",
+                message: "Hay algo más en que te pueda ayudar?",
                 trigger: "respuestaVuelta",
                 },
                 {
                 id: "respuestaVuelta",
                 options: [
-                    { value: "y", label: "Yes", trigger: "6A" },
+                    { value: "y", label: "Si", trigger: "6A" },
                     { value: "n", label: "No", trigger: "6B" },
                 ],
                 },

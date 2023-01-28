@@ -114,6 +114,7 @@ export function getProductsByCategory(category) {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(`${URL}/products?category=${category}`);
+      console.log(data);
       return dispatch({
         type: "GET_PRODUCTS_BY_CATEGORY",
         payload: data,
