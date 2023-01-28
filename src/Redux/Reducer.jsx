@@ -8,7 +8,6 @@ const initialState = {
   cart: {},
   idCart: "",
 
-  usersAdmin: [],
   personalData: {},
   AllOrders: [],
 
@@ -105,6 +104,28 @@ function rootReducer(state = initialState, action) {
         ...state,
         sideBar: state.sideBar === false ? true : false,
 
+      };
+    case "UPDATE_PROFILE_REQUEST":
+      return {
+        ...state,
+        loading: true
+      };
+    case "UPDATE_PROFILE_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload
+      };
+    case "UPDATE_PROFILE_RESET":
+      return {
+        ...state,
+        isUpdated: false
+      };
+    case "UPDATE_PROFILE_FAIL":
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload
       };
     default:
       return state;

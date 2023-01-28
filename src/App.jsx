@@ -6,6 +6,7 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/SideBar/Header";
 import Result from "./Components/Result/Result";
 import Profile from "./Components/Profile/Profile";
+import ProfileSettings from "./Components/ProfileSettings/ProfileSettings";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import React, { useState, useEffect } from "react";
 import RingLoader from "react-spinners/RingLoader";
@@ -26,9 +27,6 @@ import CreateAdmin from "./Components/DashBoard/User/CreateAdmin/CreateAdmin";
 import Orders from "./Components/DashBoard/Orders/Orders";
 import AdminOrderEdit from "./Components/DashBoard/Orders/AdminOrderEdit/AdminOrderEdit";
 
-
-
-
 function App() {
   return (
     <div className="App">
@@ -40,6 +38,7 @@ function App() {
           <Route exact path="/result" component={Result} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profileSettings" component={ProfileSettings} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
           <Route exact path="/dashboard" component={DashBoard} />
@@ -55,9 +54,6 @@ function App() {
 
           <Route exact path="/about" component={About} />
           <Route exact path="/admin/createAdmin" component={CreateAdmin} />
-
-         
-
         </div>
         <Footer />
       </div>
