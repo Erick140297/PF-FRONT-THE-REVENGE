@@ -12,7 +12,6 @@ const initialState = {
   personalData: {},
   AllOrders: [],
 
-  usersAdmin:[],
   sideBar: false,
 
 };
