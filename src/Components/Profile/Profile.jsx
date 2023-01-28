@@ -1,32 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiFillAppstore } from "react-icons/ai";
+import { BsCart4, BsEnvelope } from "react-icons/bs";
 import "./profile.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
   const { logout, user } = useAuth0();
-  console.log(user);
   return (
     <div className="div">
-      <h1>
-        {" "}
-        <AiFillAppstore /> my account{" "}
-      </h1>
-      <img src={user.picture}></img>
-      <h1> welcome back, {user.given_name} </h1>
+      <h1> <AiFillAppstore /> my account</h1>
+      <h1> <img className="img" src={user.picture}></img> {user.given_name} </h1>
+
+      <Link to={"/cart"}>
+      <h2> MI CARRITO <BsCart4/> </h2>
+      </Link>
 
       <h2> account data: </h2>
-      <p> nickname: {user.name}</p>
-      <p> e-mail: {user.email}</p>
+      <p> fullname: {user.name}</p>
+      <p> <BsEnvelope/> e-mail: {user.email}</p>
+      <p> joined on: {user.updated_at}</p>
 
-      <h3> personal information: </h3>
-      <p> address: {user.address}</p>
-      <p> birthdate: {user.birthdate}</p>
-      <p> phone_number: {user.phone_number}</p>
-
-      <Link to={"/user"} style={{ textDecoration: "none", color: "black" }}>
-        <button className="button"> Modify my addresses </button>
+      <Link to={"/orders"}>
+      <h2> MIS ORDENES </h2>
+      </Link>
+      
+      <Link to={"/profileSettings"}>
+        <button className="button"> edit profile </button>
       </Link>
 
       <button
