@@ -19,7 +19,7 @@ const Nav = styled.div`
 
 const NavIcon = styled(Link)`
     margin-left: 2rem;
-    margin-button: 2rem;
+    margin-bottom: 2rem;
     font-size: 1.5rem;
     height: 80px;
     display: flex;

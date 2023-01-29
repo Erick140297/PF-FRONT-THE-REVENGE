@@ -2,7 +2,7 @@
 // AXIOS
 import axios from "axios";
 
-const URL = `https://pf-back-the-revenge-production.up.railway.app/`;
+const URL = `https://pf-back-the-revenge-production.up.railway.app`;
 
 export function GetAllProducts() {
   try {

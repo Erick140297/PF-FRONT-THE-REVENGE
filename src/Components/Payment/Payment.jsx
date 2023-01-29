@@ -8,13 +8,13 @@ const Payment = () => {
   const orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   const emptyCart = async () => {
-    await axios.delete("http://localhost:3001/shoppingCart", {
+    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/", {
       data: { cartId },
     });
   };
 
   const changeOrderStatus = async () => {
-     await axios.put(`http://localhost:3001/order/${orderId}`, {
+     await axios.put(`https://pf-back-the-revenge-production.up.railway.app/${orderId}`, {
       status: "pagado",
     });
   };
