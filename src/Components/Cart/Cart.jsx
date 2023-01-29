@@ -18,7 +18,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const update = async (cartId, productId, quantity) => {
-    await axios.put("http://localhost:3001/shoppingCart", {
+    await axios.put("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
       cartId,
       productId,
       quantity,
@@ -26,7 +26,7 @@ const Cart = () => {
     dispatch(getCart(user.email));
   };
   const deleteProduct = async (cartId, productId) => {
-    await axios.delete("http://localhost:3001/shoppingCart", {
+    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
       data: { cartId, productId },
     });
     toast.success("Producto eliminado del carrito");
@@ -34,7 +34,7 @@ const Cart = () => {
   };
 
   const emptyCart = async (cartId) => {
-    await axios.delete("http://localhost:3001/shoppingCart", {
+    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
       data: { cartId },
     });
     toast.success("Tu carrito esta vacío");
@@ -52,7 +52,7 @@ const Cart = () => {
   const handlePayment = async (total) => {
     const { data } = await axios({
       method: "post",
-      url: "http://localhost:3001/order",
+      url: "https://pf-back-the-revenge-production.up.railway.app/order",
       data: {
         email: user.email,
         cart: cart,
@@ -62,7 +62,7 @@ const Cart = () => {
 
     const response = await axios({
       method: "post",
-      url: "http://localhost:3001/create-order",
+      url: "https://pf-back-the-revenge-production.up.railway.app/create-order",
       data: {
         value: total,
         description: JSON.stringify(data),
