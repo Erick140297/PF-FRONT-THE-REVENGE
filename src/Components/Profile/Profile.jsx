@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiFillAppstore } from "react-icons/ai";
 import { BsCart4, BsEnvelope } from "react-icons/bs";
-import "./profile.css";
+import "./Profile.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
