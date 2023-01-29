@@ -36,13 +36,12 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
-          <Route exact path="/dashboard" component={DashBoard} />
+          <Route exact path="/dashboard" component={DashBoard}/>
           <Route exact path="/admin/user" component={User} />
           <Route exact path="/admin/products" component={Product} />
           <Route exact path="/admin/products/form" component={NewProductForm} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/decline" component={Decline} />
-         
         </div>
         <Footer />
       </div>

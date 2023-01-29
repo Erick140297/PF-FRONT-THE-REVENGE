@@ -9,6 +9,7 @@ const initialState = {
   idCart: "",
   usersAdmin:[],
   sideBar: false,
+  Admin:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -84,6 +85,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         sideBar: state.sideBar === false ? true : false,
       };
+      case "GET_INFO_USER":
+        return {
+          ...state,
+          Admin: action.payload
+        }
     default:
       return state;
       

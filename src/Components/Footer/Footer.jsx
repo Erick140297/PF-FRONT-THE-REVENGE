@@ -1,59 +1,91 @@
-import React from 'react'
-import './footer.css'
+import Button from "react-bootstrap/Button";
+import React from "react";
+import "./footer.css";
+import whatsapp from "../../assets/whatsapp.svg";
+import gmail from "../../assets/gmail.svg";
+import intel from "../../assets/intel.svg";
+import amd from "../../assets/amd.svg";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer >
-    <div className="container-fluid text-center text-md-left">
+    <footer>
+      <div className="container-fluid text-center text-md-left">
         <div className="row footer">
-
-            <hr className="clearfix w-100 d-md-none pb-0"/>
-
-            <div className="col-md-2 mb-md-0 mb-3">
+          {/* <div className="col-md-2 mb-md-0 mb-3">
                 <h5 className="text-uppercase">categorias</h5>
                 <ul className="list-unstyled">
-                    <li><a href="#!">Perifericos</a></li>
-                    <li><a href="#!">Componentes de PC</a></li>
-                    <li><a href="#!">Mantenimiento</a></li>
+                    <li>Perifericos</li>
+                    <li>Componentes de PC</li>
+                    <li>Mantenimiento</li>
                     
                 </ul>
-            </div>
+            </div> */}
 
-            <div className="col-md-1 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Marcas</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">Intel</a></li>
-                    <li><a href="#!">Amd</a></li>
-                    <li><a href="#!">Msi</a></li>
-                    <li><a href="#!">Logitec</a></li>
-                </ul>
-            </div>
-            <div className="col-md-1 mb-md-0 mb-3">
+          <div className="col-md-1 mb-md-0 mb-3 marcas">
+            <h5 className="text-uppercase">Marcas</h5>
+            <ul className="list-unstyled">
+              <li>
+                <Button variant="outline-danger">
+                  <img src={amd} alt="amd" />
+                </Button>
+              </li>
+              <li>
+                <Button variant="outline-info">
+                  <img src={intel} alt="intel" />
+                </Button>
+              </li>
+            </ul>
+          </div>
+          {/* <div className="col-md-1 mb-md-0 mb-3">
                 <h5 className="text-uppercase">Ayuda</h5>
                 <ul className="list-unstyled">
-                    <li ><a href="#!">WhatsApp</a></li>
-                    <li><a href="#!">Link 2</a></li>
+                    <li >WhatsApp</li>
+                    <li>Mail</li>
                 </ul>
-            </div>
-            <div className="col-md-1 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Integra</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">WhatsApp</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                </ul>
-            </div>
-            <div className="col-md-5 mt-md-0 mt-4">
-                <h5 className="text-uppercase">Galaxia Tech</h5>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure minus corporis, necessitatibus natus et consectetur provident ratione obcaecati expedita adipisci. Esse aut eveniet necessitatibus vitae illo corporis vero rerum veniam.</p>
-            </div>
+            </div> 
+            
+            https://wa.link/bdmxpb
+            */}
+          <div className="col-md-1 mb-md-0 mb-3 contacto">
+            <h5 className="text-uppercase">Contacto</h5>
+            <ul className="list-unstyled">
+              <a
+                href="https://wa.link/glhjh5"
+                target="_blank"
+                rel="noopener noregerrer"
+              >
+                <li>
+                  <Button variant="outline-success">
+                    Whatsapp⠀
+                    <img src={whatsapp} alt="lo" />
+                  </Button>
+                </li>
+              </a>
+              <a href="mailto:santicasas667@gmail.com">
+                <li>
+                  <Button variant="outline-danger">
+                    ⠀⠀Mail⠀⠀⠀
+                    <img src={gmail} alt="gmail" />⠀
+                  </Button>
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div className="col-md-5 mt-md-0 mt-4 leyenda">
+            <h5 className="text-uppercase">Galaxia Tech</h5>
+            <p>
+              Nos dedicamos a la venta de los mejores componentes de PC, te
+              ofrecemos los componentes esenciales para tu PC, junto con una
+              gran gama de perrifericos para asegurar una experiencia comoda y
+              los respectivos equipos de mantenimiento para que puedas cuidar de
+              tu preciada reliquia
+            </p>
+          </div>
         </div>
-    </div>
+      </div>
+    </footer>
+  );
+};
 
-    <div className="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-
-</footer>
-  )
-}
-
-export default Footer
+export default Footer;

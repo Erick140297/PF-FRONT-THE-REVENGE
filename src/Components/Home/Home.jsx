@@ -6,7 +6,6 @@ import Carousel from "react-bootstrap/Carousel";
 import "./home.css";
 import Loader from "../Loader/Loader";
 import Container from "../ContainerCards/Container";
-import { Link } from "react-router-dom";
 import ChatBot from "../ChatBot/ChatBot";
 
 
@@ -45,7 +44,7 @@ const Home = () => {
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://www.grupoxfone.com.br/wp-content/uploads/2020/12/apple-products.jpg"
+                src="https://beetech.com.np/image/cache/catalog/1projector/durable-1900x500.jpg"
                 alt="First slide"
               />
             </Carousel.Item>
@@ -59,7 +58,7 @@ const Home = () => {
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://cdn.shopify.com/s/files/1/0566/0989/8694/files/JBL-Headphone-Series-Category-Banner.jpg?v=1635476150"
+                src="https://beetech.com.np/image/cache/catalog/Drone/h410m-b-pro-connectivity-1900x500.jpg"
                 alt="First slide"
               />
             </Carousel.Item>
