@@ -70,8 +70,8 @@
     overflow: hidden;
     position: fixed;
     font-family: 'Major Mono Display', monospace;
-    top: 180px;
-    right: 32px;
+    top: 35%;
+    right: 5%;
     left: initial;
     color: aliceblue;
     width: 1050px;
@@ -86,18 +86,19 @@
 .header-content p {
   background: transparent;
     box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
-    font-size: 32px;
+    font-size: 28px;
+    font-weight: 600;
     overflow: hidden;
     position: fixed;
     align-items:initial;
     font-family: 'Major Mono Display', monospace;
     font-weight: 400;
-    padding-left: 15px;
-    top: 280px;
-    right: 32px;
-    left: 100px;
+    padding-left: 10px;
+    top: 50%;
+    left: 20%;
+    /* right: 32px; */
     color: coral;
-    width: 1100px;
+    width: 800px;
     height: 120px;
     z-index: 99;
     transform: scale(1);
@@ -105,112 +106,35 @@
     transition: transform 0.3s ease 0s;
 }
 
-.header-content a {
-  position: absolute;
-  top: 250px;
-  left: 100px;
-  font-size: 45px;
-  font-family: 'Amatic SC', cursive;
-  color: rgb(255, 149, 232);
-  text-shadow: 0.05em 0.05em rgb(255, 199, 199);
-  text-decoration: double;
-  padding-left: 6rem;
-}
 
 .header-content i {
   margin-right: 8px;
 }
 
 .header-content button {
-  position: absolute;
-  top: 250px;
-  left: 485px;
-  padding-left: 30px;
-  padding-right: 30px;
-  text-decoration: none;
-  border: none;
-  border-radius: 10px;
-  font-size: 35px;
-  font-weight: bold;
-  font-family: 'Amatic SC';
-  color: coral;
-  text-shadow: 0.05em 0.05em rgb(34, 30, 30);
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+    font-family: monospace;
+    font-size: 35px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 32px;
+    top: initial;
+    right: 500px;
+    /* left: initial; */
+    width: 250px;
+    height: 60px;
+    z-index: 99;
+    font-family: 'Amatic SC';
+    color: coral;
+    text-shadow: 0.05em 0.05em rgb(34, 30, 30);
+    transform: scale(1);
+    transform-origin: right bottom;
+    transition: transform 0.3s ease 0s;
 }
-
 
 @media (max-width: 960px) {
   .content{
     padding: 0 0 0 0;
   }
 }
-
-
-
-
-
-
-
-/* .landingTitle {
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    position:relative;
-    font-size: 105px;
-    background: rgba(146, 71, 207, 0.7);
-    border-style: none;
-    position: relative;
-    left: 25%;
-    bottom: 25%;
-}
-
-.landingTitle {
-    animation: 5s infinite;
-    animation-name: wlc;
-    
-  }
-  @keyframes wlc {
-    40% {
-      border-radius: 15px; 
-      box-shadow: 0 10px 10px 0 rgba( 31, 38, 135, 0.7 );
-    }
-  
-      50% {
-      border-radius: 500px;
-      box-shadow: 0 10px 10px 0 rgba( 135, 38, 31, 0.7 );
-      color: #ffffff99;
-    }
-  
-    80% {
-      border-radius: 50px;
-      box-shadow: 0 10px 10px 0 rgba( 31, 38, 135, 0.7 );
-    }
-  }
-
-.landingButton {
-  background-color: rgba(108, 72, 155, 0.822); 
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 1em;
-  
-  padding: 0.5em 1em;
-  font-size: 3em;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease; 
- 
-  position: relative;
-  top: 150px;
-  right: 70%;
-}
-.cajitaboton{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  
-}
-.landingButton:hover {
-  background-color: rgba(226, 10, 10, 0.822); 
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
