@@ -20,8 +20,6 @@ const Profile = () => {
     dispatch(getInfoUser(user.email));
   }, []);
 
-  console.log("infoDb ====>", info);
-  console.log("user=====>", user);
   return (
     <Container>
       <ContainerOne>
@@ -41,13 +39,18 @@ const Profile = () => {
         </Info>
 
         <Info>
+          Ciudad:
+          <TextMin>{info.city ? info.city : "Agregar"}</TextMin>
+        </Info>
+
+        <Info>
           Dirección:
-          <TextMin>{user.address ? user.address : "Agregar"}</TextMin>
+          <TextMin>{info.address ? info.address : "Agregar"}</TextMin>
         </Info>
 
         <Info>
           Telefóno:
-          <TextMin>{user.phone ? user.phone : "Agregar"}</TextMin>
+          <TextMin>{info.phone ? info.phone : "Agregar"}</TextMin>
         </Info>
       </ContainerTwo>
       <ContainerThree>

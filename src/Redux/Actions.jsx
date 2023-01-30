@@ -192,25 +192,13 @@ export function toggleSideBar() {
   }
 }
 
-export const updateProfile = (userData) => async (dispatch) => {
-  try {
-    dispatch ({type: "UPDATE_PROFILE_REQUEST"})
-    const config = {
-      headers: {
-        'content-type':'multipart/form-data'
-      }
-    }
-    const { data } = await axios.put('/api/v1/profileSettings', userData, config)
-    dispatch ({
-      type: "UPDATE_PROFILE_SUCCES",
-      payload: data.success
-    })
-  } catch (error) {
-    dispatch({
-      type: "UPDATE_PROFILE_FAIL",
-      payload: error.response.data.message
-    })
-  }
+export function updateProfile(data) {
+  return async function (dispatch) {
+    await axios
+      .put(`http://localhost:3001/user/63d5a73222043fe2ae671732`, data)
+      .catch((error) => console.log(error.response.data));
+    return dispatch({ type: "UPDATE_PROFILE" });
+  };
 }
 
 export function getInfoUser(email) {

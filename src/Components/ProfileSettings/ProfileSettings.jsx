@@ -1,96 +1,50 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import { AiFillAppstore } from "react-icons/ai";
-import { BsFillPencilFill, BsEnvelope, BsTelephoneInbound } from "react-icons/bs";
 import { useAuth0 } from "@auth0/auth0-react";
+import { updateProfile, getInfoUser } from '../../Redux/Actions'
 import "./ProfileSettings.css";
-import { updateProfile } from '../../Redux/Actions'
 
 const ProfileSettings = () => {
   const { user } = useAuth0();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [avatarPreview, setAvatarPreview] = useState('');
   const dispatch = useDispatch();
-  const { error, isUpdated, loading } = useSelector(state => state.user);
+  const [name, setName] = useState('');
+  const [city, setCity] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+ 
+  const info = useSelector((state) => state.Admin);
 
   useEffect(() => {
-    if (user) {
-      setName(user.name);
-      setEmail(user.email);
-      setAvatarPreview(user.picture);
-    }
+    dispatch(getInfoUser(user.email));
 
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+    if (info) {
+      setName(info.name);
+      setCity(info.city);
+      setAddress(info.address);
+      setPhone(info.phone);
     }
-
-    if(isUpdated) {
-      alert.success('user updated successfully!');
-      dispatch({
-        type: "UPDATE_PROFILE_RESET"
-      });
-    }
-  }, [dispatch, alert, error, isUpdated]);
+  }, [dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.set('name', name);
-    formData.set('email', email);
-    formData.set('avatar', avatar);
+    formData.set('city', city);
+    formData.set('address', address);
+    formData.set('phone', phone);
 
     dispatch(updateProfile(formData));
-  }
-
-  const onChange = e => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatarPreview(reader.result);
-        setAvatar(reader.result)
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
+    console.log(name, city, address, phone);
   }
 
   return (
-      <div className='col-10 col-lg-5'>
-        <div className="div">
-          <h1> <AiFillAppstore /> account settings </h1>
-          <div className='form=group'>
-            <label htmlFor='avatar_upload'>Avatar</label>
-            <div className='d-flex align-items-center'>
-              <div>
-                <figure className='avatar mr-3 item-rtl'>
-                  <img
-                    src={avatarPreview}
-                    className='rounded-circle'
-                    alt='Avatar Preview'
-                  />
-                </figure>
-              </div>
-              <div className="custom-file">
-                <input
-                  type='file'
-                  name='avatar'
-                  className='custom-file-input'
-                  id='customFile'
-                  accept='image/*'
-                  onChange={onChange}
-                />
-              </div>
-            </div>
-          </div>
-        <h2> personal information: </h2>
-          <form className='shadow-lg' onSubmit={submitHandler} encType='multipart/form-data'>
-            <div className='form=group'>
-              <label htmlFor='email_field'>Name</label>
+    <div className="div">
+      <h2> personal information: </h2>
+      <form onSubmit={submitHandler}>
+        <div className='form=group'>
+          <label> Nombre: </label>
               <input
                 type='name'
                 id='name_field'
@@ -99,37 +53,46 @@ const ProfileSettings = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-            </div>
-            <div className='form=group'>
-              <label htmlFor='email_field'>Email</label>
+        </div>
+        <div className='form=group'>
+              <label htmlFor='email_field'> Ciudad: </label>
               <input
-                type='email'
-                id='email_field'
+                type='city'
+                id='city'
                 className='form-control'
-                name='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name='city'
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
-            </div>
-            <div className='form=group'>
-              <label htmlFor='addres_field'>Address</label>
+        </div>
+        <div className='form=group'>
+              <label htmlFor='addres_field'> Dirección: </label>
               <input
                 type='addres'
                 id='addres_field'
                 className='form-control'
                 name='addres'
-                value={user.address}
+                value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
-            </div>
-              <button type='submit' className='btn update-btn btn-block mt-4 mb-3'
-                disabled={loading ? true : false}> Update </button>
-            </form>
-            <Link to={"/profile"}>
-              <button className="button"> go back </button>
-            </Link>
-          </div>
-      </div>
+        </div>
+        <div className='form=group'>
+              <label htmlFor='addres_field'> Telefóno: </label>
+              <input
+                type='addres'
+                id='addres_field'
+                className='form-control'
+                name='addres'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+        </div>
+        <button type='submit' className='btn update-btn btn-block mt-4 mb-3' onSubmit={submitHandler}> Update </button>
+      </form>
+      <Link to={"/profile"}>
+        <button className="button"> go back </button>
+      </Link>
+    </div>
   );
 };
 
