@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./Paginado.module.css";
 
 function PaginadoUsers({ usersPerPage, allUsers, paginado }) {
   const pageNumbers = [];
@@ -12,13 +11,13 @@ function PaginadoUsers({ usersPerPage, allUsers, paginado }) {
   }
 
   return (
-    <nav className={style.nav}>
-      <ul className={style.paginado}>
+    <nav className="nav">
+      <ul className="paginado">
         {pageNumbers &&
           pageNumbers.map((number) => (
-            <li className={style.number} key={number}>
+            <li className="number" key={number}>
               <button
-                className={style.paginadoA}
+                className="paginadoA"
                 onClick={() => paginado(number)}
               >
                 {number}

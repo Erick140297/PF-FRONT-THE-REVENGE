@@ -7,9 +7,13 @@ const initialState = {
   user: {},
   cart: {},
   idCart: "",
-  usersAdmin:[],
+  personalData: {},
+  AllOrders: [],
+
+
   sideBar: false,
   Admin:[]
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -56,7 +60,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: action.payload,
       };
-      
+
     case "GET_DETAILS":
       return {
         ...state,
@@ -75,15 +79,53 @@ function rootReducer(state = initialState, action) {
         ...state,
         productsFiltrados: [],
       };
-      case "GET_ALL_USER":
+    case "GET_ALL_USER":
       return {
         ...state,
         usersAdmin: action.payload,
       };
+
+    case "USER_DATA":
+      return {
+        ...state,
+        personalData: action.payload,
+      };
+    case "NEW_ADMIN":
+      return {
+        ...state,
+      };
+    case "GET_ALL_ORDERS":
+      return {
+        ...state,
+        AllOrders: action.payload};
+
       case "TOGGLE_SIDEBAR":
       return {
         ...state,
         sideBar: state.sideBar === false ? true : false,
+
+      };
+    case "UPDATE_PROFILE_REQUEST":
+      return {
+        ...state,
+        loading: true
+      };
+    case "UPDATE_PROFILE_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload
+      };
+    case "UPDATE_PROFILE_RESET":
+      return {
+        ...state,
+        isUpdated: false
+      };
+    case "UPDATE_PROFILE_FAIL":
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload
       };
       case "GET_INFO_USER":
         return {
@@ -92,7 +134,6 @@ function rootReducer(state = initialState, action) {
         }
     default:
       return state;
-      
   }
 }
 

@@ -1,4 +1,4 @@
-.nav{
+/* .nav{
     width: 20%;
     height: 70px;
     display: flex;
@@ -19,9 +19,7 @@
  .number{
     width: 48px;
     list-style: none;
-    /* border-radius: 8px; */
     color:white;
-    /* background-color:  #78BEEC; */
     text-align: center;
     cursor: pointer;
     border-radius: 100px;
@@ -46,7 +44,7 @@
 }
 
 .paginadoA:hover{
-    background-color: #a4e40f;
+    background-color: #7230FF;
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
@@ -67,8 +65,5 @@
     margin-bottom: 40px;
 }
 
-/* 
-.paginadoA{
-    background-color: aliceblue;
-} */
 
+ */

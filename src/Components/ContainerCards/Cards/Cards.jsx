@@ -10,10 +10,11 @@ export default function Cards({ category, image }) {
   const history = useHistory()
 
   const handleClick = (category) => {
+    console.log(category);
     dispatch(getProductsByCategory(category));
     history.push("/result")
   };
-
+  console.log(category);
   return (
     <div className="Cards" onClick={() => handleClick(category)}>
       <div className="container-3">

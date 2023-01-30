@@ -43,7 +43,7 @@ const NewProductForm = (props) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/product",
+        "https://pf-back-the-revenge-production.up.railway.app/",
         infoFormData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

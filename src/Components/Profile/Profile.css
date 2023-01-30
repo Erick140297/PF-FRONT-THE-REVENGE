@@ -1,17 +1,20 @@
-.div{
-  color: rgb(123, 216, 216);
-}
-.button{
-  background-color: rgb(123, 216, 216);;
-  border-radius: 18px;
-  border: none;
-  padding: 5px 7px 5px 7px;
-  box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-.button:hover{
-  background-color: #2B3951;
-  transition-delay: 0.2s;
-  transition: 0.8s;
-  color: white;
-  cursor: pointer;
-}
+  .div{
+    color: rgb(123, 216, 216);
+  }
+
+  .button{
+    background-color: rgb(123, 216, 216);
+    border-radius: 27px;
+    padding: 5px 7px;
+  }
+
+  .button:hover{
+    background-color: #2B3951;
+    transition: 0.3s;
+    color: white;
+    cursor: pointer;
+  }
+
+  .img{
+    border-radius: 333px;
+  }
