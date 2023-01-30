@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/profileSettings" component={ProfileSettings} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
-          <Route exact path="/dashboard" component={DashBoard} />
+          <Route exact path="/dashboard" component={DashBoard}/>
           <Route exact path="/admin/user" component={User} />
           <Route exact path="/admin/orders" component={Orders} />
           <Route exact path="/order/update/:id" component={AdminOrderEdit} />

@@ -108,3 +108,5 @@ transition: transform 0.5s; /*tiempo de transición de 0.5 segundos*/
 .image-detail-teclados:hover {
 transform: scale(1.2); /*aumenta el tamaño en un 20%*/
 }
+
+

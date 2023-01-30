@@ -7,12 +7,12 @@ const initialState = {
   user: {},
   cart: {},
   idCart: "",
-
   personalData: {},
   AllOrders: [],
 
 
   sideBar: false,
+  Admin:[]
 
 };
 
@@ -127,6 +127,11 @@ function rootReducer(state = initialState, action) {
         loading: false,
         isUpdated: action.payload
       };
+      case "GET_INFO_USER":
+        return {
+          ...state,
+          Admin: action.payload
+        }
     default:
       return state;
   }

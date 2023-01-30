@@ -1,13 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, setLoader, addToCart, getCart} from "../../Redux/Actions";
+import { getDetail, setLoader, addToCart, getCart, GetAllProducts} from "../../Redux/Actions";
 import Loader from "../Loader/Loader";
 import "./Detail.css";
 import { Rating } from "@material-ui/lab";
 import { useAuth0 } from "@auth0/auth0-react";
 import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { useState } from "react";
+import Card from "../Card/Card";
 
 const Detail = (props) => {
   const { user, isAuthenticated } = useAuth0();
@@ -17,7 +20,14 @@ const Detail = (props) => {
   const details = useSelector((state) => state.detail);
   const loading = useSelector((state) => state.loader);
   const userId = useSelector((state) => state.user);
-console.log("DETALLEEES", );
+  const allComponents = useSelector((state) => state.allProducts);
+  const [amount, setAmount] = useState(3);
+
+
+  const amountInPage = allComponents.slice(0, amount);
+  const loadMore = () => {
+    setAmount(amount + 3);
+  };
   const handleClick = () => {
     const obj = {
       productId: id,
@@ -51,10 +61,14 @@ console.log("DETALLEEES", );
 
   useEffect(() => {
     dispatch(getDetail(id));
+    dispatch(GetAllProducts())
     return () => {
       dispatch(setLoader());
     };
   }, [dispatch]);
+
+  const relation = allComponents.filter((el)=>el.subCategory===details.subCategory)
+  console.log("componente==>",relation);
 
   return (
     <>
@@ -139,6 +153,26 @@ console.log("DETALLEEES", );
                 </div>
               </div>
             </div>
+          <Relation>
+            {amountInPage?.map((el, index) => {
+              return (
+                <Card
+                  name={el.name}
+                  image={el.image ? el.image.secure_url : ""}
+                  price={el.price}
+                  id={el._id}
+                  key={index}
+                />
+              );
+            })}
+          </Relation>
+                      <div className="btn boton">
+            <button onClick={() => loadMore()}>
+              {amount <= allComponents.length
+                ? "cargar más..."
+                : "No hay más (⩾﹏⩽)"}
+            </button>
+          </div>
           </section>
           <Toaster position="bottom-right" reverseOrder={false} />
         </div>
@@ -150,3 +184,13 @@ console.log("DETALLEEES", );
 };
 
 export default Detail;
+
+const Relation = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: thistle;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+`

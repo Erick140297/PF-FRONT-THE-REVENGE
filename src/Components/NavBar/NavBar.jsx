@@ -11,15 +11,20 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import imgenLogo from "../../assets/logo-removebg.png";
 import { useDispatch, useSelector } from "react-redux";
-import { postUser, getCart} from "../../Redux/Actions";
+import { postUser, getCart, getUser} from "../../Redux/Actions";
 
 const NavBar = () => {
   const cart = useSelector((state) => state.cart);
+  const users = useSelector((state) => state.usersAdmin);
+
+
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
+    dispatch(getUser());
+
     if (isAuthenticated) {
       dispatch(postUser({ email: user.email, name: user.name }));
       dispatch(getCart(user.email));
@@ -33,6 +38,8 @@ const NavBar = () => {
     });
     return sum;
   };
+  // console.log("este es el 2",users);
+
 
   return (
     <>
