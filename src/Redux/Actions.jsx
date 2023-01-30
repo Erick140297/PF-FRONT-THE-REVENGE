@@ -213,3 +213,17 @@ export const updateProfile = (userData) => async (dispatch) => {
   }
 }
 
+export function getInfoUser(email) {
+  try {
+    return async function (dispatch) {
+      const {data} = await axios.get(`${URL}/users?email=${email}`)
+      dispatch({
+        type: "GET_INFO_USER",
+        payload: data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+

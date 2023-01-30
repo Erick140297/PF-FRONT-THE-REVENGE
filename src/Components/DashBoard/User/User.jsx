@@ -4,7 +4,7 @@ import { getUser } from "../../../Redux/Actions";
 import "./User.css";
 import {NavLink} from "react-router-dom";
 import PaginadoUsers from "../User/Paginado/Paginado";
-
+import { Link } from "react-router-dom"
 
 const User = () => {
   const dispatch = useDispatch();
