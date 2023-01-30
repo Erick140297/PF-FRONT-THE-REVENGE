@@ -58,12 +58,12 @@ const handleSave = async (event) => {
     
     <>
     {
-      product?(<div> 
+      product?(<div className='container-edit'> 
         
         <div className='edit-image'>
           <img src={product.image.secure_url} alt=""/>
         </div>
-        
+        <h3 className='title-edit'>{product.name}</h3>
         <form className="edit-product-form">
         
       <label>

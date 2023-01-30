@@ -1,17 +1,27 @@
 .edit-product-form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   color: white;
 }
 
 .edit-image {
   width: 40%;
-  margin-right: 20px;
+  margin-left: 30%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
 }
 
 .edit-image img {
   width: 50%;
-  border-radius: 50%;
+  border-radius: 30%;
 }
 
 .edit-product-form label {
@@ -44,4 +54,18 @@
 .edit-product-form button:hover {
   transform: translateY(-2px);
   box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.3);
+}
+
+.title-edit{
+  align-items: center;
+    align-content: center;
+   
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.container-edit{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

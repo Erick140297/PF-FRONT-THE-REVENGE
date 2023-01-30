@@ -65,7 +65,7 @@ const NewProductForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="containerS">
     
       {isOpen && (
         <form
