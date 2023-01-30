@@ -42,11 +42,13 @@ const Products = () => {
 
     return (
       <>
-      <div>
-      <Link to="/admin/products/form"><h4> CREAR PRODUCTO</h4></Link>    
+      <div className="mt-4">
+        <div className="text-start">
+          <Link to="/admin/products/form"><h4 className="crear-button mb-4 text-center"> CREAR PRODUCTO</h4></Link>    
+        </div>
       
       </div>
-      <table className="product-table">
+      <table className="product-table shadow p-3 mb-4 bg-dark rounded">
         
         <div className="form">
           
@@ -71,7 +73,7 @@ const Products = () => {
                   <td>{product.category}</td>
                   <td>
                     <Link to={`/admin/products/edit/${product._id}`}  >
-                      <button className="edit-button" >Editar</button>
+                      <button className="edit-button me-1" >Editar</button>
                       </Link>
                       <button className="delete-button" onClick={()=> handleDelete(product.id)}>Eliminar</button>
                   </td>
