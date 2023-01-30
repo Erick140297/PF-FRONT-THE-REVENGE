@@ -28,8 +28,6 @@ const Detail = (props) => {
   const loadMore = () => {
     setAmount(amount + 3);
   };
-
-// console.log("DETALLEEES", );
   const handleClick = () => {
     const obj = {
       productId: id,

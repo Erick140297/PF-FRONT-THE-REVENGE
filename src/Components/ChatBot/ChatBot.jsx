@@ -93,8 +93,6 @@ const ChatBot1 = () => {
                 options: [
                     { value: "c", label: "Componentes de PC disponibles", trigger: "7A" },
                     { value: "m", label: "Marcas de componentes de PC", trigger: "7B" },
-                    { value: "p", label: "Promociones o descuentos disponibles", trigger: "7C" },
-                    { value: "s", label: "Seguimiento de mi pedido", trigger: "7D" },
                 ],
                 },
                 {
@@ -103,7 +101,7 @@ const ChatBot1 = () => {
                     <div className="text-dark">
                         Haz <button className="btn text-dark" onClick={() => handleClick()}>click aquí</button> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?</div>
                 ),
-                triggernextstep: "respuestaVuelta",
+                trigger: "respuestaVuelta",
                 },
                 {
                 id: "preguntaVuelta",
