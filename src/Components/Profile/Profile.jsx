@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillAppstore } from "react-icons/ai";
+import { AiFillAppstore, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsCart4, BsEnvelope } from "react-icons/bs";
 import "./Profile.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -11,25 +11,24 @@ import styled from "styled-components";
 import { FaUserCog, FaUserEdit, FaUserMinus, FaUsersCog } from "react-icons/fa";
 
 const Profile = () => {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const { logout, user } = useAuth0();
-  const info = useSelector((state)=>state.Admin)
+  const info = useSelector((state) => state.Admin);
 
-  useEffect(()=>{
-    dispatch(getInfoUser(user.email))
-  },[])
+  useEffect(() => {
+    dispatch(getInfoUser(user.email));
+  }, []);
 
-  console.log("infoDb ====>",info);
-  console.log("user=====>",user);
+  console.log("infoDb ====>", info);
+  console.log("user=====>", user);
   return (
     <Container>
       <ContainerOne>
-        <Image style={{ backgroundImage: `url("${user.picture}")`}}/>
+        <Image style={{ backgroundImage: `url("${user.picture}")` }} />
         <Text>Hola {info.name}</Text>
       </ContainerOne>
       <ContainerTwo>
-
         <Text>Tu información:</Text>
         <Info>
           Nombre:
@@ -43,44 +42,44 @@ const Profile = () => {
 
         <Info>
           Dirección:
-          <TextMin>{user.address?(user.address):"Agregar"}</TextMin>
+          <TextMin>{user.address ? user.address : "Agregar"}</TextMin>
         </Info>
 
         <Info>
           Telefóno:
-          <TextMin>{user.phone?(user.phone):"Agregar"}</TextMin>
+          <TextMin>{user.phone ? user.phone : "Agregar"}</TextMin>
         </Info>
       </ContainerTwo>
       <ContainerThree>
-
-        <Link to={'/cart'}>
-        <BtnCart>
-          Carrito
-          <AiOutlineShoppingCart size={30}/>
-        </BtnCart>
-        </Link>
-
-        <Link to={'/profileSettings'}>
-        <BtnCart>
-          Edit Info 
-          <FaUserEdit size={30}/>
-        </BtnCart>
-        </Link>
-        {info.admin?(
-            <Link to={'/dashboard'} style={{color:"black"} }>
+        <Link to={"/cart"}>
           <BtnCart>
-            Administración
-            <FaUsersCog size={30}/>
+            Carrito
+            <AiOutlineShoppingCart size={30} />
           </BtnCart>
-            </Link>
-      ):null}
-        <BtnCart  onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }>
-          Salir
-          <FaUserMinus size={30}/>
-        </BtnCart>
+        </Link>
 
+        <Link to={"/profileSettings"}>
+          <BtnCart>
+            Edit Info
+            <FaUserEdit size={30} />
+          </BtnCart>
+        </Link>
+        {info.admin ? (
+          <Link to={"/dashboard"} style={{ color: "black" }}>
+            <BtnCart>
+              Administración
+              <FaUsersCog size={30} />
+            </BtnCart>
+          </Link>
+        ) : null}
+        <BtnCart
+          onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }
+        >
+          Salir
+          <FaUserMinus size={30} />
+        </BtnCart>
       </ContainerThree>
       {/* 
 
@@ -91,11 +90,6 @@ const Profile = () => {
 
 export default Profile;
 
-
-
-
-
-
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   font-family: "Poppins", sans-serif;
@@ -104,7 +98,7 @@ const Container = styled.div`
   grid-auto-rows: minmax(100px, auto);
   flex-direction: row;
   border-radius: 25px;
-  background-color: #282C34;
+  background-color: #282c34;
   border: solid 5px whitesmoke;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -132,11 +126,11 @@ const ContainerTwo = styled.div`
   justify-content: space-around;
   grid-column: 1 / 3;
   grid-row: 2 / 5;
-  padding-bottom:  20px;
-  `;
+  padding-bottom: 20px;
+`;
 const ContainerThree = styled.div`
-  border-radius: 25px 25px 25px 0px; 
-  
+  border-radius: 25px 25px 25px 0px;
+
   /* background-color: #393838; */
   display: flex;
   flex-direction: column;
@@ -183,21 +177,20 @@ const Info = styled.div`
   margin: 0 5% 0 5%;
   padding: 1% 5% 1% 5%;
   border-radius: 25px;
-  border: solid 3px #01F623;
-  box-shadow: 0px 0px 10px 1px #01F623;
+  border: solid 3px #01f623;
+  box-shadow: 0px 0px 10px 1px #01f623;
   font-size: 20px;
-  justify-content: space-between;`
+  justify-content: space-between;
+`;
 
-
-
-  // const DivBtns = styled.div`
-  //   background-color: purple;
-  //   display: flex;
-  //   width: 100%;
-  //   margin: 10%;
-  //   flex-direction: column;
-  //   justify-content: space-around;
-  // `
+// const DivBtns = styled.div`
+//   background-color: purple;
+//   display: flex;
+//   width: 100%;
+//   margin: 10%;
+//   flex-direction: column;
+//   justify-content: space-around;
+// `
 
 const BtnCart = styled.button`
   background-color: gray;
@@ -206,7 +199,7 @@ const BtnCart = styled.button`
   align-items: center;
   text-decoration: none;
   border: 1px solid transparent;
-  color: black; 
+  color: black;
   border-radius: 10px;
   font-size: 20px;
   font-weight: 1000;
@@ -214,61 +207,4 @@ const BtnCart = styled.button`
   width: 100%;
   height: 60px;
   transition: 0.3s;
-`
-
-/* <h1>
-        {" "}
-        <AiFillAppstore /> my account{" "}
-      </h1>
-      <img src={user.picture}></img>
-      <h1> Bienvenid@ de vuelta, {user.given_name} </h1>
-
-      <h2> Tus Datos: </h2>
-      <p> Nombre: {user.name}</p>
-      <p> e-mail: {user.email}</p>
-
-      <h3> Información personal: </h3>
-      <p> Dirección: {user.address}</p>
-      <p> Fecha de nacimineto: {user.birthdate}</p>
-      <p> Número de telefono: {user.phone_number}</p>
-
-      <Link to={"/user"} style={{ color: "black" }}>
-      <button className="button"> Modificar mi información </button>
-  return (
-    <div className="div">
-      <h1> <AiFillAppstore /> my account</h1>
-      <h1> <img className="img" src={user.picture}></img> {user.given_name} </h1>
-
-      <Link to={"/cart"}>
-      <h2> MI CARRITO <BsCart4/> </h2>
-      </Link>
-
-      <h2> account data: </h2>
-      <p> fullname: {user.name}</p>
-      <p> <BsEnvelope/> e-mail: {user.email}</p>
-      <p> joined on: {user.updated_at}</p>
-
-      <Link to={"/orders"}>
-      <h2> MIS ORDENES </h2>
-      </Link>
-      
-      <Link to={"/profileSettings"}>
-        <button className="button"> edit profile </button>
-      </Link>
-
-      <button
-        className="button"
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-      >
-        Salir
-      </button>
-      {info.admin?(<Link to={'/dashboard'}>
-        <button>Administración</button>
-      </Link>):null} */
-    </div>
-  );
-};
-
-export default Profile;
+`;
