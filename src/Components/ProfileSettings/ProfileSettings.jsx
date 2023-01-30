@@ -1,93 +1,105 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { updateProfile, getInfoUser } from '../../Redux/Actions'
+import { updateProfile, getInfoUser } from "../../Redux/Actions";
+import toast from "react-hot-toast";
 import "./ProfileSettings.css";
 
 const ProfileSettings = () => {
-  const { user } = useAuth0();
-  const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [city, setCity] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
- 
   const info = useSelector((state) => state.Admin);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { user, isAuthenticated } = useAuth0();
+  const [input, setInput] = useState({
+    name: "",
+    city: "",
+    address: "",
+    phone: "",
+  });
 
   useEffect(() => {
-    dispatch(getInfoUser(user.email));
-
-    if (info) {
-      setName(info.name);
-      setCity(info.city);
-      setAddress(info.address);
-      setPhone(info.phone);
+    if (isAuthenticated) {
+      dispatch(getInfoUser(user.email));
+      setInput({
+        name: info.name,
+        city: info.city,
+        address: info.address,
+        phone: info.phone,
+      });
     }
   }, [dispatch]);
 
-  const submitHandler = (e) => {
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.set('name', name);
-    formData.set('city', city);
-    formData.set('address', address);
-    formData.set('phone', phone);
-
-    dispatch(updateProfile(formData));
-    console.log(name, city, address, phone);
-  }
+    dispatch(updateProfile(info._id, input));
+    setInput({
+      name: "",
+      city: "",
+      address: "",
+      phone: "",
+    });
+    dispatch(getInfoUser(user.email));
+    toast.success("Perfil actualizado");
+  };
 
   return (
     <div className="div">
       <h2> personal information: </h2>
-      <form onSubmit={submitHandler}>
-        <div className='form=group'>
+      <form onSubmit={handleSubmit}>
+        <div className="form=group">
           <label> Nombre: </label>
-              <input
-                type='name'
-                id='name_field'
-                className='form-control'
-                name='name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+          <input
+            type="text"
+            id="name_field"
+            className="form-control"
+            name="name"
+            value={input.name}
+            onChange={(e) => handleChange(e)}
+          />
         </div>
-        <div className='form=group'>
-              <label htmlFor='email_field'> Ciudad: </label>
-              <input
-                type='city'
-                id='city'
-                className='form-control'
-                name='city'
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
+        <div className="form=group">
+          <label htmlFor="email_field"> Ciudad: </label>
+          <input
+            type="text"
+            id="city"
+            className="form-control"
+            name="city"
+            value={input.city}
+            onChange={(e) => handleChange(e)}
+          />
         </div>
-        <div className='form=group'>
-              <label htmlFor='addres_field'> Dirección: </label>
-              <input
-                type='addres'
-                id='addres_field'
-                className='form-control'
-                name='addres'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
+        <div className="">
+          <label> Dirección: </label>
+          <input
+            type="text"
+            id="city"
+            className="form-control"
+            name="address"
+            value={input.address}
+            onChange={(e) => handleChange(e)}
+          />
         </div>
-        <div className='form=group'>
-              <label htmlFor='addres_field'> Telefóno: </label>
-              <input
-                type='addres'
-                id='addres_field'
-                className='form-control'
-                name='addres'
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
+        <div className="form=group">
+          <label htmlFor="addres_field"> Telefóno: </label>
+          <input
+            type="text"
+            id="addres_field"
+            className="form-control"
+            name="phone"
+            value={input.phone}
+            onChange={(e) => handleChange(e)}
+          />
         </div>
-        <button type='submit' className='btn update-btn btn-block mt-4 mb-3' onSubmit={submitHandler}> Update </button>
+        <input
+          type="submit"
+          className="btn update-btn btn-block mt-4 mb-3"
+          value={"Actualizar"}
+        />
       </form>
       <Link to={"/profile"}>
         <button className="button"> go back </button>

@@ -192,10 +192,10 @@ export function toggleSideBar() {
   }
 }
 
-export function updateProfile(data) {
+export function updateProfile(id, info) {
   return async function (dispatch) {
     await axios
-      .put(`http://localhost:3001/user/63d5a73222043fe2ae671732`, data)
+      .put(`${URL}/user/${id}`, info)
       .catch((error) => console.log(error.response.data));
     return dispatch({ type: "UPDATE_PROFILE" });
   };
