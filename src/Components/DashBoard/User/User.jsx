@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../../Redux/Actions";
+import { getUser,userDisabled } from "../../../Redux/Actions";
 import "./User.css";
 import {NavLink} from "react-router-dom";
 import PaginadoUsers from "../User/Paginado/Paginado";
@@ -14,7 +14,6 @@ const User = () => {
   }, []);
   
   const users = useSelector((state) => state.usersAdmin);
-  console.log(users)
   
   const usersBanned = users.filter(
     (user) => user.status !== "Autorizado"
@@ -36,7 +35,7 @@ const User = () => {
      await dispatch(getUsersAdmin());
   };
 
-
+  console.log("Useeeeeer", users)
 
   let [currentPage, setCurrentPage] = useState(1);
   let [usersPerPage, setUsersPerPage] = useState(5);
@@ -48,11 +47,10 @@ const User = () => {
     );
     return (
       <div className="containerAll">
-      <NavLink to="/dashboard"><botton>atras</botton></NavLink>
       <div className="productContainer">
         <div className="infoConteiner">
           <div className="infoProduct">
-            <div className="info">
+            <div className="info-card-user">
               <h3>{users.length}</h3>
               <p>Usuarios Activos</p>
             </div>
@@ -64,8 +62,8 @@ const User = () => {
           </div>
 
           <div className="infoProduct">
-            <div className="info">
-              <h3>{usersBanned}</h3>
+            <div className="info-card-user">
+              <h3></h3>
               <p>Usuarios Deshabilitados</p>
             </div>
             <div className="icon">
@@ -77,26 +75,23 @@ const User = () => {
         </div>
         <div className="containerInfoTable">
           <ul className="ul">
-            <div className="headerMove">
-              <li className="headerItem">Nombre</li>
+            <div >
+              <li>Nombre</li>
             </div>
-            <div className="headerMove">
-              <li className="headerItem">Apellidos</li>
+            <div >
+              <li>Apellidos</li>
             </div>
-            <div className="headerMovemail">
-              <li className="headerItem">Correo</li>
+            <div>
+              <li>Correo</li>
             </div>
-            <div className="headerMove">
-              <li className="headerItem">Role</li>
+            <div >
+              <li>Role</li>
             </div>
-            <div className="headerMove">
-              <li className="headerItem">Estatus</li>
+            <div >
+              <li>Estatus</li>
             </div>
-            <div className="headerMove">
-              <li className="headerItem">Creado</li>
-            </div>
-            <div className="headerMove">
-              <li className="headerItem">Acciones</li>
+            <div >
+              <li>Acciones</li>
             </div>
           </ul>
 
@@ -125,26 +120,24 @@ const User = () => {
                 </div>
 
                 <div className="containCardInfo">
-                <p > {item.admin ? "Es administrador" : "No es administrador"}</p>
+                <p > {item.admin ? "Admin" : "Cliente"}</p>
                 </div>
 
                 <div className="containCardInfo">
-                  <p>{}</p>
+                  <p>holaa</p>
                 </div>
 
-                <div className="containCardInfo">
-                  
-                </div>
+               
                 <div className="containCardInfo">
                   {item.status === "Autorizado" ? (
-                    <i
+                    <i 
                       onClick={() => handleDisabled(item.email, item.status)}
-                      className="fa-solid fa-user-slash"
+                      className="actionDisable fa-solid fa-user-slash"
                     ></i>
                   ) : (
                     <i
                       onClick={() => handleDisabled(item.email, item.status)}
-                      className="fa-solid fa-user"
+                      className=" actionNotDisable fa-solid fa-user"
                     ></i>
                   )}
                 </div>

@@ -160,7 +160,7 @@ export function postUserData(email, data) {
 export function userDisabled(id, disabledUser) {
   try {
     return async function (dispatch) {
-      await axios.patch(`${URL}/user/${id}`, disabledUser);
+      await axios.put(`${URL}/user/${id}`, disabledUser);
       dispatch({ type: "USER_DISABLED", payload: id });
     };
   } catch (error) {

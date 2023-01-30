@@ -31,7 +31,6 @@ function AdminOrders() {
 
   return (
     <div className="">
-      <NavLink to="/dashboard"><button className="btnAbout">Volver</button></NavLink>
       
 
     <div className="productContainer">

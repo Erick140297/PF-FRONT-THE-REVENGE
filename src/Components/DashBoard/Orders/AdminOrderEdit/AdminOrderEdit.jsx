@@ -64,7 +64,7 @@ function AdminOrderEdit(props) {
 
   return (
     <div className="containerAll1">
-      <Link to="/admin/orders"><button className="btnAbout">Volver</button></Link>
+      <Link to="/dashboard"><button className="btnAbout">Volver</button></Link>
       {oneOrder.length === 1 &&
         oneOrder.map((item) => (
           <div className="containerAll">

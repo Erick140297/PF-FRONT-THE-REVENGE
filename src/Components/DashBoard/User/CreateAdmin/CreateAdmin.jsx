@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
- import  {postNewAdmin, postUserData}from '../../../../Redux/Actions'
+ import  {postNewAdmin}from '../../../../Redux/Actions'
 import { Link } from "react-router-dom";
 
 //  import {useHistory} from 'react-router-dom'
@@ -46,10 +46,6 @@ function AdminCreateAdmin() {
       [e.target.name]: e.target.value
     }))
   }
-  // {"user":{
-  //   "email": "isaiasgomz@gmail.com",
-  //   "admin":true
-  //   }}
 
   const  handleSubmit =  async(e)=>{
     const input = {
@@ -57,27 +53,21 @@ function AdminCreateAdmin() {
     email:customer.email,
     address:'NO disponible',
     city:'NO disponible',
-    country:'NO disponible',
-    CP:'NO disponible',
-    telephone:'NO disponible',
     }
     e.preventDefault()
     const newAdmin = {user:{
       email: customer.email,
       admin:true,
-      profile: customer.profile
     }}
 
      await dispatch(postNewAdmin(newAdmin))
 
-     await dispatch(postUserData(customer.email,input))
 
 
     setCustomer({
     name: '',
     email: '',
     lastName:'',
-    profile:'',
     })
     history.push('/user')
   }

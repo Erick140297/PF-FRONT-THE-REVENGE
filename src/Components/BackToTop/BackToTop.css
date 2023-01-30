@@ -1,0 +1,16 @@
+.backToTop{
+    bottom: 50px;
+    right: 50px;
+    height: 50px;
+    width: 50px;
+    border-radius:50%;
+    border-color: #7230FF;
+    background:transparent;
+    margin-bottom:25px;
+    font-size:35px;
+}
+
+.backToTop:hover{
+    background: #7230FF;
+}
+

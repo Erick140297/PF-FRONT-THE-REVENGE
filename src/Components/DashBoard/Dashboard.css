@@ -1,0 +1,28 @@
+.nav-dashboard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    width: 100%;
+}
+
+.nav-item{
+    width: 200px;
+    margin-left: 65px;
+    margin-bottom: 25px;
+}
+
+.nav-link{
+color: #7230FF;
+text-align: center;
+font-size: 30px;
+
+}
+
+.nav-link:hover{
+    color: aliceblue;
+    background-color: #7230FF;
+}
+
+.nav-link.active{
+    color: #7230FF;
+    background-color: #7230FF;
+}
