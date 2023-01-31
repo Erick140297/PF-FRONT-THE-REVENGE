@@ -4,9 +4,8 @@ import React, {useState} from "react";
 import { useHistory } from "react-router-dom"
 import "./chatBot.css";
 import { MdChatBubble } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import ComponentesPc from "./ComponentesPc";
-import { getProductsByCategory } from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import {  getProductsByCategory } from "../../Redux/Actions";
 
 
 
@@ -23,15 +22,15 @@ const theme = {
 };
 
 const ChatBot1 = () => {
+    const history = useHistory()
+    const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false);
 
-    const dispatch = useDispatch();
-
-    const history = useHistory()
     const handleClick = () => {
         dispatch(getProductsByCategory('Componentes de pc'));
         history.push("/result")
     };
+
 
   return (
     <>
@@ -98,8 +97,9 @@ const ChatBot1 = () => {
                 {
                 id: "7A",
                 component: (
-                    <div className="text-dark">
-                        Haz <button className="btn text-dark" onClick={() => handleClick()}>click aquí</button> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?</div>
+                    <div className="text-dark bg-body shadow p-3 rounded">
+                        Haz <button className="btn btn-success" onClick={() => handleClick()}>click aquí</button> y podrás observar nuestros componentes de PC disponibles. Necesitas algo más?
+                    </div>
                 ),
                 trigger: "respuestaVuelta",
                 },
@@ -118,51 +118,22 @@ const ChatBot1 = () => {
                 {
                 id: "7B",
                 message:
-                    "I see you like Back-End programming! Which of these frameworks would you like to know more about?",
-                trigger: "seleccionBack",
-                },
-                {
-                id: "7C",
-                message:
-                    "I see you like Back-End programming! Which of these frameworks would you like to know more about?",
-                trigger: "seleccionBack",
-                },
-                {
-                id: "7D",
-                message:
-                    "I see you like Back-End programming! Which of these frameworks would you like to know more about?",
-                trigger: "seleccionBack",
-                },
-                {
-                id: "seleccionFront",
-                options: [
-                    {
-                    value: "Angular_(framework)",
-                    label: "Angular",
-                    trigger: "9",
-                    },
-                    { value: "React", label: "React", trigger: "9" },
-                    { value: "Vue.js", label: "Vue.js", trigger: "9" },
-                ],
-                },
-                {
-                id: "seleccionBack",
-                options: [
-                    { value: "Spring_Framework", label: "Spring", trigger: "9" },
-                    { value: "Laravel", label: "Laravel", trigger: "9" },
-                    { value: ".NET_Core", label: ".Net Core", trigger: "9" },
-                ],
+                    "Veo que quieres saber sobre nuestros componentes de PC, esta es una lista de las marcas disponibles y en stock:",
+                trigger: "9",
                 },
                 {
                 id: "9",
-                component:  (
-                    <div> 
-                        This is an example component 
-                        <a href="/home"></a>
-                    </div>
-                    
+                component: (
+                    <div className="text-dark bg-body shadow p-3 rounded">
+                        <ul class="list-group">
+                            {products.map((e, i) => (
+                            <li className="list-group-item list-group-item-dark" key={i} value={e}>
+                            {e}
+                            </li>
+                            ))}
+                        </ul>   
+                    </div> 
                 ),
-                asMessage: true,
                 trigger: "preguntaVuelta",
                 },
                 {
