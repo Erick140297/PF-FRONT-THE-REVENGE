@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DashBoard = () => {
   return (
     <>
-      <Text>opciones de administrador</Text>
+      <Text>Opciones de Administrador</Text>
       <Container>
         <Buttonn className="animate__animated animate__bounce">
           <Link to="/admin/user">Usuarios</Link>
