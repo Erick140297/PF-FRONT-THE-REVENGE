@@ -1,32 +1,42 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getOrder } from "../../Redux/Actions";
+import { getOrder, setLoader } from "../../Redux/Actions";
 import styled from "styled-components";
+import Loader from "../Loader/Loader";
 
 const OrderDetail = () => {
   const order = useSelector((state) => state.order);
+  const loading = useSelector((state) => state.loader);
   const dispatch = useDispatch();
   const { id } = useParams();
 
-console.log(order)
-
   useEffect(() => {
     dispatch(getOrder(id));
+    return () => {
+      dispatch(setLoader());
+    };
   }, [dispatch]);
 
   return (
-    <div>
-      <h2>Orden de compra</h2>
-      <h3>Productos: </h3>
-      {order.cart.items?.map((el, i) => {
-        return (
-          <Container key={i}>
-            <span>Artículo: {el.product.name}</span>
-          </Container>
-        );
-      })}
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <h2>Orden de compra</h2>
+          <h3>Productos: </h3>
+          {order?.cart.items.map((el, i) => {
+            if (!el || !el.product) return null;
+            return (
+              <Container key={i}>
+                <span>Artículo: {el.product.name}</span>
+              </Container>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
 
