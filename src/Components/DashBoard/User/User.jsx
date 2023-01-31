@@ -47,8 +47,8 @@ const User = () => {
     indexOfLastUser
     );
     return (
-      <div className="containerAll">
-      <NavLink to="/dashboard"><botton>atras</botton></NavLink>
+      <div className="containerAll mt-4">
+      <NavLink to="/dashboard"><botton className='btn btn-dark shadow p-3 rounded'>Atras</botton></NavLink>
       <div className="productContainer">
         <div className="infoConteiner">
           <div className="infoProduct">
@@ -56,7 +56,7 @@ const User = () => {
               <h3>{users.length}</h3>
               <p>Usuarios Activos</p>
             </div>
-            <div className="icon">
+            <div className="icon pe-2">
               <div className="containerCheckv">
                 <i class="fa-solid fa-check"></i>
               </div>
@@ -68,7 +68,7 @@ const User = () => {
               <h3>{usersBanned}</h3>
               <p>Usuarios Deshabilitados</p>
             </div>
-            <div className="icon">
+            <div className="icon pe-2">
               <div className="containerCheckx">
                 <i class="fa-solid fa-x"></i>
               </div>
@@ -77,25 +77,25 @@ const User = () => {
         </div>
         <div className="containerInfoTable">
           <ul className="ul">
-            <div className="headerMove">
+            <div className="headerMove pt-2">
               <li className="headerItem">Nombre</li>
             </div>
-            <div className="headerMove">
+            <div className="headerMove pt-2">
               <li className="headerItem">Apellidos</li>
             </div>
-            <div className="headerMovemail">
+            <div className="headerMovemail pt-2">
               <li className="headerItem">Correo</li>
             </div>
-            <div className="headerMove">
+            <div className="headerMove pt-2">
               <li className="headerItem">Role</li>
             </div>
-            <div className="headerMove">
+            <div className="headerMove pt-2">
               <li className="headerItem">Estatus</li>
             </div>
-            <div className="headerMove">
+            <div className="headerMove pt-2">
               <li className="headerItem">Creado</li>
             </div>
-            <div className="headerMove">
+            <div className="headerMove pt-2 pe-2">
               <li className="headerItem">Acciones</li>
             </div>
           </ul>

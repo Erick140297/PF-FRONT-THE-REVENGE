@@ -58,26 +58,26 @@ const handleSave = async (event) => {
     
     <>
     {
-      product?(<div> 
-        
+      product?(
+      <div className='container-md mt-4 mb-4 shadow p-3 mb-4 bg-dark rounded' style={{height: '70%'}}>   
         <div className='edit-image'>
           <img src={product.image.secure_url} alt=""/>
         </div>
-        
-        <form className="edit-product-form">
-        
+        <form className="edit-product-form ">
       <label>
         Precio:
-        <input type="number" value={productBien.price} name="price" onChange={handleInputChange} />
+        <input className='ms-2 input-group-text' type="number" value={productBien.price} name="price" onChange={handleInputChange} />
       </label>
       <label>
         Stock:
-        <input type="number" value={productBien.stock} name="stock" onChange={handleInputChange} />
+        <input className='ms-2 input-group-text' type="number" value={productBien.stock} name="stock" onChange={handleInputChange} />
       </label>
-      <button onClick={handleSave}>Guardar</button>
-      <button type="button" onClick={() => history.push("/admin/products")}>
-            Volver
-          </button>
+      <div className='text-center mt-4'>
+        <button className='me-2' onClick={handleSave}>Guardar</button>
+        <button type="button" onClick={() => history.push("/admin/products")}>
+              Volver
+        </button>
+      </div>
     </form></div>):
    <h1>HOLA</h1>
 }
