@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
 
 const Detail = (props) => {
   const { user, isAuthenticated } = useAuth0();
@@ -21,13 +22,9 @@ const Detail = (props) => {
   const loading = useSelector((state) => state.loader);
   const userId = useSelector((state) => state.user);
   const allComponents = useSelector((state) => state.allProducts);
-  const [amount, setAmount] = useState(3);
 
 
-  const amountInPage = allComponents.slice(0, amount);
-  const loadMore = () => {
-    setAmount(amount + 3);
-  };
+
   const handleClick = () => {
     const obj = {
       productId: id,
@@ -43,12 +40,6 @@ const Detail = (props) => {
     }
   };
 
-  useEffect(() => {
-    dispatch(getDetail(id));
-    return () => {
-      dispatch(setLoader());
-    };
-  }, [dispatch]);
 
   const promedio = (arr) => {
     let suma = 0;
@@ -60,16 +51,16 @@ const Detail = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getDetail(id));
     dispatch(GetAllProducts())
+    dispatch(getDetail(id));
+    
     return () => {
       dispatch(setLoader());
     };
   }, [dispatch]);
 
-  const relation = allComponents.filter((el)=>el.subCategory===details.subCategory)
-  console.log("componente==>",relation);
-
+ 
+  
   return (
     <>
       {loading ? (
@@ -80,7 +71,7 @@ const Detail = (props) => {
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">
                 <div className="image-container">
-        { details.subCategory==="teclados"?<img
+        { details?.subCategory==="teclados"?<img
                     className="image-detail-teclados"
                     src={details.image.secure_url}
                     alt=""
@@ -154,7 +145,7 @@ const Detail = (props) => {
               </div>
             </div>
           <Relation>
-            {amountInPage?.map((el, index) => {
+            {allComponents?.filter((el)=>el.subCategory === details.subCategory && el.name !== details.name).slice(0,3).map((el, index) => {
               return (
                 <Card
                   name={el.name}
@@ -166,13 +157,7 @@ const Detail = (props) => {
               );
             })}
           </Relation>
-                      <div className="btn boton">
-            <button onClick={() => loadMore()}>
-              {amount <= allComponents.length
-                ? "cargar más..."
-                : "No hay más (⩾﹏⩽)"}
-            </button>
-          </div>
+
           </section>
           <Toaster position="bottom-right" reverseOrder={false} />
         </div>
@@ -189,7 +174,7 @@ const Relation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: thistle;
+  background-color: #212529;
   width: 100%;
   margin: 20px;
   padding: 20px;

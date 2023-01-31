@@ -20,6 +20,8 @@ const Profile = () => {
     dispatch(getInfoUser(user.email));
   }, []);
 
+  console.log("Este es ?",info);
+
   return (
     <Container>
       <ContainerOne>
