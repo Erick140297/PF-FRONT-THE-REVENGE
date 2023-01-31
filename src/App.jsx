@@ -26,6 +26,7 @@ import Decline from "./Components/Decline/Decline";
 import CreateAdmin from "./Components/DashBoard/User/CreateAdmin/CreateAdmin";
 import Orders from "./Components/DashBoard/Orders/Orders";
 import AdminOrderEdit from "./Components/DashBoard/Orders/AdminOrderEdit/AdminOrderEdit";
+import MyOrders from "./Components/MyOrders/MyOrders";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
 
           <Route exact path="/about" component={About} />
           <Route exact path="/admin/createAdmin" component={CreateAdmin} />
+          <Route exact path="/myorders" component={MyOrders} />
         </div>
         <Footer />
       </div>

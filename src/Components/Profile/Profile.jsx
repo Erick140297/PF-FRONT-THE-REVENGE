@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getInfoUser } from "../../Redux/Actions";
 import styled from "styled-components";
-import { FaUserCog, FaUserEdit, FaUserMinus, FaUsersCog } from "react-icons/fa";
+import { FaUserCog, FaUserEdit, FaUserMinus, FaUsersCog, FaClipboardList } from "react-icons/fa";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -65,6 +65,12 @@ const Profile = () => {
           <BtnCart>
             Edit Info
             <FaUserEdit size={30} />
+          </BtnCart>
+        </Link>
+        <Link to={"/myorders"}>
+          <BtnCart>
+              Mis Ordenes
+            <FaClipboardList size={30} />
           </BtnCart>
         </Link>
         {info.admin ? (
