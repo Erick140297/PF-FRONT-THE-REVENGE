@@ -9,7 +9,7 @@ import filter from "./filter";
 
 const Result = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productsFiltrados);
+  const products = useSelector((state) => state.productsFiltrados)
   const [filters, setFilters] = useState({
     brand: "",
     price: "",
