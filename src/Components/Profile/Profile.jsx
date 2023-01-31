@@ -67,7 +67,7 @@ const Profile = () => {
             <FaUserEdit size={30} />
           </BtnCart>
         </Link>
-        <Link to={"/myorders"}>
+        <Link to={`/myorders/${info._id}`}>
           <BtnCart>
               Mis Ordenes
             <FaClipboardList size={30} />

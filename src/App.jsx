@@ -12,9 +12,9 @@ import React, { useState, useEffect } from "react";
 import RingLoader from "react-spinners/RingLoader";
 import Cart from "./Components/Cart/Cart";
 import Detail from "./Components/Detail/Detail";
-import DashBoard from "./Components/DashBoard/DashBoard"
-import User from "./Components/DashBoard/User/User"
-import Product from "./Components/DashBoard/Products/Products"
+import DashBoard from "./Components/DashBoard/DashBoard";
+import User from "./Components/DashBoard/User/User";
+import Product from "./Components/DashBoard/Products/Products";
 
 import EditProductForm from "./Components/DashBoard/Products/EditProductForm/EditProductForm";
 
@@ -27,13 +27,14 @@ import CreateAdmin from "./Components/DashBoard/User/CreateAdmin/CreateAdmin";
 import Orders from "./Components/DashBoard/Orders/Orders";
 import AdminOrderEdit from "./Components/DashBoard/Orders/AdminOrderEdit/AdminOrderEdit";
 import MyOrders from "./Components/MyOrders/MyOrders";
+import OrderDetail from "./Components/MyOrders/OrderDetail";
 
 function App() {
   return (
     <div className="App">
       <div>
         <NavBar />
-        <Header/>       
+        <Header />
         <div className="otracosa">
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/result" component={Result} />
@@ -42,7 +43,7 @@ function App() {
           <Route exact path="/profileSettings" component={ProfileSettings} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
-          <Route exact path="/dashboard" component={DashBoard}/>
+          <Route exact path="/dashboard" component={DashBoard} />
           <Route exact path="/admin/user" component={User} />
           <Route exact path="/admin/orders" component={Orders} />
           <Route exact path="/order/update/:id" component={AdminOrderEdit} />
@@ -50,12 +51,15 @@ function App() {
           <Route exact path="/admin/products/form" component={NewProductForm} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/decline" component={Decline} />
-
-          <Route exact path="/admin/products/edit/:id" component={EditProductForm} />
-
+          <Route
+            exact
+            path="/admin/products/edit/:id"
+            component={EditProductForm}
+          />
           <Route exact path="/about" component={About} />
           <Route exact path="/admin/createAdmin" component={CreateAdmin} />
-          <Route exact path="/myorders" component={MyOrders} />
+          <Route exact path="/myorders/:userId" component={MyOrders} />
+          <Route exact path="/order/detail/:id" component={OrderDetail} />
         </div>
         <Footer />
       </div>

@@ -9,11 +9,10 @@ const initialState = {
   idCart: "",
   personalData: {},
   AllOrders: [],
-
-
+  myOrders: [],
+  order: {},
   sideBar: false,
-  Admin:[]
-
+  Admin: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -97,24 +96,35 @@ function rootReducer(state = initialState, action) {
     case "GET_ALL_ORDERS":
       return {
         ...state,
-        AllOrders: action.payload};
+        AllOrders: action.payload,
+      };
 
-      case "TOGGLE_SIDEBAR":
+    case "TOGGLE_SIDEBAR":
       return {
         ...state,
         sideBar: state.sideBar === false ? true : false,
-
       };
     case "UPDATE_PROFILE":
       return {
         ...state,
         personalData: action.payload,
       };
-      case "GET_INFO_USER":
-        return {
-          ...state,
-          Admin: action.payload
-        }
+    case "GET_INFO_USER":
+      return {
+        ...state,
+        Admin: action.payload,
+      };
+    case "GET_MY_ORDERS":
+      return {
+        ...state,
+        myOrders: action.payload,
+      };
+
+    case "GET_ORDER":
+      return {
+        ...state,
+        order: action.payload,
+      };
     default:
       return state;
   }

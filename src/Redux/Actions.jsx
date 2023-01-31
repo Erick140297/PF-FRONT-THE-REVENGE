@@ -6,7 +6,7 @@ const URL = `https://pf-back-the-revenge-production.up.railway.app`;
 
 export function GetAllProducts() {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.get(`${URL}/products`);
       dispatch({
         type: "GET_ALL_PRODUCTS",
@@ -20,7 +20,7 @@ export function GetAllProducts() {
 
 export function getProductsByName(name) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.get(`${URL}/products?name=${name}`);
       dispatch({
         type: "GET_PRODUCTS_BY_NAME",
@@ -34,7 +34,7 @@ export function getProductsByName(name) {
 
 export function getProductsBySubCategory(subCategory) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.get(
         `${URL}/products?subcategory=${subCategory}`
       );
@@ -56,7 +56,7 @@ export function setLoader() {
 
 export function postUser(user) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.post(`${URL}/user`, user);
       dispatch({
         type: "POST_USER",
@@ -70,7 +70,7 @@ export function postUser(user) {
 
 export function addToCart(obj) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.post(`${URL}/shoppingCart`, obj);
       dispatch({
         type: "ID_CART",
@@ -84,7 +84,7 @@ export function addToCart(obj) {
 
 export function getCart(email) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.get(`${URL}/shoppingCart/${email}`);
       dispatch({
         type: "GET_CART",
@@ -97,7 +97,7 @@ export function getCart(email) {
 }
 
 export function getDetail(_id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
       var json = await axios.get(`${URL}/product/${_id}`);
       return dispatch({
@@ -111,7 +111,7 @@ export function getDetail(_id) {
 }
 
 export function getProductsByCategory(category) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
       const { data } = await axios.get(`${URL}/products?category=${category}`);
       console.log(data);
@@ -126,7 +126,7 @@ export function getProductsByCategory(category) {
 }
 
 export function cleanResult() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     return dispatch({
       type: "CLEAN_RESULT",
     });
@@ -135,7 +135,7 @@ export function cleanResult() {
 
 export function getUser() {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       const response = await axios.get(`${URL}/users`);
       dispatch({
         type: "GET_ALL_USER",
@@ -147,9 +147,8 @@ export function getUser() {
   }
 }
 
-
 export function postUserData(email, data) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     const newUser = await axios
       .post(`/user/${email}/personalData`, data)
       .catch((error) => console.log(error.response.data));
@@ -159,7 +158,7 @@ export function postUserData(email, data) {
 
 export function userDisabled(id, disabledUser) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       await axios.patch(`${URL}/user/${id}`, disabledUser);
       dispatch({ type: "USER_DISABLED", payload: id });
     };
@@ -169,7 +168,7 @@ export function userDisabled(id, disabledUser) {
 }
 
 export function postNewAdmin(data) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     await axios
       .post(`/user`, data)
       .catch((error) => console.log(error.response.data));
@@ -178,22 +177,22 @@ export function postNewAdmin(data) {
 }
 
 export function getAllOrders() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     const allOrders = await axios.get(`${URL}/order`);
     return dispatch({ type: "GET_ALL_ORDERS", payload: allOrders.data });
   };
 }
 
 export function toggleSideBar() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     return dispatch({
       type: "TOGGLE_SIDEBAR",
-    })
-  }
+    });
+  };
 }
 
 export function updateProfile(id, info) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     await axios
       .put(`${URL}/user/${id}`, info)
       .catch((error) => console.log(error.response.data));
@@ -203,8 +202,8 @@ export function updateProfile(id, info) {
 
 export function getInfoUser(email) {
   try {
-    return async function (dispatch) {
-      const {data} = await axios.get(`${URL}/users?email=${email}`)
+    return async function(dispatch) {
+      const { data } = await axios.get(`${URL}/users?email=${email}`);
       dispatch({
         type: "GET_INFO_USER",
         payload: data,
@@ -215,3 +214,30 @@ export function getInfoUser(email) {
   }
 }
 
+export function getMyOrders(userId) {
+  try {
+    return async function(dispatch) {
+      const { data } = await axios.get(`${URL}/order?userId=${userId}`);
+      dispatch({
+        type: "GET_MY_ORDERS",
+        payload: data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function getOrder(id) {
+  try {
+    return async function(dispatch) {
+      const { data } = await axios.get(`${URL}/order/${id}`);
+      dispatch({
+        type: "GET_ORDER",
+        payload: data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}

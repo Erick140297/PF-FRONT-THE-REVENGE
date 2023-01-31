@@ -1,28 +1,28 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getMyOrders } from "../../Redux/Actions";
+import { getOrder } from "../../Redux/Actions";
 import styled from "styled-components";
 
-const MyOrders = () => {
-  const myOrders = useSelector((state) => state.myOrders);
+const OrderDetail = () => {
+  const order = useSelector((state) => state.order);
   const dispatch = useDispatch();
-  const { userId } = useParams();
+  const { id } = useParams();
+
+console.log(order)
 
   useEffect(() => {
-    dispatch(getMyOrders(userId));
+    dispatch(getOrder(id));
   }, [dispatch]);
 
   return (
     <div>
-      {myOrders?.map((el, i) => {
+      <h2>Orden de compra</h2>
+      <h3>Productos: </h3>
+      {order.cart.items?.map((el, i) => {
         return (
           <Container key={i}>
-            <span>Orden: {i + 1}</span>
-            <span>Estado: {el.status}</span>
-            <span>Fecha: {el.date}</span>
-            <span>Total: $ {el.total}</span>
-            <Link to={`/order/detail/${el._id}`}>Más información</Link>
+            <span>Artículo: {el.product.name}</span>
           </Container>
         );
       })}
@@ -30,7 +30,7 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default OrderDetail;
 
 const Container = styled.div`
   display: flex;
