@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { updateProfile, getInfoUser } from "../../Redux/Actions";
+import { BiRename } from "react-icons/bi";
+import { RiDirectionFill } from "react-icons/ri";
+import { FiPhone } from "react-icons/fi";
+import { FaCity } from "react-icons/fa";
 import toast from "react-hot-toast";
 import "./ProfileSettings.css";
+import styled from "styled-components";
 
 const ProfileSettings = () => {
   const info = useSelector((state) => state.Admin);
@@ -47,65 +52,211 @@ const ProfileSettings = () => {
     toast.success("Perfil actualizado");
   };
 
+  let capitalesDeAmerica = [
+    "Mexico City",
+    "Washington, D.C.",
+    "Bogotá",
+    "Lima",
+    "Ottawa",
+    "Havana",
+    "San José",
+    "Tegucigalpa",
+    "Managua",
+    "Panamá City",
+    "Asunción",
+    "Quito",
+    "Georgetown",
+    "San Salvador",
+    "Roseau",
+    "Bridgetown",
+    "Castries",
+    "Kingston",
+    "Port-au-Prince",
+    "Santo Domingo",
+    "Nassau",
+    "Basseterre",
+    "Saint John's",
+    "Belmopan",
+    "San Juan",
+    "Caracas",
+  ];
+  console.log(input);
+
   return (
-    <div className="div">
-      <h2> personal information: </h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form=group">
-          <label> Nombre: </label>
-          <input
-            type="text"
-            id="name_field"
-            className="form-control"
-            name="name"
-            value={input.name}
-            onChange={(e) => handleChange(e)}
-          />
+    <Container>
+      <ContainerAux>
+        <h3>Actualizar</h3>
+          <form onSubmit={handleSubmit}>
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              type="text"
+              required
+              name="name"
+              value={input.name}
+              onChange={(e) => handleChange(e)}
+            />
+            <label className="lbl-nombre">
+              <span className="text-nomb">Nombre</span>
+            </label>
+          </form>
+          <BiRename size={25} color={"white"} />
         </div>
-        <div className="form=group">
-          <label htmlFor="email_field"> Ciudad: </label>
-          <input
-            type="text"
-            id="city"
-            className="form-control"
-            name="city"
-            value={input.city}
-            onChange={(e) => handleChange(e)}
-          />
+
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              type="text"
+              required
+              name="address"
+              value={input.address}
+              onChange={(e) => handleChange(e)}
+            />
+            <label className="lbl-nombre">
+              <span className="text-nomb">Dirección</span>
+            </label>
+          </form>
+          <RiDirectionFill size={25} color={"white"} />
         </div>
-        <div className="">
-          <label> Dirección: </label>
-          <input
-            type="text"
-            id="city"
-            className="form-control"
-            name="address"
-            value={input.address}
-            onChange={(e) => handleChange(e)}
-          />
+
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              type="text"
+              required
+              id="addres_field"
+              name="phone"
+              value={input.phone}
+              onChange={(e) => handleChange(e)}
+            />
+            <label className="lbl-nombre">
+              <span className="text-nomb">Teléfono</span>
+            </label>
+          </form>
+          <FiPhone size={25} color={"white"} />
         </div>
-        <div className="form=group">
-          <label htmlFor="addres_field"> Telefóno: </label>
-          <input
-            type="text"
-            id="addres_field"
-            className="form-control"
-            name="phone"
-            value={input.phone}
-            onChange={(e) => handleChange(e)}
-          />
+
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              list="ciudades"
+              required
+              name="city"
+              value={input.city}
+              onChange={(e) => handleChange(e)}
+            />
+            <label className="lbl-nombre">
+              <span className="text-nomb">Ciudad</span>
+              <datalist id="ciudades">
+                {capitalesDeAmerica.map((el) => (
+                  <option key={el} className="opt-cid">
+                    {el}
+                  </option>
+                ))}
+              </datalist>
+            </label>
+          </form>
+          <FaCity size={25} color={"white"} />
         </div>
-        <input
-          type="submit"
-          className="btn update-btn btn-block mt-4 mb-3"
-          value={"Actualizar"}
-        />
-      </form>
-      <Link to={"/profile"}>
-        <button className="button"> go back </button>
-      </Link>
-    </div>
+        <div className="containerAux">
+        <button className="boton-neon" type="submit" value={"Actualizar"}>
+          <i className="fas fa-exclamation-triangle"></i>
+          <span>actualizar</span>
+        </button>
+        </div>
+        </form>
+      </ContainerAux>
+    {/* </Container> */}
+
+     {/*
+     
+=======================================================================================================     
+     <div className="div">
+       <h2> personal information: </h2>
+       <form onSubmit={handleSubmit}>
+         <div className="form=group">
+           <label> Nombre: </label>
+           <input
+             type="text"
+             id="name_field"
+             className="form-control"
+             name="name"
+             value={input.name}
+             onChange={(e) => handleChange(e)}
+           />
+         </div>
+         <div className="form=group">
+           <label htmlFor="email_field"> Ciudad: </label>
+           <input
+             type="text"
+             className="form-control"
+             id="city"
+     name="city"
+     value={input.city}
+     onChange={(e) => handleChange(e)}
+           />
+         </div>
+         <div className="">
+           <label> Dirección: </label>
+           <input
+             type="text"
+             className="form-control"
+             id="city"
+     name="address"
+     value={input.address}
+     onChange={(e) => handleChange(e)}
+           />
+         </div>
+         <div className="form=group">
+           <label htmlFor="addres_field"> Telefóno: </label>
+           <input
+             type="text"
+             className="form-control"
+     id="addres_field"
+     name="phone"
+     value={input.phone}
+     onChange={(e) => handleChange(e)}
+           />
+         </div>
+         <input
+           className="btn update-btn btn-block mt-4 mb-3"
+     type="submit"
+     value={"Actualizar"}
+         />
+       </form>
+       <Link to={"/profile"}>
+         <button className="button"> go back </button>
+       </Link>
+     </div> */}
+    </Container>
+
   );
 };
 
 export default ProfileSettings;
+
+const Container = styled.div`
+  background-color: #212529;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 20px 20px 40px 50px;
+  margin: 1%;
+  width: 100%;
+`;
+const ContainerAux = styled.div`
+  background-color: #30363b;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 25px 30px 10px black;
+  gap: 1em;
+  padding: 50px;
+  height: auto;
+  width: auto;
+`;
