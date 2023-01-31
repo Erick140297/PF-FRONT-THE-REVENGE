@@ -44,9 +44,13 @@ const Detail = (props) => {
   };
 
   useEffect(() => {
+    dispatch(GetAllProducts());
     dispatch(getDetail(id));
+    
+    
     return () => {
       dispatch(setLoader());
+      
     };
   }, [dispatch]);
 
@@ -60,15 +64,19 @@ const Detail = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getDetail(id));
     dispatch(GetAllProducts())
+    dispatch(getDetail(id));
+    
     return () => {
       dispatch(setLoader());
     };
   }, [dispatch]);
 
-  const relation = allComponents.filter((el)=>el.subCategory===details.subCategory)
-  console.log("componente==>",relation);
+  setTimeout(() => {
+    const relation = allComponents.filter((el)=>el.subCategory===details.subCategory)
+  }, 1500);
+  
+  
 
   return (
     <>
@@ -80,7 +88,7 @@ const Detail = (props) => {
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">
                 <div className="image-container">
-        { details.subCategory==="teclados"?<img
+        { details?.subCategory==="teclados"?<img
                     className="image-detail-teclados"
                     src={details.image.secure_url}
                     alt=""
