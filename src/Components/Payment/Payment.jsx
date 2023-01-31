@@ -9,14 +9,14 @@ const Payment = () => {
 
   const emptyCart = async () => {
     console.log(cartId)
-    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/", {
+    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
       data: { cartId },
     });
   };
 
   const changeOrderStatus = async () => {
     console.log(orderId)
-     await axios.put(`https://pf-back-the-revenge-production.up.railway.app/${orderId}`, {
+     await axios.put(`https://pf-back-the-revenge-production.up.railway.app/order/${orderId}`, {
       status: "pagado",
     });
   };
