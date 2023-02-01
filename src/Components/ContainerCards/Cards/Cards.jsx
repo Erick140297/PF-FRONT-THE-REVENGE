@@ -5,16 +5,15 @@ import { getProductsByCategory } from "../../../Redux/Actions";
 import { useHistory } from "react-router-dom"
 
 export default function Cards({ category, image }) {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const history = useHistory()
 
   const handleClick = (category) => {
-    console.log(category);
     dispatch(getProductsByCategory(category));
     history.push("/result")
   };
-  console.log(category);
+  
   return (
     <div className="Cards" onClick={() => handleClick(category)}>
       <div className="container-3">
