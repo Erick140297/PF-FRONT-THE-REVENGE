@@ -20,8 +20,6 @@ const Profile = () => {
     dispatch(getInfoUser(user.email));
   }, []);
 
-  console.log("Este es ?",info);
-
   return (
     <Container>
       <ContainerOne>
@@ -92,9 +90,6 @@ const Profile = () => {
           <FaUserMinus size={30} />
         </BtnCart>
       </ContainerThree>
-      {/* 
-
-      */}
     </Container>
   );
 };
@@ -118,8 +113,6 @@ const Container = styled.div`
 `;
 const ContainerOne = styled.div`
   border-radius: 25px;
-
-  /* background-color: #33e32a; */
   align-items: center;
   display: flex;
   grid-column: 1 / 3;
@@ -131,7 +124,6 @@ const ContainerOne = styled.div`
 `;
 const ContainerTwo = styled.div`
   border-radius: 25px 0px 0px 25px;
-  /* background-color: #393838; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -141,8 +133,6 @@ const ContainerTwo = styled.div`
 `;
 const ContainerThree = styled.div`
   border-radius: 25px 25px 25px 0px;
-
-  /* background-color: #393838; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -162,7 +152,6 @@ const Image = styled.img`
 `;
 
 const Text = styled.div`
-  /* background-color: whitesmoke; */
   font-size: 40px;
   font-weight: 700;
   color: whitesmoke;
@@ -172,9 +161,7 @@ const Text = styled.div`
 `;
 
 const TextMin = styled.div`
-  /* background-color: whitesmoke; */
   font-size: 20px;
-
   display: flex;
   justify-content: start;
   align-items: center;
@@ -193,15 +180,6 @@ const Info = styled.div`
   font-size: 20px;
   justify-content: space-between;
 `;
-
-// const DivBtns = styled.div`
-//   background-color: purple;
-//   display: flex;
-//   width: 100%;
-//   margin: 10%;
-//   flex-direction: column;
-//   justify-content: space-around;
-// `
 
 const BtnCart = styled.button`
   background-color: gray;
