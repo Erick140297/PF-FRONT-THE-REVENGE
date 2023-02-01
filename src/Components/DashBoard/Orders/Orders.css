@@ -12,13 +12,72 @@
 }
 .containCardInfo{
     height: 70px;
-    width: 30%;    
+    width: 23%;    
     
     border-bottom: 1px solid rgb(58, 58, 58);
 
 }
+.containerc{
+    text-transform: capitalize;
+}
+
+.containerc{
+    background-color: #c7c7c704;
+    width: 99%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.containercAgotado{
+    background-color: #77aeff;
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containercDiscount{
+    background-color: #0af7f3;
+    width:23%;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.containercLow{
+    background-color: #c29f01a1;
+    width:23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containercDisable{
+    background-color: #cf0df698;
+    width:23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.containercPendiente{
+    background-color: #cf0df698;
+    width:23%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containercPagado{
+    background-color: #00ff5998;
+    width:23%;
+    display: flex;
+    justify-content: center;
+    color: black;
+    align-items: center;
 
 
+}
 /* 
 .containerAll{
     width: 100%;
@@ -47,7 +106,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    width: 300px;
+    width: 230px;
     height: 150px;
     border-radius: 5px;
     background-color: #fff;
@@ -71,8 +130,8 @@
 
 .containerCheckv{
     border: 2px solid black;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -86,8 +145,8 @@
 
 .containerCheckx{
     border: 2px solid black;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -100,8 +159,8 @@
 
 .containerCheckarrow{
     border: 2px solid black;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -218,7 +277,7 @@
     background-color: #78BEEC;
     border-radius: 2px;
     width: 60px;
-    height: 40px;
+    height:23px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -283,7 +342,7 @@
     justify-content: space-around;
     margin-bottom: 15px;
     margin-top: 20px;
-    padding: 30px;
+    padding: 23px;
 }
 
 .infoProduct{
@@ -291,7 +350,7 @@
     justify-content: space-around;
     flex-direction: row;
     width: 250px;
-    height: 130px;
+    height: 123px;
     border-radius: 5px;
     border: none;
     border-bottom: 1px solid gray;
@@ -324,8 +383,8 @@
 
 .containerCheckAll{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -339,8 +398,8 @@
 
 .containerCheckv{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -354,8 +413,8 @@
 
 .containerCheckD{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -370,8 +429,8 @@
 
 .containerCheckx{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -384,8 +443,8 @@
 
 .containerCheckEx{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -399,8 +458,8 @@
 
 .containerCheckarrow{
     border:none;
-    width: 40px;
-    height: 40px;
+    width:23px;
+    height:23px;
     border-radius: 100px;
     display: flex;
     justify-content: center;
@@ -501,40 +560,7 @@
 
 
 
-.containerc{
-    background-color: #c7c7c704;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
 
-.containercAgotado{
-    background-color: #77aeff;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.containercDiscount{
-    background-color: #77ffa0;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.containercLow{
-    background-color: #ffe677a1;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.containercDisable{
-    background-color: #ff777798;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
 
 
 
@@ -568,7 +594,7 @@
 .containerIcon{
 
     border-radius: 5px;
-    margin-right: 40px;
+    margin-right:23px;
     margin-top: 20px;
     margin-bottom: 20px;
     border: none;

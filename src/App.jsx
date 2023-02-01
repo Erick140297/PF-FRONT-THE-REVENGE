@@ -28,7 +28,7 @@ import Orders from "./Components/DashBoard/Orders/Orders";
 import AdminOrderEdit from "./Components/DashBoard/Orders/AdminOrderEdit/AdminOrderEdit";
 import MyOrders from "./Components/MyOrders/MyOrders";
 import OrderDetail from "./Components/MyOrders/OrderDetail";
-
+import Dashboard from "./Components/DashBoard/AdminDashboard/Dashboard"
 function App() {
   return (
     <div className="App">
@@ -60,6 +60,7 @@ function App() {
           <Route exact path="/admin/createAdmin" component={CreateAdmin} />
           <Route exact path="/myorders/:userId" component={MyOrders} />
           <Route exact path="/order/detail/:id" component={OrderDetail} />
+          <Route exact path="/admin/dashboard" component={Dashboard} />
         </div>
         <Footer />
       </div>

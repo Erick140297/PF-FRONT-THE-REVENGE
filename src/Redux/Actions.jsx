@@ -156,14 +156,21 @@ export function postUserData(email, data) {
   };
 }
 
-export function userDisabled(id, disabledUser) {
+export function userDisabled(id, data) {
   try {
-    return async function(dispatch) {
-      await axios.patch(`${URL}/user/${id}`, disabledUser);
-      dispatch({ type: "USER_DISABLED", payload: id });
+    return async function (dispatch) {
+      await axios.put(`${URL}/user/${id}`, data);
+      dispatch({ type: "USER_DISABLED", payload: data });
     };
   } catch (error) {
     console.log(error);
+  }
+}
+export function updateorder(id, data) {
+  return async function (dispatch) {
+      await axios.put(`${URL}/order/${id}`,data)
+     /*  .catch(error => console.log(error.response.data)) */
+      return dispatch({ type: 'UPDATE_ORDER'})
   }
 }
 
@@ -241,3 +248,11 @@ export function getOrder(id) {
     console.log(error);
   }
 }
+
+
+// export function getAllProductSold(){
+//   return async function (dispatch) {
+//       const productSold = await axios.get(`/admin/allOrders`);
+//       return dispatch({ type:'PRODUCT_SOLD', payload: productSold.data })
+//   }
+// }
