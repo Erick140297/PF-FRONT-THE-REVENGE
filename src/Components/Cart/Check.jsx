@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { updateProfile, getInfoUser } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import toast from "react-hot-toast";
 import axios from "axios";
 
 const Check = () => {
@@ -12,7 +13,7 @@ const Check = () => {
     address: ""
   });
   const cart = useSelector((state) => state.cart);
-
+  
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getInfoUser(user.email));
@@ -21,7 +22,7 @@ const Check = () => {
       });
     }
   }, [dispatch]);
-
+  
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -74,15 +75,15 @@ const Check = () => {
           <form onSubmit={handleSubmit} className="form">
             <input
               type="text"
-              required
               name="address"
-              value={info.address}
-              onChange={(e) => handleChange(e)}
+              placeholder={info.address}
+              onChange={handleChange}
             />
             <label className="lbl-nombre">
               <span className="text-nomb">Dirección</span>
             </label>
           </form>
+          <button onClick={handleSubmit}>actualizar</button>
         </div>
 
       <button onClick={()=>handlePayment(total(cart))}>Pagar</button>
