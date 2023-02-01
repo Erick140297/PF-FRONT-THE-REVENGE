@@ -157,7 +157,7 @@ const Detail = (props) => {
           <Toaster position="bottom-right" reverseOrder={false} />
         </div>
       ) : (
-        <p>No se pudo cargar el detalle</p>
+        <Loader/>
       )}
     </>
   );
