@@ -81,7 +81,6 @@ const ProfileSettings = () => {
     "San Juan",
     "Caracas",
   ];
-  console.log(input);
 
   return (
     <Container>
@@ -167,70 +166,7 @@ const ProfileSettings = () => {
         </div>
         </form>
       </ContainerAux>
-    {/* </Container> */}
-
-     {/*
-     
-=======================================================================================================     
-     <div className="div">
-       <h2> personal information: </h2>
-       <form onSubmit={handleSubmit}>
-         <div className="form=group">
-           <label> Nombre: </label>
-           <input
-             type="text"
-             id="name_field"
-             className="form-control"
-             name="name"
-             value={input.name}
-             onChange={(e) => handleChange(e)}
-           />
-         </div>
-         <div className="form=group">
-           <label htmlFor="email_field"> Ciudad: </label>
-           <input
-             type="text"
-             className="form-control"
-             id="city"
-     name="city"
-     value={input.city}
-     onChange={(e) => handleChange(e)}
-           />
-         </div>
-         <div className="">
-           <label> Dirección: </label>
-           <input
-             type="text"
-             className="form-control"
-             id="city"
-     name="address"
-     value={input.address}
-     onChange={(e) => handleChange(e)}
-           />
-         </div>
-         <div className="form=group">
-           <label htmlFor="addres_field"> Telefóno: </label>
-           <input
-             type="text"
-             className="form-control"
-     id="addres_field"
-     name="phone"
-     value={input.phone}
-     onChange={(e) => handleChange(e)}
-           />
-         </div>
-         <input
-           className="btn update-btn btn-block mt-4 mb-3"
-     type="submit"
-     value={"Actualizar"}
-         />
-       </form>
-       <Link to={"/profile"}>
-         <button className="button"> go back </button>
-       </Link>
-     </div> */}
     </Container>
-
   );
 };
 
