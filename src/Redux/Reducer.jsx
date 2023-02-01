@@ -13,6 +13,7 @@ const initialState = {
   order: {},
   sideBar: false,
   Admin: [],
+  detail:{}
 };
 
 function rootReducer(state = initialState, action) {
@@ -61,6 +62,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case "GET_DETAILS":
+      // console.log(state, detail);
       return {
         ...state,
         loader: false,

@@ -65,7 +65,7 @@ const Detail = (props) => {
     <>
       {loading ? (
         <Loader />
-      ) : details ? (
+      ) : Object.keys(details).length>1  ? (
         <div className="detail-box mb-4">
           <section className="container sproduct my-5 pt-5">
             <div className="row">
@@ -73,12 +73,12 @@ const Detail = (props) => {
                 <div className="image-container">
         { details?.subCategory==="teclados"?<img
                     className="image-detail-teclados"
-                    src={details.image.secure_url}
+                    src={details.image?.secure_url}
                     alt=""
                   />:
                   <img
                     className="image-detail"
-                    src={details.image.secure_url}
+                    src={details.image?.secure_url}
                     alt=""
                   />
       }
@@ -86,22 +86,22 @@ const Detail = (props) => {
               </div>
               <div className="col-lg-6 col-md-12 col-12">
                 <div className="name-brand-price">
-                  <h2>{details.name}</h2>
+                  <h2>{details?.name}</h2>
                   <h3>
                     Marca:{" "}
-                    {details.brand.charAt(0).toUpperCase() +
-                      details.brand.slice(1)}
+                    {details?.brand.charAt(0).toUpperCase() +
+                      details?.brand.slice(1)}
                   </h3>
-                  <h2>$ {details.price}</h2>
+                  <h2>$ {details?.price}</h2>
                 </div>
                 <br />
                 <div className="stock">
-                  {details.stock > 10 ? (
+                  {details?.stock > 10 ? (
                     <h3 className="stock-disponible">
-                      Stock disponible ({details.stock})
+                      Stock disponible ({details?.stock})
                     </h3>
                   ) : (
-                    <h3>Poco stock disponible ({details.stock})</h3>
+                    <h3>Poco stock disponible ({details?.stock})</h3>
                   )}
                 </div>
                 <br />
@@ -116,14 +116,14 @@ const Detail = (props) => {
                 </button>
                 <br />
                 <div className="rating">
-                  {details.rating.length > 1 ? (
+                  {details?.rating.length > 1 ? (
                     <div>
                       <h4 className="h-rating">Rating del producto</h4>
                       <Rating
                         name="half-rating-read"
                         defaultValue={
-                          details.rating ? (
-                            promedio(details.rating)
+                          details?.rating ? (
+                            promedio(details?.rating)
                           ) : (
                             <h3>Sin rating</h3>
                           )
@@ -139,13 +139,13 @@ const Detail = (props) => {
                 <div className="product-description-container">
                   <h3 className="text-detai mt-5 mb-5">
                     Descripción:
-                    <p className="p-detail">{details.description}</p>{" "}
+                    <p className="p-detail">{details?.description}</p>{" "}
                   </h3>
                 </div>
               </div>
             </div>
           <Relation>
-            {allComponents?.filter((el)=>el.subCategory === details.subCategory && el.name !== details.name).slice(0,3).map((el, index) => {
+            {allComponents?.filter((el)=>el.subCategory === details?.subCategory && el.name !== details?.name).slice(0,3).map((el, index) => {
               return (
                 <Card
                   name={el.name}

@@ -10,7 +10,7 @@ const Card = ({ image, name, price, id }) => {
   const getNewDetail = () => {
     console.log("bton");
     history.push(`/detail/${id}`)
-    location.reload()
+    
   }
 
 

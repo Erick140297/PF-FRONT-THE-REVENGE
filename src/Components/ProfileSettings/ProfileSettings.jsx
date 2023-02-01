@@ -50,6 +50,7 @@ const ProfileSettings = () => {
     });
     dispatch(getInfoUser(user.email));
     toast.success("Perfil actualizado");
+    history.push("/profile")
   };
 
   let capitalesDeAmerica = [

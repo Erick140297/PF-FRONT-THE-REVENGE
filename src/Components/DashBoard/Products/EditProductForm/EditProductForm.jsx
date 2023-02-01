@@ -58,7 +58,7 @@ const handleSave = async (event) => {
     
     <>
     {
-      product?(
+      Object.keys(product).length ?(
       <div className='container-md mt-4 mb-4 shadow p-3 mb-4 bg-dark rounded' style={{height: '70%'}}>   
         <div className='edit-image'>
           <img src={product.image.secure_url} alt=""/>
