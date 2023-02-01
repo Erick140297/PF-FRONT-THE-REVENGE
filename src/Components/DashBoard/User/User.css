@@ -15,7 +15,8 @@
 }
 .p-user{
     text-align: center;
-    width: auto;
+    width: 200px;
+    font-size: 12px;
 }
 
 .containerCreated{
@@ -188,7 +189,7 @@
 }
 
 .actionDisable{
-    color: #000000;
+    color: #02be3e;
     font-size: 25px;
     
 }
@@ -199,10 +200,10 @@
 
 .actionNotDisable{
     font-size: 20px;
-    color: rgb(0, 0, 0);
+    color: rgb(171, 4, 4);
 }
 .actionNotDisable:hover{
-    color: rgb(211, 27, 27);
+    color: rgb(252, 0, 0);
 }
 .containerPencil{
     font-size: 20px;
@@ -229,18 +230,19 @@
 }
 
 .ul{
-    width: 99%;
+    width:100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: #000000;
     background-color: #7230FF;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     margin-top: 5px;
+    text-decoration:none;
 }
 
 
@@ -306,6 +308,7 @@
     align-items: center;
     color:white;
     border-bottom: 1px solid rgb(58, 58, 58);
+    margin-left: 25px;
 
 }
 
