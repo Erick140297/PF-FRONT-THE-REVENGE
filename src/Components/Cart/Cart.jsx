@@ -6,37 +6,48 @@ import { MdAttachMoney, MdShoppingCart, MdDeleteOutline } from "react-icons/md";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
+import { useHistory } from "react-router-dom";
 
 const Cart = () => {
+  const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
   const cart = useSelector((state) => state.cart);
 
   if(Object.entries(cart).length != 0){
-    window.localStorage.setItem("cartId", JSON.stringify(cart._id))
+    window.localStorage.setItem("cartId", JSON.stringify(cart._id));
   }
-  
+
   const dispatch = useDispatch();
 
   const update = async (cartId, productId, quantity) => {
-    await axios.put("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
-      cartId,
-      productId,
-      quantity,
-    });
+    await axios.put(
+      "https://pf-back-the-revenge-production.up.railway.app/shoppingCart",
+      {
+        cartId,
+        productId,
+        quantity,
+      }
+    );
     dispatch(getCart(user.email));
   };
   const deleteProduct = async (cartId, productId) => {
-    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
-      data: { cartId, productId },
-    });
+    await axios.delete(
+      "https://pf-back-the-revenge-production.up.railway.app/shoppingCart",
+      {
+        data: { cartId, productId },
+      }
+    );
     toast.success("Producto eliminado del carrito");
     dispatch(getCart(user.email));
   };
 
   const emptyCart = async (cartId) => {
-    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
-      data: { cartId },
-    });
+    await axios.delete(
+      "https://pf-back-the-revenge-production.up.railway.app/shoppingCart",
+      {
+        data: { cartId },
+      }
+    );
     toast.success("Tu carrito esta vacío");
     dispatch(getCart(user.email));
   };
@@ -56,7 +67,7 @@ const Cart = () => {
       data: {
         email: user.email,
         cart: cart,
-        total:total
+        total: total,
       },
     });
 
@@ -68,8 +79,12 @@ const Cart = () => {
         description: JSON.stringify(data),
       },
     });
-    window.localStorage.setItem("orderId", JSON.stringify(data))
+    window.localStorage.setItem("orderId", JSON.stringify(data));
     window.location.href = response.data.links[1].href;
+  };
+
+  const handleCheck = () => {
+    history.push("/check");
   };
 
   useEffect(() => {
@@ -105,7 +120,8 @@ const Cart = () => {
                     <button
                       className="btn btn-primary float-end ms-2"
                       onClick={() => {
-                        handlePayment(total(cart));
+                        // handlePayment(total(cart));
+                        handleCheck()
                       }}
                     >
                       Total: $ {total(cart)}
