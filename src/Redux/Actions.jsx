@@ -136,7 +136,7 @@ export function cleanResult() {
 export function cleanDetail() {
   return async function(dispatch) {
     return dispatch({
-      type: "CLEAN_DETAIL",
+      type: "CLEAN_DETAIL"
     });
   };
 }
@@ -256,11 +256,3 @@ export function getOrder(id) {
     console.log(error);
   }
 }
-
-
-// export function getAllProductSold(){
-//   return async function (dispatch) {
-//       const productSold = await axios.get(`/admin/allOrders`);
-//       return dispatch({ type:'PRODUCT_SOLD', payload: productSold.data })
-//   }
-// }

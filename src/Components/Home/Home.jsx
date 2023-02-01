@@ -8,7 +8,6 @@ import Loader from "../Loader/Loader";
 import Container from "../ContainerCards/Container";
 import ChatBot from "../ChatBot/ChatBot";
 
-
 const Home = () => {
   // hooks
   const allComponents = useSelector((state) => state.allProducts);
@@ -91,17 +90,6 @@ const Home = () => {
                 />
               );
             })}
-            {/* {allComponents?.map((el, index) => {
-              return (
-                <Card
-                  name={el.name}
-                  image={el.image ? el.image.secure_url : ""}
-                  price={el.price}
-                  id={el._id}
-                  key={index}
-                />
-              );
-            })} */}
           </div>
           <div className="btn boton">
             <button onClick={() => loadMore()}>
@@ -117,5 +105,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// loading ? (

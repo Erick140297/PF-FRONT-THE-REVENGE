@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { cleanDetail, getDetail } from "../../Redux/Actions";
+import { cleanDetail, getDetail, setLoader } from "../../Redux/Actions";
+import Loader from "../Loader/Loader";
 import "./Card.css";
 
 const Card = ({ image, name, price, id }) => {
 
-  const details = useSelector((state) => state.detail);
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loader);
 
   const getNewDetail = () => {
     dispatch(cleanDetail())
     dispatch(getDetail(id))
   }
 
+  useEffect(() => {
+    return () => {
+      dispatch(setLoader());
+    };
+  }, []);
+
   return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
     <Link
       to={"/detail/"+ id }
       style={{ textDecoration: "none", color: "black" }}
@@ -38,6 +49,8 @@ const Card = ({ image, name, price, id }) => {
         </div>
       </div>
     </Link>
+    )}
+    </>
   );
 };
 

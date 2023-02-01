@@ -63,7 +63,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "GET_DETAILS":
-      // console.log(state, detail);
       return {
         ...state,
         loader: false,
@@ -85,6 +84,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: {},
+        loader: false,
       };
     case "GET_ALL_USER":
       return {
