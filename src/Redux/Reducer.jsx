@@ -13,12 +13,8 @@ const initialState = {
   order: {},
   sideBar: false,
   Admin: [],
-
   detail:{},
-
-  usersAdmin:[],
- 
-
+  usersAdmin:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -84,6 +80,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         productsFiltrados: [],
+      };
+    case "CLEAN_DETAIL":
+      return {
+        ...state,
+        detail: {},
       };
     case "GET_ALL_USER":
       return {

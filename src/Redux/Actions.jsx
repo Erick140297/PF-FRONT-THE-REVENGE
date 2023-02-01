@@ -133,6 +133,14 @@ export function cleanResult() {
   };
 }
 
+export function cleanDetail() {
+  return async function(dispatch) {
+    return dispatch({
+      type: "CLEAN_DETAIL",
+    });
+  };
+}
+
 export function getUser() {
   try {
     return async function(dispatch) {
