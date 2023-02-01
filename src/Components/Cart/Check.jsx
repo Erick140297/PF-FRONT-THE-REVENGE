@@ -1,16 +1,41 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { updateProfile, getInfoUser } from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import toast from "react-hot-toast";
 import axios from "axios";
 
 const Check = () => {
-
-  if (Object.entries(cart).length != 0) {
-    window.localStorage.setItem("cartId", JSON.stringify(cart._id));
-  }
-
-  const { user } = useAuth0();
+  const info = useSelector((state) => state.Admin);
+  const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
+  const [input, setInput] = useState({
+    address: ""
+  });
   const cart = useSelector((state) => state.cart);
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getInfoUser(user.email));
+      setInput({
+        address: info.address
+      });
+    }
+  }, [dispatch]);
+  
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateProfile(info._id, input));
+    setInput({
+      address: ""
+    });
+    dispatch(getInfoUser(user.email));
+    toast.success("Direccion actualizada");
+  };
 
   const handlePayment = async (total) => {
     const { data } = await axios({
@@ -45,12 +70,21 @@ const Check = () => {
 
   return (
     <div>
-
-
-      <h2>Por favor confirma que tu domicilio sea el siguente</h2>
-
-      <h2>Domicilio</h2> <button>Actualizar</button>
-
+      <h2>¿Deseas editar la direccion de tu compra?</h2>
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              type="text"
+              name="address"
+              placeholder={info.address}
+              onChange={handleChange}
+            />
+            <label className="lbl-nombre">
+              <span className="text-nomb">Dirección</span>
+            </label>
+          </form>
+          <button onClick={handleSubmit}>actualizar</button>
+        </div>
 
       <button onClick={()=>handlePayment(total(cart))}>Pagar</button>
     </div>
