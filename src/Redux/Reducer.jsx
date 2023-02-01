@@ -13,6 +13,8 @@ const initialState = {
   order: {},
   sideBar: false,
   Admin: [],
+  usersAdmin:[],
+  details:{}
 };
 
 function rootReducer(state = initialState, action) {
@@ -114,6 +116,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         Admin: action.payload,
       };
+      case 'USER_DISABLED':
+        return {
+            ...state,
+        }
     case "GET_MY_ORDERS":
       return {
         ...state,
@@ -124,7 +130,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         order: action.payload,
-        loader: false,
       };
     default:
       return state;

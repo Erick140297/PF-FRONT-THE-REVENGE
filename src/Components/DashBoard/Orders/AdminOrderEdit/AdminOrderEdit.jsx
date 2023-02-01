@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
-import { getAllOrders } from "../../../../Redux/Actions";
+import { getAllOrders,updateorder } from "../../../../Redux/Actions";
 import "./AdminOrderEdit.css";
 import { useParams, Link } from "react-router-dom";
 
@@ -56,11 +55,11 @@ function AdminOrderEdit(props) {
     status: input,
   };
 
-  // const handleSubmit = (e) => {
-  //   /* e.preventDefault() */
-  //   dispatch(updateorder(propsID, orderUpdate));
-  //   window.history.back();
-  // };
+  const handleSubmit = (e) => {
+    /* e.preventDefault() */
+    dispatch(updateorder(propsID, orderUpdate));
+    window.history.back();
+  };
 
   return (
     <div className="containerAll1">
@@ -94,19 +93,18 @@ function AdminOrderEdit(props) {
                 <hr className="hR" />
                 <label className="text">
                   {" "}
-                  Procesando Pago
+                  Pagado
                   <div className="circulo">
                     <input
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Procesando Pago"}
+                      value={"Pagado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />
                   </div>
                 </label>
-
                 <hr className="hR" />
                 <label className="text">
                   {" "}
@@ -116,7 +114,23 @@ function AdminOrderEdit(props) {
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Preparando Envio"}
+                      value={"Preparando Envío"}
+                      id="status"
+                      onChange={(e) => handleCheckBox(e)}
+                    />
+                  </div>
+                </label>
+
+                <hr className="hR" />
+                <label className="text">
+                  {" "}
+                 Enviado
+                  <div className="circulo">
+                    <input
+                      className="season"
+                      type={"checkbox"}
+                      name={"status"}
+                      value={"Enviado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />
@@ -125,13 +139,13 @@ function AdminOrderEdit(props) {
                 <hr className="hR" />
                 <label className="text">
                   {" "}
-                  Enviado
+                  Entregado
                   <div className="circulo">
                     <input
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Enviado"}
+                      value={"Entregado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />{" "}

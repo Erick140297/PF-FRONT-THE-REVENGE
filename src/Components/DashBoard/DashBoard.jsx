@@ -12,6 +12,9 @@ const DashBoard = () => {
           <Link to="/admin/user">Usuarios</Link>
         </Buttonn>
         <Buttonn className="animate__animated animate__bounce">
+          <Link to="/admin/dashboard">Dasboard</Link>
+        </Buttonn>
+        <Buttonn className="animate__animated animate__bounce">
           <Link to="/admin/products">Productos</Link>
         </Buttonn>
         <Buttonn className="animate__animated animate__bounce">

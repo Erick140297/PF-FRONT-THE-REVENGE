@@ -51,21 +51,21 @@ const Home = () => {
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://www.computerlounge.co.nz/Data/Media/Images/Brand/HyperX/hyperx-brand-banner.jpg"
+                src="https://www.memorykings.pe/files_contenidos/upload/images/MK030839DESCRIP.jpg"
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://beetech.com.np/image/cache/catalog/Drone/h410m-b-pro-connectivity-1900x500.jpg"
+                src="https://web.impakt.com.pl/opisy/gnufvu40hri23tg4c10ilji2.png"
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://gameone.ph/media/wysiwyg/GameOne-Inner-Banner-Redragon.jpg"
+                src="https://i0.wp.com/overcluster.com/wp-content/uploads/2019/06/AMD-Ryzen-9-E3-Overcluster.jpg?fit=1280%2C720&ssl=1"
                 alt="Second slide"
               />
             </Carousel.Item>
