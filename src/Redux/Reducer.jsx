@@ -29,13 +29,15 @@ function rootReducer(state = initialState, action) {
     case "GET_PRODUCTS_BY_NAME":
       return {
         ...state,
+        loader: false,
         productsFiltrados: action.payload,
       };
 
     case "GET_PRODUCTS_BY_SUBCATEGORY":
       return {
         ...state,
-        productsFiltrados: action.payload,
+        loader: false,
+        productsFiltrados: action.payload
       };
 
     case "SET_LOADER_TRUE":
@@ -66,7 +68,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         loader: false,
-        detail: action.payload,
+        detail: action.payload
       };
 
     case "GET_PRODUCTS_BY_CATEGORY":
@@ -78,13 +80,14 @@ function rootReducer(state = initialState, action) {
     case "CLEAN_RESULT":
       return {
         ...state,
-        productsFiltrados: [],
+        loader: false,
+        productsFiltrados: []
       };
     case "CLEAN_DETAIL":
       return {
         ...state,
-        detail: {},
         loader: false,
+        detail: {}
       };
     case "GET_ALL_USER":
       return {
