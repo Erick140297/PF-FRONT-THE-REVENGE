@@ -23,8 +23,6 @@ const Detail = (props) => {
   const userId = useSelector((state) => state.user);
   const allComponents = useSelector((state) => state.allProducts);
 
-
-
   const handleClick = () => {
     const obj = {
       productId: id,
@@ -39,7 +37,6 @@ const Detail = (props) => {
       toast.error("Por favor inicia sesión");
     }
   };
-
 
   const promedio = (arr) => {
     let suma = 0;
@@ -58,8 +55,6 @@ const Detail = (props) => {
       dispatch(setLoader());
     };
   }, [dispatch]);
-
- 
   
   return (
     <>
