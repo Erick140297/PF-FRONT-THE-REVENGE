@@ -14,10 +14,10 @@ const initialState = {
   sideBar: false,
   Admin: [],
 
-  detail:{}
+  detail:{},
 
   usersAdmin:[],
-  details:{}
+ 
 
 };
 
