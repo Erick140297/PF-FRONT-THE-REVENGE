@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import styles from "./check.css"
+
 
 const Check = () => {
   const info = useSelector((state) => state.Admin);
@@ -69,24 +71,24 @@ const Check = () => {
   };
 
   return (
-    <div>
-      <h2>¿Deseas editar la direccion de tu compra?</h2>
-        <div>
-          <form onSubmit={handleSubmit} className="form">
+    <div className="container-sm shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
+      <h2 className="text-center mt-4 mb-4">¿Deseas editar la direccion de tu compra?</h2>
+        <div className="container-sm w-50 shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
+          <form onSubmit={handleSubmit} className="form mt-3 w-100">
             <input
               type="text"
               name="address"
               placeholder={info.address}
               onChange={handleChange}
+              className="text-muted"
             />
-            <label className="lbl-nombre">
-              <span className="text-nomb">Dirección</span>
+            <label className="lbl-nombre mb-0">
+              <span className="text-nomb mt-5">Dirección</span>
             </label>
           </form>
-          <button onClick={handleSubmit}>actualizar</button>
+          <button className="ddsfvfdva mt-5 mb-3" onClick={handleSubmit}>Actualizar</button>
         </div>
-
-      <button onClick={()=>handlePayment(total(cart))}>Pagar</button>
+      <button className="ddsfvfdva mt-1" onClick={()=>handlePayment(total(cart))}>Pagar</button>
     </div>
   );
 };
