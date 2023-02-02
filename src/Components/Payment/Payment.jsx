@@ -32,6 +32,7 @@ const Payment = () => {
     await axios.put(
       `https://pf-back-the-revenge-production.up.railway.app/logic/stock/${orderId}`
     );
+
   };
 
   useEffect(() => {

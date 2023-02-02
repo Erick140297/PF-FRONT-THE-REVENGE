@@ -1,6 +1,6 @@
 #wrapper {
-    min-height: 100%;
-    position: relative;
+    position: absolute;
+    bottom: 0;
 }
 
 
