@@ -125,13 +125,14 @@ const ChatBot1 = () => {
                 id: "9",
                 component: (
                     <div className="text-dark bg-body shadow p-3 rounded">
-                        <ul class="list-group">
+                        {/* <ul class="list-group">
                             {products.map((e, i) => (
                             <li className="list-group-item list-group-item-dark" key={i} value={e}>
                             {e}
                             </li>
                             ))}
-                        </ul>   
+                        </ul>    */}
+                        Holis
                     </div> 
                 ),
                 trigger: "preguntaVuelta",

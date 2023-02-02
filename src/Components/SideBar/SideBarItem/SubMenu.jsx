@@ -59,13 +59,12 @@ const SidebarLink = styled(Link)`
     const [subnav, setSubnav] = useState(false);
     const [input, setInput] = useState("");
     const sidebar = useSelector((state) => state.sideBar);
-
-
+    
     const showSubnav = () => setSubnav(!subnav);
-
+    
     const dispatch = useDispatch()
     const history = useHistory();
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input.length !== 0) {
@@ -86,7 +85,7 @@ const SidebarLink = styled(Link)`
 
     return (
         <>
-        <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+        <SidebarLink to={history.location} onClick={item.subNav && showSubnav}>
             <div>
             {item.icon}
             <SidebarLabel>{item.title}</SidebarLabel>
