@@ -27,7 +27,7 @@ const Payment = () => {
 
   const changeStock = async () => {
     await axios.put(
-      `https://pf-back-the-revenge-production.up.railway.app/logic/stock${orderId}`
+      `https://pf-back-the-revenge-production.up.railway.app/logic/stock/${orderId}`
     );
   };
 
