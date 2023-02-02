@@ -96,9 +96,10 @@ const filteredProducts = selectedCategory === 'Todas'
                 <td>{product.category}</td>
                 <td>
                   <Link to={`/admin/products/edit/${product._id}`}>
-                    <button className="edit-button me-1">Editar</button>
+                    <button className="edit-button">Editar</button>
                   </Link>
-                  <button className="delete-button" onClick={() => handleDelete(product.id)}>Eliminar</button>
+                  <br />
+                  <button className="delete-button mt-1" onClick={() => handleDelete(product.id)}>Eliminar</button>
                 </td>
               </tr>
             ))}

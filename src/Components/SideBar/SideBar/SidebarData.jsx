@@ -17,27 +17,22 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Procesadores',
-            path: '/home',
             icon: <GiAbstract109 />
         },
         {
             title: 'Placas de Video',
-            path: '/overview/revenue',
             icon: <GiAbstract118 />
         },
         {
             title: 'Motherboards',
-            path: '/overview/revenue',
             icon: <GiAbstract109 />
         },
         {
             title: 'Fuentes',
-            path: '/overview/revenue',
             icon: <GiAbstract118 />
         },
         {
             title: 'Memoria Ram',
-            path: '/overview/revenue',
             icon: <GiAbstract109 />
         },
         ]
@@ -51,25 +46,21 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Pasta Térmica',
-            path: '/reports/reports1',
             icon: <MdDeviceThermostat />,
             cName: 'sub-nav'
         },
         {
             title: 'Destornilladores',
-            path: '/reports/reports2',
             icon: <MdPlumbing />,
             cName: 'sub-nav'
         },
         {
             title: 'Tester de Fuentes',
-            path: '/reports/reports2',
             icon: <MdPlumbing />,
             cName: 'sub-nav'
         },
         {
             title: 'Kit de Mantenimiento',
-            path: '/reports/reports2',
             icon: <MdPlumbing />,
             cName: 'sub-nav'
         }
@@ -84,13 +75,11 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Teclados',
-            path: '/reports/reports1',
             icon: <MdOutlineKeyboard />,
             cName: 'sub-nav'
         },
         {
             title: 'Auriculares',
-            path: '/reports/reports2',
             icon: <MdHeadsetMic />,
             cName: 'sub-nav'
         }
@@ -106,14 +95,8 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Laptops',
-            path: '/messages/message1',
             icon: <IoIcons.IoIosPaper />
         },
-        /* {
-            title: 'Message 2',
-            path: '/messages/message2',
-            icon: <IoIcons.IoIosPaper />
-        } */
         ]
     },
     {
@@ -126,7 +109,6 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Destacados',
-            path: '/messages/message1',
             icon: <IoIcons.IoIosPaper />
         },
         /* {

@@ -70,20 +70,20 @@ function AdminOrderEdit(props) {
             <div className="containerPandO">
               <div className="productCont">
                 <div className="containerTitle">
-                  <span className="span-order"> Número de Orden:</span>
-                  <p>{item._id}</p>
+                  <span className="span-order me-2 text-start"> Número de Orden:</span>
+                  <p className="mt-4 fs-6">{item._id}</p>
                 </div>
                 <div className="containerTitle">
-                  <span className="span-order">Usuario: </span>
-                  <p>{item.user}</p>
+                  <span className="span-order me-2 text-start">Usuario: </span>
+                  <p className="mt-4 fs-6">{item.user}</p>
                 </div>
                 <div className="containerTitle">
-                  <span className="span-order">Precio total: </span>
-                  <p>${item.cart.items[0].product.price}</p>
+                  <span className="span-order me-2 text-start">Precio total: </span>
+                  <p className="mt-4 fs-6">${item.cart.items[0].product.price}</p>
                 </div>
                 <div className="containerTitle">
-                  <span className="span-order"> Fecha: </span>
-                  <p>{item.date}</p>
+                  <span className="span-order me-2 text-start"> Fecha: </span>
+                  <p className="mt-4 fs-6">{item.date}</p>
                 </div>
               </div>
 
