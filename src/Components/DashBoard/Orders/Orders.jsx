@@ -35,13 +35,13 @@ function AdminOrders() {
       <div className="productContainer">
         <div className="containerInfoTable">
           <ul className="ul">
-            <div className="containHeadr">Usuario</div>
-            <div className="containHeadr">Orden</div>
-            <div className="containHeadr"></div>
-            <div className="containHeadr">Precio Total</div>
+            <div className="containHeadr ps-4 me-4">Usuario</div>
+            <div className="containHeadr ps-4">Orden</div>
+            <div className="containHeadr "></div>
+            <div className="containHeadr ps-4">Precio Total</div>
             <div className="containHeadr">Estado</div>
             <div className="containHeadr">Fecha</div>
-            <div className="containHeadr">Acciones</div>
+            <div className="containHeadr me-3">Acciones</div>
           </ul>
 
           {currentOrder.length > 0 &&
@@ -65,7 +65,7 @@ function AdminOrders() {
                 <div className="containCardInfo">
                   <p className="p-order"> {order._id}</p>
                   <img
-                    className="img-orders"
+                    className="img-orders ms-2"
                     src={order.cart.items[0].product.image.secure_url}
                     alt=""
                   />
