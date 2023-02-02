@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Decline.css";
 
 const Decline = () => {
+  const orderId = JSON.parse(window.localStorage.getItem("orderId"));
+
+  const changeOrderStatus = async () => {
+    await axios.put(
+      `https://pf-back-the-revenge-production.up.railway.app/order/${orderId}`,
+      {
+        status: "cancelado",
+      }
+    );
+  };
+
+  useEffect(() => {
+    changeOrderStatus();
+  }, []);
+
   return (
     <div className="loginnds">
       <div className="container-sm shadow p-3 mb-4 mt-4 bg-dark rounded">
@@ -12,8 +28,9 @@ const Decline = () => {
           <i className="bi bi-emoji-laughing h4 pb-2 mb-4 me-2"></i>
         </h1>
         <div>
-          <label className="text-light mb-2 mt-5" htmlFor="">
-            Lo sentimos, la compra no fue exitosa. 
+          <label className="text-muted mb-2 mt-4" htmlFor="">
+            Lo sentimos, la compra no fue exitosa.
+
           </label>
           <br />
         </div>
