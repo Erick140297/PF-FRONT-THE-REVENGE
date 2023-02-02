@@ -140,6 +140,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         order: action.payload,
         loader: false,
+
       };
     default:
       return state;
