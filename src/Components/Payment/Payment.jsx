@@ -8,24 +8,35 @@ const Payment = () => {
   const orderId = JSON.parse(window.localStorage.getItem("orderId"));
 
   const emptyCart = async () => {
-    console.log(cartId)
-    await axios.delete("https://pf-back-the-revenge-production.up.railway.app/shoppingCart", {
-      data: { cartId },
-    });
+    await axios.delete(
+      "https://pf-back-the-revenge-production.up.railway.app/shoppingCart",
+      {
+        data: { cartId },
+      }
+    );
   };
 
   const changeOrderStatus = async () => {
-    console.log(orderId)
-     await axios.put(`https://pf-back-the-revenge-production.up.railway.app/order/${orderId}`, {
-      status: "pagado",
-    });
+    await axios.put(
+      `https://pf-back-the-revenge-production.up.railway.app/order/${orderId}`,
+      {
+        status: "pagado",
+      }
+    );
+  };
+
+  const changeStock = async () => {
+    await axios.put(
+      `https://pf-back-the-revenge-production.up.railway.app/logic/stock${orderId}`
+    );
   };
 
   useEffect(() => {
+    changeStock();
     emptyCart();
-    return(()=>{
+    return () => {
       changeOrderStatus();
-    })
+    };
   }, []);
 
   return (
