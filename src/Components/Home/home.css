@@ -39,15 +39,13 @@
 .cardsContaier {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-left: 250px;
+  justify-items: center;
   background: linear-gradient(184deg, #0e0f0f 0%, rgb(48, 48, 48) 76%);
 }
 
 .boton{
   margin: 15px;
-  margin-left: 150px;
-
+  margin-left: 20px;
   display: flex;
   justify-content:space-around;
-  /* background-color: aqua; */
 }
