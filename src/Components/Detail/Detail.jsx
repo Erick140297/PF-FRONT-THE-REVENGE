@@ -47,6 +47,7 @@ const Detail = (props) => {
     return resultado;
   };
 
+
   useEffect(() => {
     dispatch(GetAllProducts())
     dispatch(getDetail(id));
@@ -55,6 +56,11 @@ const Detail = (props) => {
       dispatch(setLoader());
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  })
+  
   
   return (
     <>
@@ -139,7 +145,7 @@ const Detail = (props) => {
                 </div>
               </div>
             </div>
-          <Relation>
+          <Relation> 
             {allComponents?.filter((el)=>el.subCategory === details?.subCategory && el.name !== details?.name).slice(0,3).map((el, index) => {
               return (
                 <Card
