@@ -51,7 +51,7 @@ const Detail = (props) => {
   useEffect(() => {
     dispatch(GetAllProducts())
     dispatch(getDetail(id));
-    console.log(details.rating)
+    
     return () => {
       dispatch(setLoader());
     };
@@ -137,6 +137,7 @@ const Detail = (props) => {
                     <h3>Sin rating aún</h3>
                   )}
                 </div>
+
                 <br />
                 <div className="review">
                   {details.review ? (
@@ -144,10 +145,23 @@ const Detail = (props) => {
                       <h2>Reviews:</h2>
                       <Review>
                       <h3 className="user">
-                        Usuario: {details.review.map(e=>e.user)}
+                        Usuario: {details.review[0].user}
+                        <br />
                       </h3>
                       <h3 className="comentario">
-                        Comentario: {details.review.map(e=>e.comentario)}
+                        Comentario: {details.review[0].comentario}
+                        <br />
+                      </h3>
+                    </Review>
+                    <br />
+                    <Review>
+                      <h3 className="user">
+                        Usuario: {details.review[1].user}
+                        <br />
+                      </h3>
+                      <h3 className="comentario">
+                        Comentario: {details.review[1].comentario}
+                        <br />
                       </h3>
                     </Review>
                     </div>
@@ -155,12 +169,14 @@ const Detail = (props) => {
                     <h3>Sin review aún</h3>
                   )}
                 </div>
+
                 <div className="product-description-container">
                   <h3 className="text-detai mt-5 mb-5">
                     Descripción:
                     <p className="p-detail">{details?.description}</p>{" "}
                   </h3>
                 </div>
+                
               </div>
             </div>
           <Relation> 
