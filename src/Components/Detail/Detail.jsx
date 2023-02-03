@@ -51,7 +51,6 @@ const Detail = (props) => {
   useEffect(() => {
     dispatch(GetAllProducts())
     dispatch(getDetail(id));
-    
     return () => {
       dispatch(setLoader());
     };
@@ -154,7 +153,7 @@ const Detail = (props) => {
                       </h3>
                     </Review>
                     <br />
-                    <Review>
+                    {/* <Review>
                       <h3 className="user">
                         Usuario: {details.review[1].user}
                         <br />
@@ -163,7 +162,7 @@ const Detail = (props) => {
                         Comentario: {details.review[1].comentario}
                         <br />
                       </h3>
-                    </Review>
+                    </Review> */}
                     </div>
                   ) : (
                     <h3>Sin review aún</h3>
