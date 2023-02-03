@@ -43,7 +43,7 @@ const NewProductForm = (props) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://pf-back-the-revenge-production.up.railway.app/",
+        "https://pf-back-the-revenge-production.up.railway.app/product",
         infoFormData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -142,7 +142,7 @@ const NewProductForm = (props) => {
             />
           </label>
 
-          <button type="submit">Crear</button>
+          <button type="submit" onClick={(e)=>{handleSubmit(e)}}>Crear</button>
           <button type="button" onClick={() => history.push("/admin/products")}>
             Volver
           </button>
