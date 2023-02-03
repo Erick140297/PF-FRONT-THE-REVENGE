@@ -62,13 +62,13 @@ const Payment = () => {
           <br />
           <label className="text-muted mb-2 mt-4" htmlFor="">
             <i className="bi bi-chat-left-text">
-              <h3>Please, Don't forget to rate your service.</h3>
+              <h3>Porfavor, recuerde puntuar sus productos.</h3>
             </i>
           </label>
         </div>
         <div className="mb-4 fs-5">
           <Link to={"/home"} style={{ textDecoration: "none" }}>
-            Back
+            Atras
           </Link>
         </div>
       </div>
