@@ -30,6 +30,7 @@ import MyOrders from "./Components/MyOrders/MyOrders";
 import OrderDetail from "./Components/MyOrders/OrderDetail";
 import Dashboard from "./Components/DashBoard/AdminDashboard/Dashboard"
 import Check from "./Components/Cart/Check";
+import Review from "./Components/MyOrders/Review";
 function App() {
   return (
     <div className="App">
@@ -63,6 +64,7 @@ function App() {
           <Route exact path="/order/detail/:id" component={OrderDetail} />
           <Route exact path="/admin/dashboard" component={Dashboard} />
           <Route exact path="/check" component={Check} />
+          <Route exact path="/review/:orderId/:index/:productId/:name" component={Review} />
         </div>
         <Footer />
       </div>
