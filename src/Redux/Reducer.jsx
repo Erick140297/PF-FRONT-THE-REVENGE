@@ -133,6 +133,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         myOrders: action.payload,
+        loader:false
       };
 
     case "GET_ORDER":
