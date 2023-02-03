@@ -7,27 +7,21 @@ import Loader from "../Loader/Loader";
 
 const OrderDetail = () => {
   const order = useSelector((state) => state.order);
-  const loading = useSelector((state) => state.loader);
+  // const loading = useSelector((state) => state.loader);
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getOrder(id));
-    return () => {
-      dispatch(setLoader());
-    };
   }, [dispatch]);
 
-  // const info = 
-console.log(order);
   return (
     <>
-      {loading ? (
+      {Object.entries(order).length === 0 ? (
         <Loader />
       ) : (
         <>
         <Container>
-
           <Chield1>
             <Text>Estado actual: </Text>
             <Text>{order.status}</Text>
