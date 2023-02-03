@@ -24,7 +24,7 @@ export default function LandingPage() {
 
   return (
     <>
-      {!isAuthenticated ? (
+      {isAuthenticated ? (
         <div className="landing">
           <div className="imgWrapper4">
             <div className="imgResponsiva">
