@@ -16,11 +16,11 @@ export default function LandingPage() {
     history.push("/home");
   };
 
-//   useEffect(() => {
-//     if (isAuthenticated) {
-//       redirect();
-//     }
-//   }, [isAuthenticated]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      redirect();
+    }
+  }, [isAuthenticated]);
 
   return (
     <>
