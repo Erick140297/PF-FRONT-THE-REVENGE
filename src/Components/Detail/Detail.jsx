@@ -139,7 +139,7 @@ const Detail = (props) => {
 
                 <br />
                 <div className="review">
-                  {details.review[0] ? (
+                  {details.review.length !== 0 ? (
                     <div>
                       <h4 className="h-rating">Reviews:</h4>
                       <Review>
