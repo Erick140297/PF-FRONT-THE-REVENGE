@@ -18,16 +18,13 @@ export default function LandingPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-        
       redirect();
     }
   }, [isAuthenticated]);
 
   return (
     <>
-      {isAuthenticated ? (
-        <Loader />
-      ) : (
+      {!isAuthenticated ? (
         <div className="landing">
           <div className="imgWrapper4">
             <div className="imgResponsiva">
@@ -62,6 +59,8 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
+      ) : (
+        <Loader />
       )}
     </>
   );
