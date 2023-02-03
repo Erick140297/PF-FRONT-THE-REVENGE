@@ -24,7 +24,8 @@ console.log(order);
     <>
       {loading ? (
         <Loader />
-      ) : (
+      ) : (order.cart?(
+
         <>
         <Container>
 
@@ -38,7 +39,7 @@ console.log(order);
 
           </Chield2>
           <Chield4>
-  {order.cart.items?.map((el, index) => (
+  {order.cart.items.map((el, index) => (
     <Row key={index}>
       <TextNum  key={index}>{index+1}</TextNum>
       <TextName key={el.name}>{el.product.name}</TextName>
@@ -68,8 +69,10 @@ console.log(order);
 
         </>
 
-      )}
-    </>
+):null
+)
+}
+</>
   );
 };
 
