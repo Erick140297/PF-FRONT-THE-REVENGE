@@ -16,15 +16,15 @@ export default function LandingPage() {
     history.push("/home");
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      redirect();
-    }
-  }, [isAuthenticated]);
+//   useEffect(() => {
+//     if (isAuthenticated) {
+//       redirect();
+//     }
+//   }, [isAuthenticated]);
 
   return (
     <>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <div className="landing">
           <div className="imgWrapper4">
             <div className="imgResponsiva">
