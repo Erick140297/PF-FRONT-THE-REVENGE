@@ -139,30 +139,16 @@ const Detail = (props) => {
 
                 <br />
                 <div className="review">
-                  {details.review ? (
+                  {details.review[0] ? (
                     <div>
-                      <h2>Reviews:</h2>
+                      <h4 className="h-rating">Reviews:</h4>
                       <Review>
-                      <h3 className="user">
-                        Usuario: {details.review[0].user}
+                        {details.review.map(e=>
+                          <h3 className="review">{e.user}: {e.comentario}</h3>
+                        )}
                         <br />
-                      </h3>
-                      <h3 className="comentario">
-                        Comentario: {details.review[0].comentario}
-                        <br />
-                      </h3>
                     </Review>
                     <br />
-                    {/* <Review>
-                      <h3 className="user">
-                        Usuario: {details.review[1].user}
-                        <br />
-                      </h3>
-                      <h3 className="comentario">
-                        Comentario: {details.review[1].comentario}
-                        <br />
-                      </h3>
-                    </Review> */}
                     </div>
                   ) : (
                     <h3>Sin review aún</h3>
@@ -216,8 +202,12 @@ const Relation = styled.div`
 
 const Review = styled.div`
   justify-content: center;
-  background-color: #d7dce1;
+  background-color:#181A1B;
+  color:aliceblue;
   width: 100%;
-  padding: 20px;
+  padding: 1em;
   border-radius: 10px;
+  box-shadow: 2px 2px 10px rgb(0 0 0 / 30%);
+  margin-top: 2em;
+  font-family: Arial, sans-serif;
 `
