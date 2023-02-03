@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 import "./payment.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -62,20 +63,20 @@ const Payment = () => {
           <br />
           <label className="text-muted mb-2 mt-4" htmlFor="">
             <i className="bi bi-chat-left-text">
-              <h3>Please, Don't forget to rate your service.</h3>
+              <h3 className="fs-5">Por favor no olvides dejarnos tus comentarios a cerca de este producto.</h3>
             </i>
           </label>
         </div>
-        <div className="mb-4 fs-5">
-          <Link to={"/home"} style={{ textDecoration: "none" }}>
-            Back
-          </Link>
+        <div className="d-md-flex justify-content-md-center">
+          <div className="btn btn-dark-lg mb-4 mt-5 fs-5 border border-light w-25 ">
+            <Link to={"/home"} style={{ textDecoration: "none" }}>
+              Back
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-      ) : <div className="container-sm shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
-        <h1 className="fs-2 fw-semibold pb-2 border-bottom border-muted text-light">Lo sentimos, tuvimos un problema!</h1>
-      </div>
+      ) : <Loader />
     }
     </>
     
