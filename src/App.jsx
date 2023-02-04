@@ -15,6 +15,7 @@ import Detail from "./Components/Detail/Detail";
 import DashBoard from "./Components/DashBoard/DashBoard";
 import User from "./Components/DashBoard/User/User";
 import Product from "./Components/DashBoard/Products/Products";
+import CheckProduct from "./Components/Detail/CheckProduct";
 
 import EditProductForm from "./Components/DashBoard/Products/EditProductForm/EditProductForm";
 
@@ -45,6 +46,7 @@ function App() {
           <Route exact path="/profileSettings" component={ProfileSettings} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/detail/:id" component={Detail} />
+          <Route exact path="/CheckProduct/:id" component={CheckProduct} />
           <Route exact path="/dashboard" component={DashBoard} />
           <Route exact path="/admin/user" component={User} />
           <Route exact path="/admin/orders" component={Orders} />

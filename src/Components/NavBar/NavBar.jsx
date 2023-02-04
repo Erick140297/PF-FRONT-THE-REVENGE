@@ -47,7 +47,6 @@ const NavBar = () => {
         <Link to={"/home"} style={{ textDecoration: "none", color: "black" }}>
           <ContainerLogo onClick={() => setShowMenu(!showMenu)}>
             <img src={imgenLogo} alt="Logo" />
-            {/* <h2>Galaxia Tech</h2> */}
           </ContainerLogo>
         </Link>
         <MobileIcon onClick={() => setShowMenu(!showMenu)}>

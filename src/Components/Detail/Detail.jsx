@@ -31,8 +31,9 @@ const Detail = (props) => {
     if (isAuthenticated) {
       dispatch(addToCart(obj));
       dispatch(getCart(user.email));
+      dispatch(getDetail(id))
       toast.success("Producto agregado al carrito")
-      history.push("/cart")
+      history.push(`/checkProduct/${id}`)
     } else {
       toast.error("Por favor inicia sesión");
     }
@@ -105,6 +106,9 @@ const Detail = (props) => {
                   )}
                 </div>
                 <br />
+                {/* <Link to={`/CheckProduct/${id}`}>
+                  <button type="button" className="btn btn-danger">Añadir al carrito</button>
+                </Link> */}
                 <button
                   type="button"
                   className="btn btn-danger"

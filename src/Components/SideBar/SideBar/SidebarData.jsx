@@ -4,9 +4,6 @@ import * as IoIcons from 'react-icons/io';
 import { GiAbstract029, Gi3DHammer, GiAbstract048, GiAbstract109, GiAbstract118 } from "react-icons/gi";
 import * as RiIcons from 'react-icons/ri';
 
-
-
-
 export const SidebarData = [
     {
         title: 'Componentes de PC',
@@ -111,17 +108,7 @@ export const SidebarData = [
             title: 'Destacados',
             icon: <IoIcons.IoIosPaper />
         },
-        /* {
-            title: 'Message 2',
-            path: '/messages/message2',
-            icon: <IoIcons.IoIosPaper />
-        } */
         ]
-    },
-    /* {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />
-    } */
+    }
 ];
 

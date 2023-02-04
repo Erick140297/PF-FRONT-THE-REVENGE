@@ -44,7 +44,7 @@ const Result = () => {
                   onChange={(e) => handleChange(e)}
                   name="brand"
                 >
-                  <option value="">Brand</option>
+                  <option value="">Marca</option>
                   {options.map((e, i) => (
                     <option key={i} value={e}>
                       {e}
@@ -61,9 +61,9 @@ const Result = () => {
                   onChange={(e) => handleChange(e)}
                   name="price"
                 >
-                  <option value="">Price</option>
-                  <option value="highest">Highest</option>
-                  <option value="lowest">Lowest</option>
+                  <option value="">Precio</option>
+                  <option value="highest">Más alto</option>
+                  <option value="lowest">Más bajo</option>
                 </select>
               </div>
             </div>

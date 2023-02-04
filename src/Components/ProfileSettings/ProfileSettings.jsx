@@ -159,9 +159,15 @@ const ProfileSettings = () => {
           <FaCity size={25} color={"white"} />
         </div>
         <div className="containerAux">
+        <Link to={'/profile'}>
+          <button className="boton-neon">
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>Volver</span>
+          </button>
+        </Link>
         <button className="boton-neon" type="submit" value={"Actualizar"}>
           <i className="fas fa-exclamation-triangle"></i>
-          <span>actualizar</span>
+          <span>Actualizar</span>
         </button>
         </div>
         </form>
