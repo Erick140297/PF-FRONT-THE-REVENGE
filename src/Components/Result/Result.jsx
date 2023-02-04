@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 import filter from "./filter";
+import ChatBot from "../ChatBot/ChatBot";
+
 
 const Result = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const Result = () => {
         <Loader />
       ) : (
         <>
+          <ChatBot /> 
           <div className="row g-3 pb-0 mt-2 mb-2 ">
             <div className="col-auto">
               <div className="form-floating text-center">

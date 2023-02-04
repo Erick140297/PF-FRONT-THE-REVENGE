@@ -4,6 +4,7 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import "./payment.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { FaHandPointRight, FaHourglassHalf, FaRegCalendarAlt, FaChevronLeft } from 'react-icons/fa'
 
 
 const Payment = () => {
@@ -51,10 +52,8 @@ const Payment = () => {
       user ? (
       <div className="loginnds">
       <div className="container-sm shadow-lg p-3 mb-4 mt-4 bg-dark rounded">
+          <FaHandPointRight />
         <h1 className="fs-2 fw-semibold pb-2 border-bottom border-muted">
-          <i className="bi bi-emoji-laughing h4 pb-2 mb-4 me-2"></i>
-          <i className="bi bi-box2-heart-fill h4 pb-2 mb-4 me-4 ms-4"></i>
-          <i className="bi bi-emoji-laughing h4 pb-2 mb-4 me-2"></i>
         </h1>
         <div>
         <label className="text-light mb-2 mt-4" htmlFor="">

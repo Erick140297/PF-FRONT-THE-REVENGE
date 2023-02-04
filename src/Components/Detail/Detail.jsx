@@ -12,6 +12,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
+
 
 const Detail = (props) => {
   const { user, isAuthenticated } = useAuth0();
@@ -68,6 +70,7 @@ const Detail = (props) => {
         <Loader />
       ) : Object.keys(details).length>1  ? (
         <div className="detail-box mb-4">
+          <ChatBot /> 
           <section className="container sproduct my-5 pt-5">
             <div className="row">
               <div className="col-lg-5 col-md-12 col-12">

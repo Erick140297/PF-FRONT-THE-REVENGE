@@ -36,7 +36,7 @@ const MyOrders = () => {
         <button type="button" className="btn btn-dark fs-5 position-absolute top-5 start-2 " onClick={() => history.push("/profile")}>
           <FaChevronLeft/>
         </button>
-        <h1 className="my-order container-sm p-3 mb-5 mt-5 bg-dark rounded text-center w-75 mt-4 text-center text-light fs-3"><FaHandPointRight /> Hola {user.given_name} estas son tus ordenes</h1>
+        <h1 className="my-order container-sm p-3 mb-5 mt-5 bg-dark rounded text-center w-75 mt-4 text-center text-light fs-3"><FaHandPointRight /> Hola {user.given_name}, estas son tus ordenes!</h1>
         <div className="my-order container-sm p-3 mb-5 mt-2 bg-dark rounded text-center w-75 text-center text-light ">
           <div className="container-sm shadow-lg p-3 mb-5 mt-4 bg-dark rounded text-start w-50">
             {myOrders.orders?.map((el, i) => {
