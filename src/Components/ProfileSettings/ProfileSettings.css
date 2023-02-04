@@ -82,6 +82,7 @@
 .boton-neon {
   display: inline-block;
   padding: 10px 20px;
+  margin-left: 20px;
   background-color: transparent;
   border: 0;
   color: #165C5A;
