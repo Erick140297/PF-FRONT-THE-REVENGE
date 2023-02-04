@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-// import styles from "./check.css"
+import styles from "./CheckProduct.css"
 
 const CheckProduct = (props) => {
   const id = props.match.params.id;
@@ -74,7 +74,7 @@ const CheckProduct = (props) => {
         </div>
         <div>
         <Link to='/home'><button className="ddsfvfdva"> Seguir comprando </button></Link>
-        <button className="ddsfvfdva mx-auto"
+        <button className="ddsfvfdva"
               onClick={() => {
                     handleClick();
                   }}
