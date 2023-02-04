@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getDetail, getCart, getInfoUser } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-// import styles from "./check.css"
+import styles from "./CheckProduct.css"
 
 const CheckProduct = (props) => {
   const id = props.match.params.id;
@@ -72,12 +72,15 @@ const CheckProduct = (props) => {
         <p>${details?.price}</p>
         <br />
         </div>
-      <button className="btn btn-danger" onClick={()=>handlePayment(total(cart))}>Comprar carrito</button>
-      <button type="button" className="btn btn-danger"
+        <div>
+        <Link to='/home'><button className="ddsfvfdva"> Seguir comprando </button></Link>
+        <button className="ddsfvfdva"
               onClick={() => {
                     handleClick();
                   }}
-      > Ver carrito </button>
+        > Ver carrito </button>
+        <button className="ddsfvfdva" onClick={()=>handlePayment(total(cart))}>Comprar carrito</button>
+        </div>
     </div>
   );
 };
