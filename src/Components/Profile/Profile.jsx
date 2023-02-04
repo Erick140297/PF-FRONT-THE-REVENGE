@@ -63,7 +63,7 @@ const Profile = () => {
 
         <Link to={"/profileSettings"}>
           <BtnCart>
-            Edit Info
+            Actualizar información
             <FaUserEdit size={30} />
           </BtnCart>
         </Link>
