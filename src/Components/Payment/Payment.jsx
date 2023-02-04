@@ -9,16 +9,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Payment = () => {
   const cartId = JSON.parse(window.localStorage.getItem("cartId"));
   const orderId = JSON.parse(window.localStorage.getItem("orderId"))
-  const { logout, user } = useAuth0();;
+  const { user } = useAuth0();
 
-  const emptyCart = async () => {
+  async function emptyCart() {
     await axios.delete(
       "https://pf-back-the-revenge-production.up.railway.app/shoppingCart",
       {
         data: { cartId },
       }
     );
-  };
+  }
 
   const changeOrderStatus = async () => {
     await axios.put(
