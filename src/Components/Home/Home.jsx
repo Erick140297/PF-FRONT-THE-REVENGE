@@ -7,14 +7,15 @@ import "./home.css";
 import Loader from "../Loader/Loader";
 import Container from "../ContainerCards/Container";
 import ChatBot from "../ChatBot/ChatBot";
-
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom"; 
 const Home = () => {
   // hooks
   const allComponents = useSelector((state) => state.allProducts);
   const loading = useSelector((state) => state.loader);
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(9);
-
+  const history = useHistory()
   //cantidad de cards renderizadas
   const amountInPage = allComponents.slice(0, amount);
 
@@ -43,35 +44,37 @@ const Home = () => {
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://beetech.com.np/image/cache/catalog/1projector/durable-1900x500.jpg"
+                src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1675549785/Products/v9wpx6mg2lxzid6fkczz.jpg"
                 alt="First slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={2500}>
+            <Carousel.Item interval={2500} onClick={() => history.push("/detail/63c95c2a5952cea49b59e19c")} >
+            
               <img
                 className="d-block w-100"
                 src="https://www.memorykings.pe/files_contenidos/upload/images/MK030839DESCRIP.jpg"
                 alt="First slide"
+                
               />
             </Carousel.Item>
-            <Carousel.Item interval={2500}>
+            <Carousel.Item interval={2500} onClick={() => history.push("/detail/63dd733ac6b36f47a1cee10b")}>
               <img
                 className="d-block w-100"
-                src="https://web.impakt.com.pl/opisy/gnufvu40hri23tg4c10ilji2.png"
+                src="https://http2.mlstatic.com/D_NQ_NP_876743-MLA46652066326_072021-O.jpg"
                 alt="First slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={2500}>
+            <Carousel.Item interval={2500} onClick={() => history.push("/detail/63c974795952cea49b59e1a6")}>
               <img
                 className="d-block w-100"
-                src="https://i0.wp.com/overcluster.com/wp-content/uploads/2019/06/AMD-Ryzen-9-E3-Overcluster.jpg?fit=1280%2C720&ssl=1"
+                src="https://s.yimg.com/ny/api/res/1.2/dYOqAft9VaPpELq6jz295Q--/YXBwaWQ9aGlnaGxhbmRlcjtoPTY2Ng--/https://media.zenfs.com/es/tarreo_527/d4794899de4f41586dcd61563ba9e787"
                 alt="Second slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={2500}>
+            <Carousel.Item interval={2500} onClick={() => history.push("/detail/63c976cb5952cea49b59e1ac")}>
               <img
                 className="d-block w-100"
-                src="https://dlcdnwebimgs.asus.com/gain/77614B08-0FD4-41FB-9517-ADB95C1F4546/fwebp"
+                src="https://i3.ytimg.com/vi/47-OW0sLj8k/maxresdefault.jpg"
                 alt="Third slide"
               />
             </Carousel.Item>
