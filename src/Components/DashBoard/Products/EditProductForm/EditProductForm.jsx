@@ -5,9 +5,11 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { getDetail} from "../../../../Redux/Actions";
 import axios from "axios"
-
+import * as yup from 'yup';
+import toast from "react-hot-toast";
 
 const EditProductForm = ( props ) => {
+  
   const dispatch = useDispatch();
   const history = useHistory()
   const product = useSelector((state) => state.detail);
@@ -40,18 +42,41 @@ const EditProductForm = ( props ) => {
   };
 console.log("asdasd", productBien);
 
+
+
 const handleSave = async (event) => {
   event.preventDefault();
   // Enviar los datos actualizados a tu API para guardarlos en la base de datos
-  const updatedProduct = {...product, ...productBien};
+  let isFormValid = true;
+    
+    // Validaciones
+    if (!productBien.price) {
+    isFormValid = false;
+    toast.error("El precio es un campo obligatorio");
+    }
+    if (!productBien.stock) {
+      isFormValid = false;
+      toast.error("El stock es un campo obligatorio");
+      }
+      if(isFormValid){
+        toast.success("Producto editado correctamente, espera un momento..");
   try {
+    
+
+     
+      
+        const updatedProduct = {...product, ...productBien};
+  
+    
       const response = await axios.put(`http://localhost:3001/product/${id}`, updatedProduct);
       // Si la respuesta es exitosa, navegar hacia la página de detalles del producto
       history.push("/admin/products");
+  
+    
   } catch (error) {
       console.error(error);
   }
-};
+};}
 
 
   return (
