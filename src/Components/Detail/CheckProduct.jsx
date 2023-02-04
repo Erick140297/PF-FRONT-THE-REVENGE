@@ -8,24 +8,23 @@ import axios from "axios";
 // import styles from "./check.css"
 
 const CheckProduct = (props) => {
-  const history =  useHistory()
   const id = props.match.params.id;
+  const history =  useHistory()
   const details = useSelector((state) => state.detail);
   const info = useSelector((state) => state.Admin);
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
   const cart = useSelector((state) => state.cart);
-  const userId = useSelector((state) => state.user);
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getInfoUser(user.email));
+      dispatch(getDetail(id))
+      dispatch(getCart(user.email));
     }
   }, [dispatch]);
 
  const handleClick = () => {
     if (isAuthenticated) {
-      dispatch(getCart(user.email));
-      toast.success("Producto agregado al carrito")
       history.push("/cart")
     } else {
       toast.error("Por favor inicia sesión");
@@ -67,21 +66,18 @@ const CheckProduct = (props) => {
     <div className="container-sm shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
       <h2 className="text-center mt-4 mb-4">Agregaste a tu carrito</h2>
         <div className="container-sm w-50 shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
-        {/* <button className="ddsfvfdva mt-5 mb-3" onClick={handleSubmit}>Actualizar</button> */}
         <br />
-                
+        <p>{details?.name}</p>
+        <img className="img-fluid rounded mt-2 me-4" src={details.image?.secure_url} alt="imagenProduct" style={{ width: "180px", height: "180px" }}></img>
+        <p>${details?.price}</p>
         <br />
         </div>
       <button className="btn btn-danger" onClick={()=>handlePayment(total(cart))}>Comprar carrito</button>
-      <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={() => {
+      <button type="button" className="btn btn-danger"
+              onClick={() => {
                     handleClick();
                   }}
-                >
-                  Ver carrito
-                </button>
+      > Ver carrito </button>
     </div>
   );
 };
