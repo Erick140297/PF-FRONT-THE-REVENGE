@@ -7,6 +7,7 @@ import "./home.css";
 import Loader from "../Loader/Loader";
 import Container from "../ContainerCards/Container";
 import ChatBot from "../ChatBot/ChatBot";
+import BackToTop from "../BackToTop/BackToTop";
 
 const Home = () => {
   // hooks
@@ -98,6 +99,7 @@ const Home = () => {
                 : "No hay más (⩾﹏⩽)"}
             </button>
           </div>
+          <BackToTop>up</BackToTop>
         </div>
       )}
     </>
