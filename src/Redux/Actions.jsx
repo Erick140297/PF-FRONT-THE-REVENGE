@@ -136,7 +136,7 @@ export function cleanResult() {
 export function cleanDetail() {
   return async function(dispatch) {
     return dispatch({
-      type: "CLEAN_DETAIL"
+      type: "CLEAN_DETAIL",
     });
   };
 }
@@ -166,7 +166,7 @@ export function postUserData(email, data) {
 
 export function userDisabled(id, data) {
   try {
-    return async function (dispatch) {
+    return async function(dispatch) {
       await axios.put(`${URL}/user/${id}`, data);
       dispatch({ type: "USER_DISABLED", payload: data });
     };
@@ -174,13 +174,34 @@ export function userDisabled(id, data) {
     console.log(error);
   }
 }
+
 export function updateorder(id, data) {
-  return async function (dispatch) {
-      await axios.put(`${URL}/order/${id}`,data)
-     /*  .catch(error => console.log(error.response.data)) */
-      return dispatch({ type: 'UPDATE_ORDER'})
-  }
+  try {
+    return async function(dispatch) {
+      await axios.put(`${URL}/order/${id}`, data);
+      return dispatch({ type: "UPDATE_ORDER" });
+    };
+  } catch (error) {}
 }
+
+export const updateOrderStatus = (id, status) => async (dispatch) => {
+  try {
+    const res = await axios.post(`${URL}/order/status/${id}`, {
+      status,
+    });
+    dispatch({
+      type: "UPDATE_ORDER_STATUS",
+      payload: res.data,
+    });
+    console.log("SOS", res.data);
+    console.log("IDD", id);
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_ORDER_STATUS_ERROR",
+      payload: error,
+    });
+  }
+};
 
 export function postNewAdmin(data) {
   return async function(dispatch) {
@@ -256,3 +277,48 @@ export function getOrder(id) {
     console.log(error);
   }
 }
+
+
+export function deletePurchaseOrder(id) {
+  return dispatch => {
+    dispatch({ type: "DELETE_PURCHASE_ORDER" });
+    axios
+      .delete(`${URL}/order/${id}`)
+      .then(res => {
+        dispatch({ type: "DELETE_PURCHASE_ORDER_SUCCESS", payload: res.data });
+        window.location.reload();
+      })
+      .catch(error => {
+        dispatch({ type: "DELETE_PURCHASE_ORDER_ERROR", error });
+      });
+  };
+}
+export function deleteUser(id) {
+  return dispatch => {
+    dispatch({ type: "DELETE_USER" });
+    axios
+      .delete(`${URL}/user/${id}`)
+      .then(res => {
+        dispatch({ type: "DELETE_USER_SUCCESS", payload: res.data });
+        window.location.reload();
+      })
+      .catch(error => {
+        dispatch({ type: "DELETE_USER_ERROR", error });
+      });
+  };
+}
+export function deleteProduct(id) {
+  return dispatch => {
+    dispatch({ type: "DELETE_PRODUCT" });
+    axios
+      .delete(`${URL}/product/${id}`)
+      .then(res => {
+        dispatch({ type: "DELETE_PRODUCT_SUCCESS", payload: res.data });
+        window.location.reload();
+      })
+      .catch(error => {
+        dispatch({ type: "DELETE_PRODUCT_ERROR", error });
+      });
+  };
+}
+

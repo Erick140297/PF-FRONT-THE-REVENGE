@@ -205,15 +205,14 @@
 .actionNotDisable:hover{
     color: rgb(252, 0, 0);
 }
-.containerPencil{
-    font-size: 20px;
+.actionDelete{
+    font-size:30px;
+    color:#7230FF;
 }
-
-.containerPencil:hover{
-    
-    color: #00d9ff;
+.actionDelete:hover{
+    font-size:30px;
+    color:#ffee30;
 }
-
 
 .containerInfoTable{
     display: flex;
@@ -273,33 +272,7 @@
     justify-content: space-between;
 }
 
-.containercAgotado{
-    background-color: #77aeff;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
 
-.containercDiscount{
-    background-color: #77ffa0;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.containercLow{
-    background-color: #ffe677a1;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.containercDisable{
-    background-color: #ff777798;
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-}
 
 .containCardInfo{
     height: 70px;

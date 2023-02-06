@@ -9,6 +9,9 @@ import Container from "../ContainerCards/Container";
 import ChatBot from "../ChatBot/ChatBot";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"; 
+=======
+import BackToTop from "../BackToTop/BackToTop";
+
 const Home = () => {
   // hooks
   const allComponents = useSelector((state) => state.allProducts);
@@ -101,6 +104,7 @@ const Home = () => {
                 : "No hay más (⩾﹏⩽)"}
             </button>
           </div>
+          <BackToTop>up</BackToTop>
         </div>
       )}
     </>

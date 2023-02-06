@@ -78,6 +78,9 @@
 
 
 }
+.containerTrash{
+    cursor:pointer;
+}
 /* 
 .containerAll{
     width: 100%;
