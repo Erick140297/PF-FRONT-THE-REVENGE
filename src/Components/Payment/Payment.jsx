@@ -4,7 +4,7 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import "./payment.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { FaHandPointRight, FaHourglassHalf, FaRegCalendarAlt, FaChevronLeft } from 'react-icons/fa'
+import { FaCrown, FaGrinStars, FaHandHoldingHeart, FaComments} from 'react-icons/fa'
 
 
 const Payment = () => {
@@ -52,26 +52,44 @@ const Payment = () => {
       user ? (
       <div className="loginnds">
       <div className="container-sm shadow-lg p-3 mb-4 mt-4 bg-dark rounded">
-          <FaHandPointRight />
-        <h1 className="fs-2 fw-semibold pb-2 border-bottom border-muted">
-        </h1>
         <div>
-        <label className="text-light mb-2 mt-4" htmlFor="">
-            Hola {user.given_name}, hiciste una compra, genial!
-          </label>
+          <div className="fs-1 fw-semibold pb-2 border-bottom border-muted text-light">
+          <FaGrinStars className="me-2 fs-2"/>
+          <FaCrown className="me-2 fs-1" />
+          <FaGrinStars className="me-2 fs-2"/>
+          </div>
+          <div className="dcdsvdfv container w-75 mt-4 p-4 bg-dark rounded">
+            <label className="text-light fs-2" htmlFor="">
+            <FaHandHoldingHeart /> Hola {user.given_name}, hiciste una compra, genial! <FaHandHoldingHeart />
+              </label>
+          </div>
+          <div className="container w-50 mt-4 p-5 rounded bg-dark shadow-lg">
+            <h2 className="fs-4 text-start">Detalle de tú compra:</h2>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+          </div>
           <br />
-          <label className="text-muted mb-2 mt-4" htmlFor="">
+        </div>
+        <div className="w-100 rounded bg-dark shadow-sm">
+          <label className="text-muted" htmlFor="">
             <i className="bi bi-chat-left-text">
-              <h3 className="fs-5">Por favor no olvides dejarnos tus comentarios a cerca de este producto.</h3>
+              <FaComments />
+              <h3 className="fs-6">Por favor no olvides dejarnos tus comentarios a cerca de este producto.</h3>
             </i>
           </label>
-        </div>
         <div className="d-md-flex justify-content-md-center">
-          <div className="btn btn-dark-lg mb-4 mt-5 fs-5 border border-light w-25 ">
+          <div className="btn btn-dark-lg mb-4 mt-3 fs-5 border border-light w-25 ">
             <Link to={"/home"} style={{ textDecoration: "none" }}>
               Back
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </div>
