@@ -3,7 +3,11 @@
     bottom: 0;
 }
 
-
+.lista{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
 .footer{
     display: flex;
     justify-content: space-evenly;

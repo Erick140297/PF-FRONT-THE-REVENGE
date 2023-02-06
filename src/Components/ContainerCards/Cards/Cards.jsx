@@ -15,14 +15,14 @@ export default function Cards({ category, image }) {
   };
   
   return (
-    <div className="Cards" onClick={() => handleClick(category)}>
+    <div className="Cards" onClick={() => handleClick(category)} >
       <div className="container-3">
         <div className="imageCards">
           <img src={image} />
         </div>
         <div className="category">
 
-          <h3>{category==="Perifericos"?"Periféricos":category}</h3>
+          <h3 >{category==="Perifericos"?"Periféricos":category}</h3>
         </div>
       </div>
     </div>

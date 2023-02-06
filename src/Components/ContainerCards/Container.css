@@ -1,4 +1,6 @@
 .cajitas{
     display:flex;
-    margin-left: 140px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
