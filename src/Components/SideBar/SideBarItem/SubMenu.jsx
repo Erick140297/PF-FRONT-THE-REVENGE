@@ -83,9 +83,10 @@ const SidebarLink = styled(Link)`
         setInput(e.target);
     };
 
+   
     return (
         <>
-        <SidebarLink to={history.location} onClick={item.subNav && showSubnav}>
+        <SidebarLink to={history.location} onClick={(item.subNav && showSubnav)}>
             <div>
             {item.icon}
             <SidebarLabel>{item.title}</SidebarLabel>
@@ -100,11 +101,13 @@ const SidebarLink = styled(Link)`
         </SidebarLink>
         {subnav &&
             item.subNav.map((item, index) => {
-            return (
+            return (<div className='todobien' onMouseDownCapture={(e) => handleChange(e)}>
                 <DropdownLink to='' key={index} onClick={(e) => handleSubmit(e)}>
                 {item.icon}
-                <SidebarLabel onMouseDownCapture={(e) => handleChange(e)} /* onChangeCapture={(e) => handleChange(e)} */ /* value={item.title} */>{item.title}</SidebarLabel>
-                </DropdownLink>
+                
+                <SidebarLabel  onMouseDownCapture={(e) => handleChange(e)} /* onChangeCapture={(e) => handleChange(e)} */ /* value={item.title} */>{item.title}</SidebarLabel>
+                
+                </DropdownLink></div>
             );
             })}
         </>

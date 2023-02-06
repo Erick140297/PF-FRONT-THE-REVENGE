@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrders } from "../../../Redux/Actions";
+import { getAllOrders,deletePurchaseOrder } from "../../../Redux/Actions";
 import { NavLink } from "react-router-dom";
 import "./Orders.css";
 import PaginadoOrder from "./PaginadoOrder";
-
-// UserEmail: "isaiasrobles2003@gmail.com"
-// date: "2022-08-26"
-// orderN: "03471734AF6562409"
-// status: "Procesando Pago"
-// totalPrice: 204000
 
 function AdminOrders() {
   const dispatch = useDispatch();
@@ -19,12 +13,19 @@ function AdminOrders() {
   }, []);
 
   const { AllOrders } = useSelector((state) => state);
+  const users = useSelector((state) => state.usersAdmin);
+  console.log("REREERERERE", users);
 
   let [currentPage, setCurrentPage] = useState(1);
   let [orderPerPage, setCategoryPerPage] = useState(5);
   let indexOfLastOrder = currentPage * orderPerPage;
   let indexOfFirstOrder = indexOfLastOrder - orderPerPage;
   let currentOrder = AllOrders.slice(indexOfFirstOrder, indexOfLastOrder);
+
+  const handleDeleteOrder = (orderId) => {
+    if(window.confirm("Estás seguro de que quieres eliminar esta orden?"))
+   { dispatch(deletePurchaseOrder(orderId));}
+  };
 
   return (
     <div className="">
@@ -74,27 +75,20 @@ function AdminOrders() {
                 <div className="containCardInfo">
                   <p> $ {order.total}</p>
                 </div>
-                <div className={
-                      order.status === "Preparando Envío"
-                        ? "containercDisable"
-                        : order.status === "Enviado"
-                        ? "containercAgotado"
-                        : order.status === "Entregado"
-                        ? "containercLow"
-                        : order.status === "Completado"
-                        ? "containercDiscount"
-                        :  order.status === "Pendiente"
-                        ? "containercPendiente"
-                        :  order.status === "Pagado"
-                        ? "containercPagado"
-                        : "p"
-                    }>
-                  <p
-                    
-                  >
-                    {" "}
-                    {order.status}
-                  </p>
+                <div
+                  className={
+                    order.status === "pendiente"
+                      ? "containercAgotado"
+                      : order.status === "pagado"
+                      ? "containercLow"
+                      : order.status === "enviado"
+                      ? "containercDiscount"
+                      : order.status === "entregado"
+                      ? "containercPendiente"
+                      : "p"
+                  }
+                >
+                  <p> {order.status}</p>
                 </div>
                 <div className="containCardInfo">
                   <p> {order.date}</p>
@@ -106,6 +100,12 @@ function AdminOrders() {
                       <i class="fa-solid fa-pencil"></i>
                     </div>
                   </NavLink>
+                  <div
+                    className="containerTrash"
+                    onClick={() => handleDeleteOrder(order._id)}
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
                 </div>
               </div>
             ))}

@@ -1,7 +1,7 @@
 
 import React,{ useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser,userDisabled } from "../../../Redux/Actions";
+import { getUser,userDisabled,deleteUser } from "../../../Redux/Actions";
 import "./User.css";
 import {NavLink} from "react-router-dom";
 import PaginadoUsers from "../User/Paginado/Paginado";
@@ -48,6 +48,10 @@ const User = () => {
     indexOfFirstUser,
     indexOfLastUser
     );
+    const handleDeleteUser = (userId) => {
+      if(window.confirm("Estás seguro de que quieres eliminar este usuario?"))
+{      dispatch(deleteUser(userId));
+}    };
     return (
       <div className="containerAll">
       <NavLink to="/dashboard"><botton className='btn btn-dark text-light shadow p-3 rounded mt-2'>Atras</botton></NavLink>
@@ -134,21 +138,29 @@ const User = () => {
               
                 <div className="containCardInfo">
                 {item.enabled === true ? (
-                    <button className="actionDisable">
+                    <span className="actionDisable">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
                         className="fa-solid fa-user"
                       ></i>
-                    </button>
+                    </span>
                   ) : (
-                    <button className="actionNotDisable ">
+                    <span className="actionNotDisable ">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
                         className="fa-solid fa-user-slash"
                       ></i>
-                    </button>
+                    </span>
                     )}
                 </div>
+                <div
+                    className="containerTrash"
+                    onClick={() => handleDeleteUser(item._id)}
+                  >
+                    <span className="actionDelete">
+                    <i className="actionDelete"class="fa-solid fa-trash"></i>
+                    </span>
+                  </div>
               </div>
             ))}
         </div>
