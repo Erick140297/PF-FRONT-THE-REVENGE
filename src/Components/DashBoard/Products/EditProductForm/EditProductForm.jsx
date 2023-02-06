@@ -68,7 +68,7 @@ const handleSave = async (event) => {
         const updatedProduct = {...product, ...productBien};
   
     
-      const response = await axios.put(`http://localhost:3001/product/${id}`, updatedProduct);
+      const response = await axios.put(`https://pf-back-the-revenge-production.up.railway.app/product/${id}`, updatedProduct);
       // Si la respuesta es exitosa, navegar hacia la página de detalles del producto
       history.push("/admin/products");
   
