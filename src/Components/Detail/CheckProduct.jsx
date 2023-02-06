@@ -67,14 +67,14 @@ const CheckProduct = (props) => {
       <h2 className="text-center mt-4 mb-4">Agregaste a tu carrito</h2>
         <div className="container-sm w-50 shadow-lg p-3 mb-4 mt-4 bg-dark rounded text-center">
         <br />
-        <p>{details?.name}</p>
-        <img className="img-fluid rounded mt-2 me-4" src={details.image?.secure_url} alt="imagenProduct" style={{ width: "180px", height: "180px" }}></img>
-        <p>${details?.price}</p>
+        <p className="text-center">{details?.name}</p>
+        <img className="img-fluid rounded mt-2" src={details.image?.secure_url} alt="imagenProduct" style={{ width: "180px", height: "180px" }}></img>
+        <p className="fs-4 mt-3 text-center">${details?.price}</p>
         <br />
         </div>
         <div>
-        <Link to='/home'><button className="ddsfvfdva"> Seguir comprando </button></Link>
-        <button className="ddsfvfdva"
+        <Link to='/home'><button className="ddsfvfdva me-1"> Seguir comprando </button></Link>
+        <button className="ddsfvfdva me-1"
               onClick={() => {
                     handleClick();
                   }}

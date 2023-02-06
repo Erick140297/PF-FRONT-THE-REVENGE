@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 import { useHistory } from "react-router-dom";
 import Alert from "../Alert/Alert"
+import ChatBot from "../ChatBot/ChatBot";
 
 
 const Cart = () => {
@@ -113,6 +114,7 @@ const Cart = () => {
             <Loader />
           ) : (
             <div>
+              <ChatBot /> 
               {cart.message ? (
                 <div>
                   <h1 className="text-center mt-4 text-light ">
