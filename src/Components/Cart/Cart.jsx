@@ -7,6 +7,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 import { useHistory } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
+
 
 const Cart = () => {
   const history = useHistory();
@@ -107,6 +109,7 @@ const Cart = () => {
             <Loader />
           ) : (
             <div>
+              <ChatBot /> 
               {cart.message ? (
                 <div>
                   <h1 className="text-center mt-4 text-light ">

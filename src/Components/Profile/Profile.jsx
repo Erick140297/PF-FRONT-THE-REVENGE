@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { getInfoUser } from "../../Redux/Actions";
 import styled from "styled-components";
 import { FaUserCog, FaUserEdit, FaUserMinus, FaUsersCog, FaClipboardList } from "react-icons/fa";
+import ChatBot from "../ChatBot/ChatBot";
+
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const Profile = () => {
 
   return (
     <Container>
+      <ChatBot /> 
       <ContainerOne>
         <Image style={{ backgroundImage: `url("${user.picture}")` }} />
         <Text>Hola {info.name}</Text>

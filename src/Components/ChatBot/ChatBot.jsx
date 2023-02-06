@@ -6,7 +6,7 @@ import "./chatBot.css";
 import { MdChatBubble } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import {  getProductsByCategory } from "../../Redux/Actions";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -25,9 +25,19 @@ const ChatBot1 = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false);
+    const info = useSelector((state) => state.Admin);
+
 
     const handleClick = () => {
         dispatch(getProductsByCategory('Componentes de pc'));
+        history.push("/result")
+    };
+    const handleClick1 = () => {
+        dispatch(getProductsByCategory('Perifericos'));
+        history.push("/result")
+    };
+    const handleClick2 = () => {
+        dispatch(getProductsByCategory('Mantenimiento'));
         history.push("/result")
     };
 
@@ -91,7 +101,9 @@ const ChatBot1 = () => {
                 id: "seleccion",
                 options: [
                     { value: "c", label: "Componentes de PC disponibles", trigger: "7A" },
-                    { value: "m", label: "Marcas de componentes de PC", trigger: "7B" },
+                    { value: "p", label: "Periféricos", trigger: "7B" },
+                    { value: "m", label: "Productos de Mantenimiento", trigger: "7C" },
+                    { value: "o", label: "Como puedo ver mis órdenes canceladas?", trigger: "7D" },
                 ],
                 },
                 {
@@ -118,28 +130,75 @@ const ChatBot1 = () => {
                 {
                 id: "7B",
                 message:
-                    "Veo que quieres saber sobre nuestros componentes de PC, esta es una lista de las marcas disponibles y en stock:",
-                trigger: "9",
+                    "Veo que quieres ver los periféricos para tu pc disponibles y en stock:",
+                trigger: "10",
                 },
                 {
-                id: "9",
+                id: "10",
                 component: (
                     <div className="text-dark bg-body shadow p-3 rounded">
-                        {/* <ul class="list-group">
-                            {products.map((e, i) => (
-                            <li className="list-group-item list-group-item-dark" key={i} value={e}>
-                            {e}
-                            </li>
-                            ))}
-                        </ul>    */}
-                        Holis
-                    </div> 
+                        Haz <button className="btn btn-success" onClick={() => handleClick1()}>click aquí</button> y podrás ver los periféricos actuales disponibles.
+                    </div>
                 ),
                 trigger: "preguntaVuelta",
                 },
                 {
                 id: "preguntaVuelta",
-                message: "Do you need to know anything else?",
+                message: "Te puedo ayudar en algo más?",
+                trigger: "respuestaVuelta",
+                },
+                {
+                id: "respuestaVuelta",
+                options: [
+                    { value: "y", label: "Yes", trigger: "6A" },
+                    { value: "n", label: "No", trigger: "6B" },
+                ],
+                },
+                {
+                id: "7C",
+                message:
+                    "Veo que quieres saber sobre productos de mantenimiento para tú PC",
+                trigger: "11",
+                },
+                {
+                id: "11",
+                component: (
+                    <div className="text-dark bg-body shadow p-3 rounded">
+                        Haz <button className="btn btn-success" onClick={() => handleClick2()}>click aquí</button> y podrás revisar los productos de mantenimiento disponibles.
+                    </div>
+                ),
+                trigger: "preguntaVuelta",
+                },
+                {
+                id: "preguntaVuelta",
+                message: "Te puedo ayudar en algo más?",
+                trigger: "respuestaVuelta",
+                },
+                {
+                id: "respuestaVuelta",
+                options: [
+                    { value: "y", label: "Yes", trigger: "6A" },
+                    { value: "n", label: "No", trigger: "6B" },
+                ],
+                },
+                {
+                id: "7D",
+                message:
+                    "Quieres saber el estado de tus órdenes?",
+                trigger: "12",
+                },
+                {
+                id: "12",
+                component: (
+                    <div className="text-dark bg-body shadow p-3 rounded">
+                        Haz <Link to={`/myorders/${info._id}`}>Click aqui </Link> y podrás ir al apartado de 'Mis Órdenes' en tú perfil de usuario.
+                    </div>
+                ),
+                trigger: "preguntaVuelta",
+                },
+                {
+                id: "preguntaVuelta",
+                message: "Te puedo ayudar en algo más?",
                 trigger: "respuestaVuelta",
                 },
                 {
