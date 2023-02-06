@@ -73,7 +73,7 @@ const Header = () => {
                 <NavIcon to='#'>
                 <AiIcons.AiOutlineClose onClick={showSidebar} />
                 </NavIcon>
-                <h4>Categorias</h4>
+                <h4>Categorías</h4>
                 {SidebarData.map((item, index) => {
                 return <SubMenu item={item} key={index}/>;
                 })}
