@@ -34,64 +34,54 @@ function AdminOrders() {
       </NavLink>
 
       <div className="productContainer">
-        <div className="containerInfoTable">
+        <div className="containerInfoTableOrder">
           <ul className="ul">
-            <div className="containHeadr ps-4 me-4">Usuario</div>
-            <div className="containHeadr ps-4">Orden</div>
+            <div className="containHeadr me-5">Usuario</div>
+            <div className="containHeadr ">Orden</div>
             <div className="containHeadr "></div>
-            <div className="containHeadr ps-4">Precio Total</div>
+            <div className="containHeadr">Precio Total</div>
             <div className="containHeadr">Estado</div>
             <div className="containHeadr">Fecha</div>
-            <div className="containHeadr me-3">Acciones</div>
+            <div className="containHeadr">Acciones</div>
           </ul>
 
           {currentOrder.length > 0 &&
             currentOrder.map((order) => (
               <div
-                className={
-                  // order.status === "Procesando Pago"
-                  //   ? "containercDisable"
-                  //   : order.status === "Enviado"
-                  //   ? "containercAgotado"
-                  //   : order.status === "Preparando Envio"
-                  //   ? "containercLow"
-                  //   : order.status === "Completado"
-                  //   ? "containercDiscount"
-                  "containerc"
-                }
-              >
+                className={"containerOrderProducts"}>
                 <div className="containCardInfo">
-                  <p className="p-order"> {order.user}</p>
+                  {order.user}
                 </div>
                 <div className="containCardInfo">
-                  <p className="p-order"> {order._id}</p>
-                  <img
-                    className="img-orders ms-2"
+               <>
+                 {order._id}<img
+                    className="img-orders ms-3"
                     src={order.cart.items[0].product.image.secure_url}
                     alt=""
                   />
+               </> 
                 </div>
 
-                <div className="containCardInfo">
-                  <p> $ {order.total}</p>
+                <div className="containCardPrice">
+                   $ {order.total}
                 </div>
                 <div
                   className={
                     order.status === "pendiente"
-                      ? "containercAgotado"
+                      ? "containerPendiente"
                       : order.status === "pagado"
-                      ? "containercLow"
+                      ? "containerPagado"
                       : order.status === "enviado"
-                      ? "containercDiscount"
+                      ? "containerEnviado"
                       : order.status === "entregado"
-                      ? "containercPendiente"
-                      : "p"
+                      ? "containerEntregado"
+                      : "containCardStatus"
                   }
                 >
-                  <p> {order.status}</p>
+                   {order.status}
                 </div>
-                <div className="containCardInfo">
-                  <p> {order.date}</p>
+                <div className="containCardDate">
+                   {order.date}
                 </div>
 
                 <div className="containerActions">

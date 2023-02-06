@@ -107,7 +107,7 @@ function AdminOrderEdit() {
                 <hr className="hR" />
                 <label className="text">
                   {" "}
-                  Preparando Envio
+                  Pagado
                   <div className="circulo">
                     <input
                       className="season"

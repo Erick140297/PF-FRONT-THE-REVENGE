@@ -9,7 +9,6 @@ import Container from "../ContainerCards/Container";
 import ChatBot from "../ChatBot/ChatBot";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"; 
-=======
 import BackToTop from "../BackToTop/BackToTop";
 
 const Home = () => {
@@ -47,7 +46,7 @@ const Home = () => {
             <Carousel.Item interval={2500}>
               <img
                 className="d-block w-100"
-                src="https://res.cloudinary.com/dfaxzahb0/image/upload/v1675549785/Products/v9wpx6mg2lxzid6fkczz.jpg"
+                src="https://1.bp.blogspot.com/-Cp262X1jC0Y/YCYQfxYihsI/AAAAAAAACuE/sk8Fzx3BuGQf3NAPY17DPCHwr5OjGGmeQCLcBGAsYHQ/w1200-h630-p-k-no-nu/Intel%2BCore%2Bvs%2BAMD%2BRyzen%2Bqu%25C3%25A9%2Bmarca%2Bde%2Bprocesador%2Bescoger%2Bpara%2Bvideojuegos..png"
                 alt="First slide"
               />
             </Carousel.Item>
