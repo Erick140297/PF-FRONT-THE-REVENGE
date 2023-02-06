@@ -28,6 +28,7 @@ const Products = () => {
   const handleDelete = (productId) => {
     if(window.confirm("Estás seguro de que quieres eliminar este producto?")){
       dispatch(deleteProduct(productId));
+      dispatch(GetAllProducts());
     }
 };
 
