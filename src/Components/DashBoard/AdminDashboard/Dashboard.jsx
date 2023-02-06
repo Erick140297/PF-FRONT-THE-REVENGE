@@ -5,6 +5,7 @@ import { GetAllProducts, getUser } from "../../../Redux/Actions"
 
 import "./Dashboard.css";
 import DashboardSold from "./DashboardSold";
+
 function AdminDashboard() {
   const dispatch = useDispatch();
 
@@ -14,17 +15,9 @@ function AdminDashboard() {
   }, []);
 
   let allProductsStock = useSelector((state) => state.allProducts);
-  const allStock = allProductsStock.map(product => product.stock);
+  const allStock = allProductsStock.map(product => ({name:product.name, stock :product.stock}));
 
-  const countOcurrences2 = (arr) =>
-    arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
   
-  //   let allUser = useSelector((state) => state.usersAdmin);
-  // const allUsers = allUser.map((user) => user.enabled);
-
-  // const countOcurrences3 = (arr) =>
-  //   arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
-
   let allProductsBackup = useSelector((state) => state.allProducts);
   const allCategory = allProductsBackup.map((product) => product.category);
 
@@ -48,12 +41,14 @@ function AdminDashboard() {
     ],
   };
 
+
+  
   const data2 = {
+    labels: allStock.map(product => product.name),
     datasets: [
       {
         label: "Stock",
-        data: countOcurrences2(allStock),
-        borderWidth: "8",
+        data: allStock.map(product => product.stock),
         backgroundColor: [
           "#ffbb11",
           "#ca4040",
@@ -64,25 +59,9 @@ function AdminDashboard() {
       },
     ],
   };
-
-  // const data3 = {
-  //   datasets: [
-  //     {
-  //       label: "Users",
-  //       data: countOcurrences3(allUsers),
-  //       borderWidth: "8",
-  //       backgroundColor: [
-  //         "#ffbb11",
-  //         "#ca4040",
-  //         "#50AF95",
-  //         "#f3ba2f",
-  //         "#2a71d0",
-  //       ],
-  //     },
-  //   ],
-  // };
-  console.log("opa",countOcurrences2)
-  console.log("aaaaaaa",data2)
+  
+  console.log("AllStock", allCategory)
+  console.log("aaaaaaa", countOcurrences)
   return (
     <div className="container">
       <div className="containerTitle">
@@ -93,11 +72,8 @@ function AdminDashboard() {
           <Chart className="chart" chartData={data}  />
         </div>
         <div className="containerEstadisticas">
-          <Chart className="chart" chartData={data2} />
+          <Chart className="chart2" chartData={data2}  />
         </div>
-        {/* <div className="containerEstadisticas">
-          <Chart className="chart" chartData={data3} />
-        </div> */}
         <div className="containerEstadisticas">
           <DashboardSold></DashboardSold>
         </div>

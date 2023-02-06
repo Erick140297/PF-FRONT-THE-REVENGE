@@ -13,8 +13,8 @@ const initialState = {
   order: {},
   sideBar: false,
   Admin: [],
-  detail:{},
-  usersAdmin:[]
+  detail: {},
+  usersAdmin: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -37,7 +37,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         loader: false,
-        productsFiltrados: action.payload
+        productsFiltrados: action.payload,
       };
 
     case "SET_LOADER_TRUE":
@@ -68,7 +68,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         loader: false,
-        detail: action.payload
+        detail: action.payload,
       };
 
     case "GET_PRODUCTS_BY_CATEGORY":
@@ -81,13 +81,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         loader: false,
-        productsFiltrados: []
+        productsFiltrados: [],
       };
     case "CLEAN_DETAIL":
       return {
         ...state,
         loader: false,
-        detail: {}
+        detail: {},
       };
     case "GET_ALL_USER":
       return {
@@ -125,22 +125,67 @@ function rootReducer(state = initialState, action) {
         ...state,
         Admin: action.payload,
       };
-      case 'USER_DISABLED':
-        return {
-            ...state,
-        }
+    case "USER_DISABLED":
+      return {
+        ...state,
+      };
     case "GET_MY_ORDERS":
       return {
         ...state,
         myOrders: action.payload,
-        loader:false
       };
-
+    case "UPDATE_ORDER":
+      return {
+        ...state,
+      };
+    case "UPDATE_ORDER_STATUS":
+      return {
+        ...state,
+      };
+    case "UPDATE_ORDER_STATUS_ERROR":
+      return {
+        ...state,
+      };
     case "GET_ORDER":
       return {
         ...state,
         order: action.payload,
-
+      };
+      case "DELETE_PURCHASE_ORDER":
+      return {
+        ...state,
+      };
+      case "DELETE_PURCHASE_ORDER_SUCCESS":
+      return {
+        ...state,
+      };
+      case "DELETE_PURCHASE_ORDER_ERROR":
+      return {
+        ...state,
+      };
+      case "DELETE_USER":
+      return {
+        ...state,
+      };
+      case "DELETE_USER_SUCCESS":
+      return {
+        ...state,
+      };
+      case "DELETE_USER_ERROR":
+      return {
+        ...state,
+      };
+      case "DELETE_PRODUCT":
+      return {
+        ...state,
+      };
+      case "DELETE_PRODUCT_SUCCESS":
+      return {
+        ...state,
+      };
+      case "DELETE_PRODUCT_ERROR":
+      return {
+        ...state,
       };
     default:
       return state;
