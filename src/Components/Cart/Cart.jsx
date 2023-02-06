@@ -7,12 +7,18 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../Loader/Loader";
 import { useHistory } from "react-router-dom";
+import Alert from "../Alert/Alert"
+
 
 const Cart = () => {
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
   const cart = useSelector((state) => state.cart);
+  const info = useSelector((state) => state.Admin);
 
+  if (!info.enabled) {
+    return <Alert message="Este usuario está deshabilitado. Por Favor comunicarse con GALAXIA TECH." />;
+  }
   if(Object.entries(cart).length != 0){
     window.localStorage.setItem("cartId", JSON.stringify(cart._id));
   }

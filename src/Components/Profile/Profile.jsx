@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { getInfoUser } from "../../Redux/Actions";
 import styled from "styled-components";
 import { FaUserCog, FaUserEdit, FaUserMinus, FaUsersCog, FaClipboardList } from "react-icons/fa";
+import Alert from "../Alert/Alert"
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,17 @@ const Profile = () => {
     dispatch(getInfoUser(user.email));
   }, []);
 
+  console.log(info)
+  if (!info.enabled) {
+    return <Alert/>;
+  }
   return (
     <Container>
+      
       <ContainerOne>
-        <Image style={{ backgroundImage: `url("${user.picture}")` }} />
+      
+    <Image style={{ backgroundImage: `url("${user.picture}")` }} />
+  
         <Text>Hola {info.name}</Text>
       </ContainerOne>
       <ContainerTwo>
