@@ -53,9 +53,11 @@ const User = () => {
 {      dispatch(deleteUser(userId));
 }    };
     return (
-      <div className="containerAll">
-      <NavLink to="/dashboard"><botton className='btn btn-dark text-light shadow p-3 rounded mt-2'>Atras</botton></NavLink>
-      <div className="productContainer mt-4">
+      <div>
+       <NavLink to="/dashboard">
+        <button className="btnAbout">Volver</button>
+      </NavLink>
+      <div className="productContainer">
         <div className="infoConteiner">
           <div className="infoProduct">
             <div className="info">
@@ -83,30 +85,24 @@ const User = () => {
         </div>
         <div className="containerInfoTable">
           <ul className="ul">
-            <div className="headerMove mt-2">
-              <li className="headerItem">Nombre</li>
+            <div className="containHeadr"> Nombre
             </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Apellidos</li>
+            <div className="containHeadr1">Apellidos
             </div>
-            <div className="headerMovemail mt-2">
-              <li className="headerItem">Correo</li>
+            <div className="containHeadr1">Correo
             </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Role</li>
+            <div className="containHeadr1">Role
             </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Estado</li>
+            <div className="containHeadr1">Estado
             </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Acciones</li>
+            <div className="containHeadr2">Acciones
             </div>
           </ul>
 
           {currentUsers &&
             currentUsers.map((item) => (
               <div className="containerc">
-                <div className="containCardInfo bg-dark shadow p-3 rounded mb-1">
+                <div className="containCardName">
                   <p className="mt-3">
                     {" "}
                     {item.name
@@ -127,7 +123,7 @@ const User = () => {
                   <p className="p-user"> {item.email}</p>
                 </div>
 
-                <div className="containCardInfo">
+                <div className="containCardRole">
                 <p > {item.admin ? "Admin" : "Cliente"}</p>
                 </div>
 
@@ -136,7 +132,7 @@ const User = () => {
                 </div>
 
               
-                <div className="containCardInfo">
+                <div className="containerActions">
                 {item.enabled === true ? (
                     <span className="actionDisable">
                       <i
@@ -152,16 +148,12 @@ const User = () => {
                       ></i>
                     </span>
                     )}
-                </div>
-                <div
-                    className="containerTrash"
-                    onClick={() => handleDeleteUser(item._id)}
-                  >
                     <span className="actionDelete">
-                    <i className="actionDelete"class="fa-solid fa-trash"></i>
+                    <i className="actionDelete"onClick={() => handleDeleteUser(item._id)}class="fa-solid fa-trash"></i>
                     </span>
                   </div>
-              </div>
+                </div>
+                
             ))}
         </div>
          <div className="containerCreated">
