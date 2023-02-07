@@ -17,6 +17,7 @@
 }
 .img-orders {
   width: 50px;
+  border-radius: 15%;
 }
 .productContainer {
   width: 100%;

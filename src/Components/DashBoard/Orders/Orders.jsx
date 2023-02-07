@@ -13,8 +13,7 @@ function AdminOrders() {
   }, []);
 
   const { AllOrders } = useSelector((state) => state);
-  const users = useSelector((state) => state.usersAdmin);
-  console.log("REREERERERE", users);
+
 
   let [currentPage, setCurrentPage] = useState(1);
   let [orderPerPage, setCategoryPerPage] = useState(5);

@@ -15,6 +15,7 @@ const initialState = {
   Admin: [],
   detail: {},
   usersAdmin: [],
+  error: {}
 };
 
 function rootReducer(state = initialState, action) {
@@ -129,6 +130,14 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+      case 'UPDATE_USER':
+        return {
+          ...state,
+          };
+        case 'UPDATE_USER_ERROR':
+        return {
+          ...state,
+        };
     case "GET_MY_ORDERS":
       return {
         ...state,
