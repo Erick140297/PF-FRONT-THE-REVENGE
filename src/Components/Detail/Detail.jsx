@@ -161,9 +161,9 @@ const Detail = (props) => {
                 <br />
               </div>
             </div>
-            <div className="review1 container-sm mt-2 shadow-lg rounded text-center">
+            <div className="review2 container-sm mt-2 shadow-lg rounded text-center">
               <h2 className="pt-4 fs-4"><FaRocket /> Productos relacionados</h2>
-              <Relation> 
+              <Relation className="mb-2"> 
                 {allComponents?.filter((el)=>el.subCategory === details?.subCategory && el.name !== details?.name).slice(0,3).map((el, index) => {
                   return (
                     <Card
@@ -240,7 +240,7 @@ const Relation = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #212529;
-  width: 100%;
+  width: 95%;
   margin: 20px;
   padding: 20px;
 `
