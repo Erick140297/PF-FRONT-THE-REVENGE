@@ -52,8 +52,8 @@ const Detail = (props) => {
     return resultado;
   };
 
-  const contador1 = 0
-  const contador2 = 0
+  let contador1 = 0
+  let contador2 = 0
 
   const cont1 = () => {
     contador1 = contador1++
