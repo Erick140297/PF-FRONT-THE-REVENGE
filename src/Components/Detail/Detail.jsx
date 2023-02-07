@@ -10,6 +10,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+import { FaCommentDots, FaUserAstronaut, FaRegComments, FaRocket } from 'react-icons/fa'
+import { MdThumbDown, MdThumbUp } from "react-icons/md";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import ChatBot from "../ChatBot/ChatBot";
@@ -49,6 +51,13 @@ const Detail = (props) => {
     const resultado = suma / details.rating.length;
     return resultado;
   };
+
+  const contador1 = 0
+  const contador2 = 0
+
+  const cont1 = () => {
+    contador1 = contador1++
+  }
 
 
   useEffect(() => {
@@ -101,38 +110,26 @@ const Detail = (props) => {
                 <br />
                 <div className="stock">
                   {details?.stock > 10 ? (
-                    <h3 className="stock-disponible">
+                    <h3 className="stock-disponible fs-5">
                       Stock disponible ({details?.stock})
                     </h3>
                   ) : (
-                    <h3>Poco stock disponible ({details?.stock})</h3>
+                    <h3 className="fs-5">Poco stock disponible ({details?.stock})</h3>
                   )}
                 </div>
-                <br />
-                {/* <Link to={`/CheckProduct/${id}`}>
-                  <button type="button" className="btn btn-danger">Añadir al carrito</button>
-                </Link> */}
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={() => {
-                    handleClick();
-                  }}
-                >
-                  Añadir al carrito
-                </button>
-                <br />
-                <div className="rating">
+                <hr className="text-muted" />
+                <div className="rating mt-2">
                   {details?.rating.length > 1 ? (
-                    <div>
-                      <h4 className="h-rating">Rating del producto</h4>
+                    <div className="mb-3">
+                      <h4 className="h-rating fs-6 text-muted">Rating del producto</h4>
                       <Rating
                         name="raintg"
+                        className="fs-2"
                         defaultValue={
                           details?.rating.length ? (
                             details.rating.length
                           ) : (
-                            <h3>Sin rating</h3>
+                            <h3 className="fs-6 text-muted">Sin rating</h3>
                           )
                         }
                         precision={0.1}
@@ -140,50 +137,91 @@ const Detail = (props) => {
                       />
                     </div>
                   ) : (
-                    <h3>Sin rating aún</h3>
+                    <h3 className="fs-6 text-muted mb-3">Sin rating aún</h3>
                   )}
                 </div>
+                {/* <Link to={`/CheckProduct/${id}`}>
+                  <button type="button" className="btn btn-danger">Añadir al carrito</button>
+                </Link> */}
+                <button
+                  type="button"
+                  className="btn btn-danger shadow-md"
+                  onClick={() => {
+                    handleClick();
+                  }}
+                >
+                  Añadir al carrito
+                </button>
+                <div className="product-description-container">
+                  <h3 className="text-detai mt-5 mb-5 text-muted">
+                    Descripción:
+                    <p className="p-detail mt-1">{details?.description}</p>{" "}
+                  </h3>
+                </div>
+                <br />
+              </div>
+            </div>
+            <div className="review1 container-sm mt-2 shadow-lg rounded text-center">
+              <h2 className="pt-4 fs-4"><FaRocket /> Productos relacionados</h2>
+              <Relation> 
+                {allComponents?.filter((el)=>el.subCategory === details?.subCategory && el.name !== details?.name).slice(0,3).map((el, index) => {
+                  return (
+                    <Card
+                      name={el.name}
+                      image={el.image ? el.image.secure_url : ""}
+                      price={el.price}
+                      id={el._id}
+                      key={index} 
+                    />
+                  );
+                })}
+              </Relation>
+            </div>
 
+          <div className="review1 container-sm mt-2 shadow-lg rounded">
                 <br />
                 <div className="review">
                   {details.review.length !== 0 ? (
                     <div>
-                      <h4 className="h-rating">Reviews:</h4>
-                      <Review>
-                        {details.review.map(e=>
-                          <h3 className="review">{e.user}: {e.comentario}</h3>
-                        )}
-                        <br />
-                    </Review>
+                      <h4 className="h-rating text-center fs-3"><FaRegComments /> Reviews</h4>
+                      <div className="container text-center">
+                        <div className="row">
+                          {details.review.map(e=>
+                          <>
+                              <div className="col-9">
+                              <Review className="text-start mt-2">
+                                <h4 className="review fs-6 border-muted text-muted"><FaUserAstronaut /> {e.user}</h4>
+                                <hr className="text-muted mt-0 mb-0"/>
+                                <h3 className="mt-2 ms-2 fs-6 text-muted"><FaCommentDots /> Comentario:</h3>
+                                <h2 className="fs-5 ms-3">{e.comentario}</h2>
+                              </Review>
+                            </div>
+                            <div className="col-3 text-light mt-2">
+                                  <div className="container text-center mt-4">
+                                    <div className="row">
+                                      <div className="col">
+                                        <button className="btn btn-dark" onClick={() => cont1()}><MdThumbDown className="fs-4 me-2"/> {/* <p className="text-muted">{contador1}</p> */}</button>
+                                      </div>
+                                      <div className="col">
+                                        <button className="btn btn-dark">< MdThumbUp className="fs-4 me-2" /> {/* <p className="text-muted">{contador1}</p> */}</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+                          </>
+                              )}
+
+                        </div>
+                      </div>
                     <br />
                     </div>
                   ) : (
-                    <h3>Sin review aún</h3>
+                    <div className="container pb-3 text-center">
+                        <Review className="mb-2 text-muted">Sin review</Review>
+                    </div>
                   )}
                 </div>
-
-                <div className="product-description-container">
-                  <h3 className="text-detai mt-5 mb-5">
-                    Descripción:
-                    <p className="p-detail">{details?.description}</p>{" "}
-                  </h3>
-                </div>
-                
               </div>
-            </div>
-          <Relation> 
-            {allComponents?.filter((el)=>el.subCategory === details?.subCategory && el.name !== details?.name).slice(0,3).map((el, index) => {
-              return (
-                <Card
-                  name={el.name}
-                  image={el.image ? el.image.secure_url : ""}
-                  price={el.price}
-                  id={el._id}
-                  key={index}
-                />
-              );
-            })}
-          </Relation>
 
           </section>
           <Toaster position="bottom-right" reverseOrder={false} />
