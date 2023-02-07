@@ -26,9 +26,9 @@ function AdminOrderEdit() {
   const idToFilter = propsID;
 
   const userId = usersAdmin.filter((obj) => obj.orders.includes(idToFilter));
-  console.log(userId)
-  const oneOrder = AllOrders.filter((item) => item._id === propsID);
 
+  const oneOrder = AllOrders.filter((item) => item._id === propsID);
+ console.log(oneOrder,"ORDER")
   const [input, setInput] = useState("");
 
   const [errors, setErrors] = useState({});
@@ -36,6 +36,7 @@ function AdminOrderEdit() {
   const user = userId[0]._id;
   const userEmail = userId[0].email;
   const userName = userId[0].name;
+
 
 
   const dispatch = useDispatch();
@@ -47,7 +48,6 @@ function AdminOrderEdit() {
   const handleCheckBox = (e) => {
     if (e.target.checked) {
       setInput(e.target.value);
-      onlyOneDifficulty(e.target.value);
     }
   };
 
@@ -61,7 +61,6 @@ function AdminOrderEdit() {
     dispatch(updateOrderStatus(user, updatedOrder));
     window.history.back();
   };
-
   return (
     <div className="containerAll1">
       <Link to="/admin/orders">

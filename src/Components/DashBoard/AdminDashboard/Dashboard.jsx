@@ -28,11 +28,11 @@ function AdminDashboard() {
  
   let allUsersBackup = useSelector((state) => state.usersAdmin);
   const allUser = allUsersBackup.map((user) => user.enabled);
-  console.log(allUser)
+  // console.log(allUser)
 
   const countOcurrences = (arr) =>
     arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
-    console.log("!!!!!!!", countOcurrences(allUser))
+    // console.log("!!!!!!!", countOcurrences(allUser))
   const data = {
     datasets: [
       {
@@ -56,11 +56,8 @@ function AdminDashboard() {
         data: countOcurrences(allUser),
         borderWidth: "8",
         backgroundColor: [
-          "#ffbb11",
+          "#29bd15",
           "#ca4040",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
         ],
       },
     ],
@@ -83,8 +80,8 @@ function AdminDashboard() {
     ],
   };
 
-  console.log("AllStock", allCategory);
-  console.log("aaaaaaa", countOcurrences);
+  // console.log("AllStock", allCategory);
+  // console.log("aaaaaaa", countOcurrences);
 
   return (
     <div>

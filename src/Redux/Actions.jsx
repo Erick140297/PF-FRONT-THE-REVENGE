@@ -174,6 +174,18 @@ export function userDisabled(id, data) {
     console.log(error);
   }
 }
+export function updateUser (id, data) {
+  try {
+    return async function(dispatch){
+      await axios.put(`${URL}/user/${id}`, data);
+    dispatch({ type: 'UPDATE_USER', payload:data });}
+  } catch (error) {
+    dispatch({
+      type: 'UPDATE_USER_ERROR',
+      payload: error.response.data
+    });
+  }
+};
 
 export function updateorder(id, data) {
   try {
