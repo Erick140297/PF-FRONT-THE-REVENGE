@@ -63,7 +63,7 @@ const Payment = () => {
             <FaHandHoldingHeart /> Hola {user.given_name}, hiciste una compra, genial! <FaHandHoldingHeart />
               </label>
           </div>
-          <div className="container w-50 mt-4 p-5 rounded bg-dark shadow-lg">
+          {/* <div className="container w-50 mt-4 p-5 rounded bg-dark shadow-lg">
             <h2 className="fs-4 text-start">Detalle de tú compra:</h2>
             <h1></h1>
             <h1></h1>
@@ -73,7 +73,7 @@ const Payment = () => {
             <h1></h1>
             <h1></h1>
             <h1></h1>
-          </div>
+          </div> */}
           <br />
         </div>
         <div className="w-100 rounded bg-dark shadow-sm">
