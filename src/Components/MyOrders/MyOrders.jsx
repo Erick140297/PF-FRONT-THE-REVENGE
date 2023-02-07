@@ -26,12 +26,10 @@ const MyOrders = () => {
       dispatch(setLoader());
     };
   }, [dispatch]);
-
+  
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
+      {myOrders?(
         <>
         <button type="button" className="btn btn-dark fs-5 position-absolute top-5 start-2 " onClick={() => history.push("/profile")}>
           <FaChevronLeft/>
@@ -43,7 +41,7 @@ const MyOrders = () => {
               return (
                 <div className="my-order2 container-sm p-3 mb-3 mt-4 bg-dark rounded text-start">
                   <Container key={i}>
-                    <span className="ms-2 mt-2 mb-2">Orden: {i + 1}</span>
+                    <span className="ms-2 mt-2 mb-2 text-muted">Orden: {i + 1}</span>
                     <span className="ms-3"><FaHourglassHalf /> Estado: {el.status}</span>
                     <span className="ms-3"><FaRegCalendarAlt /> Fecha: {el.date}</span>
                     <hr />
@@ -52,7 +50,7 @@ const MyOrders = () => {
                         <div className="col mt-2 ">
                           <span className="col">Total: $ {el.total}</span>
                         </div>
-                        <div className="col mb-2 border">
+                        <div className="col mb-2 me-2 border rounded">
                           <Link to={`/order/detail/${el._id}`}>Más información</Link>
                         </div>
                       </div>
@@ -64,7 +62,9 @@ const MyOrders = () => {
           </div>
         </div>
         </>
-      )}
+      ) : 
+        <Loader />
+      }
     </>
   );
 };
