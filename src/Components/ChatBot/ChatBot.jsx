@@ -5,7 +5,9 @@ import { useHistory } from "react-router-dom"
 import "./chatBot.css";
 import { MdChatBubble } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import {  getProductsByCategory } from "../../Redux/Actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+import {  getInfoUser, getProductsByCategory } from "../../Redux/Actions";
 import { Link } from "react-router-dom";
 
 
@@ -26,6 +28,9 @@ const ChatBot1 = () => {
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false);
     const info = useSelector((state) => state.Admin);
+    const { logout, user } = useAuth0();
+
+    console.log(info);
 
 
     const handleClick = () => {
@@ -40,6 +45,14 @@ const ChatBot1 = () => {
         dispatch(getProductsByCategory('Mantenimiento'));
         history.push("/result")
     };
+
+    useEffect(() => {
+        if(user) {
+            dispatch(getInfoUser(user.email));
+        } else {
+
+        }
+    }, []);
 
 
   return (
