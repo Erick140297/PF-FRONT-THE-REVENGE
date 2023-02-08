@@ -6,11 +6,16 @@ import styled from "styled-components";
 import Loader from "../Loader/Loader";
 import { AiOutlineComment } from "react-icons/ai";
 import { spread } from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const OrderDetail = () => {
   const order = useSelector((state) => state.order);
+//   const info = useSelector((state) => state.Admin);
+// console.log(info)
   const dispatch = useDispatch();
   const { id } = useParams();
+
+
 
   useEffect(() => {
     dispatch(getOrder(id));
@@ -29,7 +34,8 @@ const OrderDetail = () => {
             </Chield1>
 
             <Chield2>
-              <Text>Fecha de expedición: {order.date} </Text>
+              <Text>Fecha de expedición:</Text>
+              <Text>{order.date}</Text>
             </Chield2>
             <Chield4>
               {order.cart.items?.map((el, index) => (
@@ -46,7 +52,10 @@ const OrderDetail = () => {
                     <Link
                       to={`/review/${id}/${index}/${el.product._id}/${el.product.name}`}
                     >
+                      <TextPrice>
+
                       <Comment />
+                      </TextPrice>
                     </Link>
                   ):(<TextPrice>Calificado</TextPrice>)}
                 </Row>
@@ -55,11 +64,11 @@ const OrderDetail = () => {
 
             <Chield3>
               <TextNum>N°</TextNum>
-              <TextName>Nombre</TextName>
+              <TextNameTittle>Nombre</TextNameTittle>
               <TextNum>Cantidad</TextNum>
               <TextBrand>Marca</TextBrand>
               <TextPrice>Precio unitario</TextPrice>
-              <TextPrice>Precio</TextPrice>
+              <TextPrice>Precio total</TextPrice>
               <TextPrice>Calificar</TextPrice>
             </Chield3>
 
@@ -103,19 +112,18 @@ const Chield1 = styled.div`
   align-items: center;
   text-align: justify;
   height: 100%;
-  grid-area: 1 / 1 / 2 / 5;
+  grid-area: 1 / 1 / 2 / 4;
   border-radius: 15px;
   background-color: whitesmoke;
   margin: 1%;
 `;
 
 const Chield2 = styled.div`
-  display: flex;
   justify-content: center;
   gap: 20px;
   align-items: center;
   height: 100%;
-  grid-area: 1 / 8 / 2 / 11;
+  grid-area: 1 / 5 / 2 / 11;
   border-radius: 15px;
   background-color: whitesmoke;
   margin: 1%;
@@ -125,7 +133,7 @@ const Chield3 = styled.div`
   grid-area: 2 / 1 / 3 / 11;
   border-radius: 15px;
   background-color: #323232;
-  margin: 1%;
+  margin: 1% 0 1% 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -147,7 +155,7 @@ const Chield5 = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  grid-area: 2 / 5 / 1 / 7;
+  grid-area: 2 / 0 / 1 / 6;
   border-radius: 15px;
   background-color: red;
   margin: 1%;
@@ -194,12 +202,24 @@ const TextName = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
   font-family: "Poppins", sans-serif;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
   text-align: start;
+  height: 100%;
+  color: whitesmoke;
+  font-size: 20px;
+`;
+
+const TextNameTittle = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+  font-family: "Poppins", sans-serif;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 500px;
+  text-align: start;
   height: 100%;
-  text-align: center;
   color: whitesmoke;
   font-size: 20px;
 `;

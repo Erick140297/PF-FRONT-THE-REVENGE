@@ -30,7 +30,7 @@ const ChatBot1 = () => {
     const info = useSelector((state) => state.Admin);
     const { logout, user } = useAuth0();
 
-    console.log(info);
+    // console.log(info);
 
 
     const handleClick = () => {

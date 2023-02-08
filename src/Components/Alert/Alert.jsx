@@ -1,7 +1,12 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+import styled from "styled-components";
 import "./Alert.css";
 
 const Alert = () => {
+
+  const { logout, user } = useAuth0();
+
   return (
     <div>
       <div role="document" className="modal-dialog">
@@ -20,8 +25,39 @@ const Alert = () => {
           <div></div>
         </div>
       </div>
+    <Container>
+
+      <BtnCart
+      onClick={() =>
+        logout({ logoutParams: { returnTo: window.location.origin }})}
+        >Salir</BtnCart>
+        </Container>
     </div>
   );
 };
 
 export default Alert;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const BtnCart = styled.button`
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  color: black;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 1000;
+  box-shadow: 0px 0px 10px 5px #c101f6;
+  width: 20%;
+  height: 60px;
+  transition: 0.3s;
+`;
+
