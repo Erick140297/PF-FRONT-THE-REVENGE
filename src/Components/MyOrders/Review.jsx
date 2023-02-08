@@ -7,6 +7,7 @@ import { Rating } from "@material-ui/lab";
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Review() {
   const [input, setInput] = useState({
@@ -15,6 +16,9 @@ function Review() {
   });
 
   const history = useHistory();
+  const info = useSelector((state) => state.Admin);
+  console.log(info._id)
+
 
   const { user } = useAuth0();
   const { orderId, index, productId, name } = useParams();
@@ -51,7 +55,7 @@ function Review() {
     addReview();
     changeRevised()
     setInput({ comentario: "", rating: 0 });
-    history.push(`/order/detail/${orderId}`);
+    history.push(`/myorders/${info._id}`);
   };
 
   return (

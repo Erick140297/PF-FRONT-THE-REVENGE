@@ -39,7 +39,7 @@ const MyOrders = () => {
           <div className="container-sm shadow-lg p-3 mb-5 mt-4 bg-dark rounded text-start w-50">
             {myOrders.orders?.map((el, i) => {
               return (
-                <div className="my-order2 container-sm p-3 mb-3 mt-4 bg-dark rounded text-start">
+                <div key={i} className="my-order2 container-sm p-3 mb-3 mt-4 bg-dark rounded text-start">
                   <Container key={i}>
                     <span className="ms-2 mt-2 mb-2 text-muted">Orden: {i + 1}</span>
                     <span className="ms-3"><FaHourglassHalf /> Estado: {el.status}</span>

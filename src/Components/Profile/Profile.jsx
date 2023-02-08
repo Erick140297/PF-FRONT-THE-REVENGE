@@ -23,7 +23,7 @@ const Profile = () => {
     dispatch(getInfoUser(user.email));
   }, []);
 
-  console.log(info)
+  // console.log(info)
   if (!info.enabled) {
     return <Alert/>;
   }
