@@ -1,11 +1,11 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { cleanResult, GetAllProducts } from "../../../Redux/Actions"
+import { cleanResult, GetAllProducts,deleteProduct } from "../../../Redux/Actions"
 import styles from "./Products.css"
 import NewProductForm from "./NewProduct/NewProductForm";
 import { Link, useHistory } from "react-router-dom"
-
+import BackToTop from "../../BackToTop/BackToTop"
 
 
 
@@ -22,11 +22,13 @@ const Products = () => {
     return () => {
       
     };
-  }, []);
+  }, [allProducts]);
 
+  
   const handleDelete = (productId) => {
     if(window.confirm("Estás seguro de que quieres eliminar este producto?")){
-        
+      dispatch(deleteProduct(productId));
+      dispatch(GetAllProducts());
     }
 };
 
@@ -48,7 +50,7 @@ const filteredProducts = selectedCategory === 'Todas'
 
 
     return (
-      <>
+      <div>
       <div className="mt-4">
         <button className="btn btn-dark text-light shadow p-3 rounded" type="button" onClick={() => history.push("/dashboard")}>
               Volver
@@ -99,13 +101,16 @@ const filteredProducts = selectedCategory === 'Todas'
                     <button className="edit-button">Editar</button>
                   </Link>
                   <br />
-                  <button className="delete-button mt-1" onClick={() => handleDelete(product.id)}>Eliminar</button>
+                  <button className="delete-button mt-1" onClick={() => handleDelete(product._id)}>Eliminar</button>
                 </td>
               </tr>
             ))}
         </tbody>
   </table>
-  </>);
+  
+  <BackToTop>a</BackToTop>
+  </div>);
+  
 };
 
 export default Products;

@@ -1,27 +1,29 @@
-
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser,userDisabled } from "../../../Redux/Actions";
+import {
+  getUser,
+  userDisabled,
+  deleteUser,
+  updateUser,
+} from "../../../Redux/Actions";
 import "./User.css";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PaginadoUsers from "../User/Paginado/Paginado";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const User = () => {
   const dispatch = useDispatch();
-  
+  const users = useSelector((state) => state.usersAdmin);
+  console.log(users);
+
   useEffect(() => {
     dispatch(getUser());
-  }, []);
-  
-  const users = useSelector((state) => state.usersAdmin);
-  console.log(users)
-  
-  const usersBanned = users.filter(
-    (user) => user.enabled !== true
-    ).length;
+  }, [users]);
 
-  const handleDisabled =  (id, enabled) => {
+
+  const usersBanned = users.filter((user) => user.enabled !== true).length;
+
+  const handleDisabled = (id, enabled) => {
     // setCurrentPage(1)
     // const updatingProuduct = allProducts.find(p => p.id === id);
     let disabledUser;
@@ -34,24 +36,43 @@ const User = () => {
         enabled: true,
       };
     }
-     dispatch(userDisabled(id, disabledUser));
-     dispatch(getUser());
+    dispatch(userDisabled(id, disabledUser));
+    dispatch(getUser());
   };
-  
-
+  const handleAdmin = (id, admin) => {
+    // setCurrentPage(1)
+    // const updatingProuduct = allProducts.find(p => p.id === id);
+    let adminUser;
+    if (admin === true) {
+      adminUser = {
+        admin: false,
+      };
+    } else {
+      adminUser = {
+        admin: true,
+      };
+    }
+    dispatch(updateUser(id, adminUser));
+    dispatch(getUser());
+  };
 
   let [currentPage, setCurrentPage] = useState(1);
   let [usersPerPage, setUsersPerPage] = useState(5);
   let indexOfLastUser = currentPage * usersPerPage;
   let indexOfFirstUser = indexOfLastUser - usersPerPage;
-  let currentUsers = users.slice(
-    indexOfFirstUser,
-    indexOfLastUser
-    );
-    return (
-      <div className="containerAll">
-      <NavLink to="/dashboard"><botton className='btn btn-dark text-light shadow p-3 rounded mt-2'>Atras</botton></NavLink>
-      <div className="productContainer mt-4">
+  let currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  const handleDeleteUser = (userId) => {
+    if (window.confirm("Estás seguro de que quieres eliminar este usuario?")) {
+      dispatch(deleteUser(userId));
+      dispatch(getUser());
+    }
+  };
+  return (
+    <div>
+      <NavLink to="/dashboard">
+        <button className="btnAbout">Volver</button>
+      </NavLink>
+      <div className="productContainer">
         <div className="infoConteiner">
           <div className="infoProduct">
             <div className="info">
@@ -79,30 +100,18 @@ const User = () => {
         </div>
         <div className="containerInfoTable">
           <ul className="ul">
-            <div className="headerMove mt-2">
-              <li className="headerItem">Nombre</li>
-            </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Apellidos</li>
-            </div>
-            <div className="headerMovemail mt-2">
-              <li className="headerItem">Correo</li>
-            </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Role</li>
-            </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Estado</li>
-            </div>
-            <div className="headerMove mt-2">
-              <li className="headerItem">Acciones</li>
-            </div>
+            <div className="containHeadr"> Nombre</div>
+            <div className="containHeadr1">Apellidos</div>
+            <div className="containHeadr1">Correo</div>
+            <div className="containHeadr1">Role</div>
+            <div className="containHeadr1">Estado</div>
+            <div className="containHeadr2">Acciones</div>
           </ul>
 
           {currentUsers &&
             currentUsers.map((item) => (
               <div className="containerc">
-                <div className="containCardInfo bg-dark shadow p-3 rounded mb-1">
+                <div className="containCardName">
                   <p className="mt-3">
                     {" "}
                     {item.name
@@ -115,7 +124,10 @@ const User = () => {
                 <div className="containCardInfo ">
                   <p className="text-center mt-2">
                     {" "}
-                    {item.name?.split(" ").slice(1).join(" ")}
+                    {item.name
+                      ?.split(" ")
+                      .slice(1)
+                      .join(" ")}
                   </p>
                 </div>
 
@@ -123,51 +135,64 @@ const User = () => {
                   <p className="p-user"> {item.email}</p>
                 </div>
 
-                <div className="containCardInfo">
-                <p > {item.admin ? "Admin" : "Cliente"}</p>
+                <div className="containCardRole">
+                  <p> {item.admin ? "Admin" : "Cliente"}</p>
                 </div>
 
                 <div className="containCardInfo">
                   <p>{item.enabled ? "Autorizado" : "Deshabilitado"}</p>
                 </div>
 
-              
-                <div className="containCardInfo">
-                {item.enabled === true ? (
-                    <button className="actionDisable">
+                <div className="containerActions">
+                  {item.enabled === true ? (
+                    <span className="actionDisable">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
                         className="fa-solid fa-user"
                       ></i>
-                    </button>
+                    </span>
                   ) : (
-                    <button className="actionNotDisable ">
+                    <span className="actionNotDisable ">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
                         className="fa-solid fa-user-slash"
                       ></i>
-                    </button>
+                    </span>
+                  )}
+                  <span className="actionDelete">
+                    <i
+                      className="actionDelete"
+                      onClick={() => handleDeleteUser(item._id)}
+                      class="fa-solid fa-trash"
+                    ></i>
+                  </span>
+                  {item.admin === true ? (
+                    <span className="actionDisable">
+                      <i
+                        onClick={() => handleAdmin(item._id, item.admin)}
+                        className="fa-solid fa-plus"
+                      ></i>
+                    </span>
+                  ) : (
+                    <span className="actionNotDisable ">
+                      <i
+                        onClick={() => handleAdmin(item._id, item.admin)}
+                        className="fa-solid fa-plus"
+                      ></i>
+                    </span>
                     )}
                 </div>
               </div>
             ))}
         </div>
-         <div className="containerCreated">
-          <NavLink className="link" to={`/admin/createAdmin`}>
-            <div className="containerCreate">
 
-              <i class="fa-solid fa-plus"></i>
-
-            </div>
-            
-          </NavLink>
-          </div>
         <div className="containerPaginate">
           <PaginadoUsers
             usersPerPage={usersPerPage}
             allUsers={users.length}
-            paginado={setCurrentPage} />
-        </div> 
+            paginado={setCurrentPage}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllOrders,updateorder } from "../../../../Redux/Actions";
+import {
+  getAllOrders,
+  updateorder,
+  updateOrderStatus,
+} from "../../../../Redux/Actions";
 import "./AdminOrderEdit.css";
 import { useParams, Link } from "react-router-dom";
-
-const validate = (value) => {
-  const errors = {};
-  if (!value) {
-    errors.name =
-      "Debes Ingresar Un Nombre mayor a 2 letras y no debe incluir caracteres especiales ni símbolos";
-  }
-  return errors;
-};
 
 function onlyOneDifficulty(value) {
   var x = document.getElementsByName("status");
@@ -21,65 +16,85 @@ function onlyOneDifficulty(value) {
   }
 }
 
-function AdminOrderEdit(props) {
+function AdminOrderEdit() {
+  const { AllOrders } = useSelector((state) => state);
+
+  const { usersAdmin } = useSelector((state) => state);
+
+  const propsID = useParams().id;
+
+  const idToFilter = propsID;
+
+  const userId = usersAdmin.filter((obj) => obj.orders.includes(idToFilter));
+
+  const oneOrder = AllOrders.filter((item) => item._id === propsID);
+ console.log(oneOrder,"ORDER")
+  const [input, setInput] = useState("");
+
+  const [errors, setErrors] = useState({});
+
+  const user = userId[0]._id;
+  const userEmail = userId[0].email;
+  const userName = userId[0].name;
+  const orderStatus = oneOrder[0].status;
+  console.log("ORDERSTATUS",orderStatus)
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllOrders());
   }, []);
 
-  const { AllOrders } = useSelector((state) => state);
-  const { user } = useSelector((state) => state);
-  const propsID = useParams().id;
-
-  const oneOrder = AllOrders.filter((item) => item._id === propsID);
-
-  const [input, setInput] = useState("");
-  /* const [estadoAct, setEstadoAct] = useState({ status: oneOrder[0].status }) */
-
-  const [errors, setErrors] = useState({});
-
   const handleCheckBox = (e) => {
-    /* setEstadoAct({
-            status:e.target.value
-        }) */
     if (e.target.checked) {
       setInput(e.target.value);
-      setErrors(validate(e.target.value));
-      onlyOneDifficulty(e.target.value);
     }
   };
 
-  const orderUpdate = {
-    email: user.email,
-    status: input,
-  };
-
   const handleSubmit = (e) => {
-    /* e.preventDefault() */
-    dispatch(updateorder(propsID, orderUpdate));
+    e.preventDefault();
+    const updatedOrder = {
+      ...oneOrder,
+      status: input,
+    };
+    dispatch(updateorder(propsID, updatedOrder));
+    dispatch(updateOrderStatus(user, updatedOrder));
+    dispatch(getAllOrders())
     window.history.back();
   };
-
   return (
     <div className="containerAll1">
-      <Link to="/admin/orders"><button className="btnAbout">Volver</button></Link>
+      <Link to="/admin/orders">
+        <button className="btnAbout">Volver</button>
+      </Link>
       {oneOrder.length === 1 &&
         oneOrder.map((item) => (
           <div className="containerAll">
             <div className="containerPandO">
               <div className="productCont">
                 <div className="containerTitle">
-                  <span className="span-order me-2 text-start"> Número de Orden:</span>
+                  <span className="span-order me-2 text-start">
+                    {" "}
+                    Número de Orden:
+                  </span>
                   <p className="mt-4 fs-6">{item._id}</p>
                 </div>
                 <div className="containerTitle">
                   <span className="span-order me-2 text-start">Usuario: </span>
-                  <p className="mt-4 fs-6">{item.user}</p>
+                  <p className="mt-4 fs-6">{userName}</p>
                 </div>
                 <div className="containerTitle">
-                  <span className="span-order me-2 text-start">Precio total: </span>
-                  <p className="mt-4 fs-6">${item.cart.items[0].product.price}</p>
+                  <span className="span-order me-2 text-start">Email: </span>
+                  <p className="mt-4 fs-6">{userEmail}</p>
+                </div>
+                <div className="containerTitle">
+                  <span className="span-order me-2 text-start">
+                    Precio total:{" "}
+                  </span>
+                  <p className="mt-4 fs-6">
+                    ${item.cart.items[0].product.price}
+                  </p>
                 </div>
                 <div className="containerTitle">
                   <span className="span-order me-2 text-start"> Fecha: </span>
@@ -99,22 +114,7 @@ function AdminOrderEdit(props) {
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Pagado"}
-                      id="status"
-                      onChange={(e) => handleCheckBox(e)}
-                    />
-                  </div>
-                </label>
-                <hr className="hR" />
-                <label className="text">
-                  {" "}
-                  Preparando Envío
-                  <div className="circulo">
-                    <input
-                      className="season"
-                      type={"checkbox"}
-                      name={"status"}
-                      value={"Preparando Envío"}
+                      value={"pagado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />
@@ -124,13 +124,13 @@ function AdminOrderEdit(props) {
                 <hr className="hR" />
                 <label className="text">
                   {" "}
-                 Enviado
+                  Enviado
                   <div className="circulo">
                     <input
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Enviado"}
+                      value={"enviado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />
@@ -145,27 +145,10 @@ function AdminOrderEdit(props) {
                       className="season"
                       type={"checkbox"}
                       name={"status"}
-                      value={"Entregado"}
+                      value={"entregado"}
                       id="status"
                       onChange={(e) => handleCheckBox(e)}
                     />{" "}
-                  </div>
-                </label>
-
-                <hr className="hR" />
-
-                <label className="text">
-                  {" "}
-                  Completado
-                  <div className="circulo">
-                    <input
-                      className="season"
-                      type={"checkbox"}
-                      name={"status"}
-                      value={"Completado"}
-                      id="status"
-                      onChange={(e) => handleCheckBox(e)}
-                    />
                   </div>
                 </label>
                 <div className="buttonCont">
@@ -177,7 +160,6 @@ function AdminOrderEdit(props) {
                   </button>
                 </div>
               </div>
-
               {errors.name && <p className="text-error">{errors.name}</p>}
               <br />
             </div>

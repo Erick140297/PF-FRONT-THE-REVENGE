@@ -5,7 +5,59 @@ import { useDispatch } from "react-redux";
 import { GetAllProducts } from "../../../../Redux/Actions";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+
+import * as yup from "yup";
+const formSchema = yup.object().shape({
+  name: yup
+  .string()
+  .min(2, "Debe tener al menos 2 caracteres")
+  .max(100, "Debe tener como máximo 100 caracteres")
+  .required("Este campo es obligatorio"),
+  price: yup
+  .number()
+  .min(0, "El precio no puede ser negativo")
+  .required("Este campo es obligatorio"),
+  image: yup.mixed().required("Este campo es obligatorio"),
+  brand: yup
+  .string()
+  .min(2, "Debe tener al menos 2 caracteres")
+  .max(100, "Debe tener como máximo 100 caracteres")
+  .required("Este campo es obligatorio"),
+  stock: yup
+  .number()
+  .min(0, "El stock no puede ser negativo")
+  .required("Este campo es obligatorio"),
+  description: yup
+  .string()
+  .min(10, "Debe tener al menos 10 caracteres")
+  .required("Este campo es obligatorio"),
+  category: yup
+  .string()
+  .min(2, "Debe tener al menos 2 caracteres")
+  .max(100, "Debe tener como máximo 100 caracteres")
+  .required("Este campo es obligatorio"),
+  subCategory: yup
+  .string()
+  .min(2, "Debe tener al menos 2 caracteres")
+  .max(100, "Debe tener como máximo 100 caracteres")
+  .required("Este campo es obligatorio"),
+  });
 const NewProductForm = (props) => {
+  const formSchema = yup.object().shape({
+    name: yup.string().required("El nombre es requerido"),
+    price: yup
+      .number()
+      .required("El precio es requerido")
+      .positive("El precio debe ser un número positivo"),
+    description: yup.string().required("La descripción es requerida"),
+    category: yup.string().required("La categoría es requerida"),
+    subCategory: yup.string().required("La subcategoría es requerida"),
+    brand: yup.string().required("La marca es requerida"),
+    stock: yup
+      .number()
+      .required("El stock es requerido")
+      .positive("El stock debe ser un número positivo"),
+  });
     const history = useHistory()
   const [isOpen, setIsOpen] = useState(true);
   const [formData, setFormData] = useState({
@@ -41,30 +93,60 @@ const NewProductForm = (props) => {
   infoFormData.append("subCategory", formData.subCategory);
 
   const handleSubmit = async (event) => {
-    toast.success("Producto creado, espera un momento..");
     event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://pf-back-the-revenge-production.up.railway.app/product",
-        infoFormData,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
-      setFormData({
-        name: "",
-        price: 0,
-        description: "",
-        category: "",
-        subCategory: "",
-        brand: "",
-        stock: 0,
-      }),
-      setImage(null),
-      history.push("/admin/products")
-      // Manejar la respuesta del servidor
-    } catch (error) {
-      // Manejar el error
+    let isFormValid = true;
+    
+    // Validaciones
+    if (!formData.name) {
+    isFormValid = false;
+    toast.error("El nombre es un campo obligatorio");
     }
-  };
+    
+    if (!formData.price) {
+    isFormValid = false;
+    toast.error("El precio es un campo obligatorio");
+    }
+    
+    if (!formData.brand) {
+    isFormValid = false;
+    toast.error("La marca es un campo obligatorio");
+    }
+    
+    if (!formData.stock) {
+    isFormValid = false;
+    toast.error("El stock es un campo obligatorio");
+    }
+    
+    if (!image) {
+    isFormValid = false;
+    toast.error("La imagen es un campo obligatorio");
+    }
+    
+    if (isFormValid) {
+    toast.success("Producto creado, espera un momento..");
+    try {
+    const response = await axios.post(
+    "https://pf-back-the-revenge-production.up.railway.app/product",
+    infoFormData,
+    { headers: { "Content-Type": "multipart/form-data" } }
+    );
+    setFormData({
+    name: "",
+    price: 0,
+    description: "",
+    category: "",
+    subCategory: "",
+    brand: "",
+    stock: 0,
+    });
+    setImage(null);
+    history.push("/admin/products");
+    // Manejar la respuesta del servidor
+    } catch (error) {
+    // Manejar el error
+    }
+    }
+    };
 
   return (
     <div>
