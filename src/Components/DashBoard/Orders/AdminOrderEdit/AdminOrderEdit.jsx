@@ -36,7 +36,8 @@ function AdminOrderEdit() {
   const user = userId[0]._id;
   const userEmail = userId[0].email;
   const userName = userId[0].name;
-
+  const orderStatus = oneOrder[0].status;
+  console.log("ORDERSTATUS",orderStatus)
 
 
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function AdminOrderEdit() {
     };
     dispatch(updateorder(propsID, updatedOrder));
     dispatch(updateOrderStatus(user, updatedOrder));
+    dispatch(getAllOrders())
     window.history.back();
   };
   return (

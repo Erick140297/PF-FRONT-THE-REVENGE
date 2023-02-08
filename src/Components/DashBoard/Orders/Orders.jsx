@@ -8,22 +8,25 @@ import PaginadoOrder from "./PaginadoOrder";
 function AdminOrders() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllOrders());
-  }, []);
-
   const { AllOrders } = useSelector((state) => state);
+  
 
-
+  
   let [currentPage, setCurrentPage] = useState(1);
   let [orderPerPage, setCategoryPerPage] = useState(5);
   let indexOfLastOrder = currentPage * orderPerPage;
   let indexOfFirstOrder = indexOfLastOrder - orderPerPage;
   let currentOrder = AllOrders.slice(indexOfFirstOrder, indexOfLastOrder);
-
+  useEffect(() => {
+    dispatch(getAllOrders());
+  }, [AllOrders]);
+  
   const handleDeleteOrder = (orderId) => {
     if(window.confirm("Estás seguro de que quieres eliminar esta orden?"))
-   { dispatch(deletePurchaseOrder(orderId));}
+   {
+     dispatch(deletePurchaseOrder(orderId));
+     dispatch(getAllOrders());
+  }
   };
 
   return (
