@@ -192,6 +192,7 @@ export function updateorder(id, data) {
     return async function(dispatch) {
       await axios.put(`${URL}/order/${id}`, data);
       return dispatch({ type: "UPDATE_ORDER" });
+      
     };
   } catch (error) {}
 }
@@ -201,11 +202,11 @@ export const updateOrderStatus = (id, status) => async (dispatch) => {
     const res = await axios.post(`${URL}/order/status/${id}`, {
       status,
     });
+    console.log("SOS", res);
     dispatch({
       type: "UPDATE_ORDER_STATUS",
       payload: res.data,
     });
-    console.log("SOS", res.data);
     console.log("IDD", id);
   } catch (error) {
     dispatch({
@@ -298,7 +299,6 @@ export function deletePurchaseOrder(id) {
       .delete(`${URL}/order/${id}`)
       .then(res => {
         dispatch({ type: "DELETE_PURCHASE_ORDER_SUCCESS", payload: res.data });
-        window.location.reload();
       })
       .catch(error => {
         dispatch({ type: "DELETE_PURCHASE_ORDER_ERROR", error });
@@ -312,7 +312,6 @@ export function deleteUser(id) {
       .delete(`${URL}/user/${id}`)
       .then(res => {
         dispatch({ type: "DELETE_USER_SUCCESS", payload: res.data });
-        window.location.reload();
       })
       .catch(error => {
         dispatch({ type: "DELETE_USER_ERROR", error });
@@ -326,7 +325,6 @@ export function deleteProduct(id) {
       .delete(`${URL}/product/${id}`)
       .then(res => {
         dispatch({ type: "DELETE_PRODUCT_SUCCESS", payload: res.data });
-        window.location.reload();
       })
       .catch(error => {
         dispatch({ type: "DELETE_PRODUCT_ERROR", error });

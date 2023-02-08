@@ -22,7 +22,7 @@ const Products = () => {
     return () => {
       
     };
-  }, []);
+  }, [allProducts]);
 
   
   const handleDelete = (productId) => {

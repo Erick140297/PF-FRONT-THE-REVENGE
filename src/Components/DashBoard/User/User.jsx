@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 
 const User = () => {
   const dispatch = useDispatch();
+  const users = useSelector((state) => state.usersAdmin);
+  console.log(users);
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+  }, [users]);
 
-  const users = useSelector((state) => state.usersAdmin);
-  console.log(users);
 
   const usersBanned = users.filter((user) => user.enabled !== true).length;
 
@@ -64,22 +64,12 @@ const User = () => {
   const handleDeleteUser = (userId) => {
     if (window.confirm("Estás seguro de que quieres eliminar este usuario?")) {
       dispatch(deleteUser(userId));
+      dispatch(getUser());
     }
   };
   return (
     <div>
       <NavLink to="/dashboard">
-  let currentUsers = users.slice(
-    indexOfFirstUser,
-    indexOfLastUser
-    );
-    const handleDeleteUser = (userId) => {
-      if(window.confirm("Estás seguro de que quieres eliminar este usuario?"))
-{      dispatch(deleteUser(userId));
-}    };
-    return (
-      <div>
-       <NavLink to="/dashboard">
         <button className="btnAbout">Volver</button>
       </NavLink>
       <div className="productContainer">
@@ -116,18 +106,6 @@ const User = () => {
             <div className="containHeadr1">Role</div>
             <div className="containHeadr1">Estado</div>
             <div className="containHeadr2">Acciones</div>
-            <div className="containHeadr"> Nombre
-            </div>
-            <div className="containHeadr1">Apellidos
-            </div>
-            <div className="containHeadr1">Correo
-            </div>
-            <div className="containHeadr1">Role
-            </div>
-            <div className="containHeadr1">Estado
-            </div>
-            <div className="containHeadr2">Acciones
-            </div>
           </ul>
 
           {currentUsers &&
@@ -159,7 +137,6 @@ const User = () => {
 
                 <div className="containCardRole">
                   <p> {item.admin ? "Admin" : "Cliente"}</p>
-                <p > {item.admin ? "Admin" : "Cliente"}</p>
                 </div>
 
                 <div className="containCardInfo">
@@ -168,9 +145,6 @@ const User = () => {
 
                 <div className="containerActions">
                   {item.enabled === true ? (
-              
-                <div className="containerActions">
-                {item.enabled === true ? (
                     <span className="actionDisable">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
@@ -209,12 +183,6 @@ const User = () => {
                     )}
                 </div>
               </div>
-                    <span className="actionDelete">
-                    <i className="actionDelete"onClick={() => handleDeleteUser(item._id)}class="fa-solid fa-trash"></i>
-                    </span>
-                  </div>
-                </div>
-                
             ))}
         </div>
 
