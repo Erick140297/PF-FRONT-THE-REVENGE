@@ -69,6 +69,17 @@ const User = () => {
   return (
     <div>
       <NavLink to="/dashboard">
+  let currentUsers = users.slice(
+    indexOfFirstUser,
+    indexOfLastUser
+    );
+    const handleDeleteUser = (userId) => {
+      if(window.confirm("Estás seguro de que quieres eliminar este usuario?"))
+{      dispatch(deleteUser(userId));
+}    };
+    return (
+      <div>
+       <NavLink to="/dashboard">
         <button className="btnAbout">Volver</button>
       </NavLink>
       <div className="productContainer">
@@ -105,6 +116,18 @@ const User = () => {
             <div className="containHeadr1">Role</div>
             <div className="containHeadr1">Estado</div>
             <div className="containHeadr2">Acciones</div>
+            <div className="containHeadr"> Nombre
+            </div>
+            <div className="containHeadr1">Apellidos
+            </div>
+            <div className="containHeadr1">Correo
+            </div>
+            <div className="containHeadr1">Role
+            </div>
+            <div className="containHeadr1">Estado
+            </div>
+            <div className="containHeadr2">Acciones
+            </div>
           </ul>
 
           {currentUsers &&
@@ -136,6 +159,7 @@ const User = () => {
 
                 <div className="containCardRole">
                   <p> {item.admin ? "Admin" : "Cliente"}</p>
+                <p > {item.admin ? "Admin" : "Cliente"}</p>
                 </div>
 
                 <div className="containCardInfo">
@@ -144,6 +168,9 @@ const User = () => {
 
                 <div className="containerActions">
                   {item.enabled === true ? (
+              
+                <div className="containerActions">
+                {item.enabled === true ? (
                     <span className="actionDisable">
                       <i
                         onClick={() => handleDisabled(item._id, item.enabled)}
@@ -182,6 +209,12 @@ const User = () => {
                     )}
                 </div>
               </div>
+                    <span className="actionDelete">
+                    <i className="actionDelete"onClick={() => handleDeleteUser(item._id)}class="fa-solid fa-trash"></i>
+                    </span>
+                  </div>
+                </div>
+                
             ))}
         </div>
 
