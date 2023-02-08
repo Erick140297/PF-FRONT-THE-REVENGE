@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getAllOrders,
   updateorder,
-  updateOrderStatus,
+  changeOrderStatusAndSendEmail,
 } from "../../../../Redux/Actions";
 import "./AdminOrderEdit.css";
 import { useParams, Link } from "react-router-dom";
@@ -37,7 +37,7 @@ function AdminOrderEdit() {
   const userEmail = userId[0].email;
   const userName = userId[0].name;
   const orderStatus = oneOrder[0].status;
-  console.log("ORDERSTATUS",orderStatus)
+
 
 
   const dispatch = useDispatch();
@@ -49,6 +49,8 @@ function AdminOrderEdit() {
   const handleCheckBox = (e) => {
     if (e.target.checked) {
       setInput(e.target.value);
+      onlyOneDifficulty(e.target.value);
+
     }
   };
 
@@ -59,8 +61,7 @@ function AdminOrderEdit() {
       status: input,
     };
     dispatch(updateorder(propsID, updatedOrder));
-    dispatch(updateOrderStatus(user, updatedOrder));
-    dispatch(getAllOrders())
+    dispatch(changeOrderStatusAndSendEmail(user, input, userEmail, userName));
     window.history.back();
   };
   return (
