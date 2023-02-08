@@ -2,6 +2,7 @@
 // AXIOS
 import axios from "axios";
 
+
 const URL = `https://pf-back-the-revenge-production.up.railway.app`;
 
 export function GetAllProducts() {
@@ -197,24 +198,20 @@ export function updateorder(id, data) {
   } catch (error) {}
 }
 
-export const updateOrderStatus = (id, status) => async (dispatch) => {
+export const changeOrderStatusAndSendEmail = (id, status) => async dispatch => {
   try {
-    const res = await axios.post(`${URL}/order/status/${id}`, {
-      status,
-    });
-    console.log("SOS", res);
-    dispatch({
-      type: "UPDATE_ORDER_STATUS",
-      payload: res.data,
-    });
-    console.log("IDD", id);
+  const response = await axios.post(`${URL}/order/status/${id}`, { status });
+
+  dispatch({
+  type: "CHANGE_ORDER_STATUS",
+  payload: response.data
+  });
+  dispatch((response.data.email, response.data.subject, response.data.contentHtml));
   } catch (error) {
-    dispatch({
-      type: "UPDATE_ORDER_STATUS_ERROR",
-      payload: error,
-    });
+  console.error(error);
   }
-};
+  };
+
 
 export function postNewAdmin(data) {
   return async function(dispatch) {

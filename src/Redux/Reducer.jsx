@@ -15,7 +15,8 @@ const initialState = {
   Admin: [],
   detail: {},
   usersAdmin: [],
-  error: {}
+  error: {},
+  orders:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -143,18 +144,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         myOrders: action.payload,
       };
-    case "UPDATE_ORDER":
-      return {
+      case "CHANGE_ORDER_STATUS":
+        return {
         ...state,
-      };
-    case "UPDATE_ORDER_STATUS":
-      return {
-        ...state,
-      };
-    case "UPDATE_ORDER_STATUS_ERROR":
-      return {
-        ...state,
-      };
+        orders: state.orders.map(order => {
+        if (order._id === action.payload._id) {
+        return {
+        ...order,
+        status: action.payload.status
+        };
+        }
+        return order;
+        })
+        };
     case "GET_ORDER":
       return {
         ...state,
